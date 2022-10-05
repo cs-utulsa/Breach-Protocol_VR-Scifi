@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -15,13 +16,7 @@ public class TwoHandInteractable : XRGrabInteractable
 
     private IXRSelectInteractor firstInteractor, secondInteractor;
     private Quaternion attachInitialRotation;
-    private Quaternion initialRotationoffset;
-    private Transform activeSecondGrab;
-    [SerializeField] bool inHolster = false;
-
-    [Header("Object Type")]
-    public bool oneHanded = false;
-
+    private Quaternion initialRotationOffset;
 
 
     // Start is called before the first frame update
@@ -33,7 +28,6 @@ public class TwoHandInteractable : XRGrabInteractable
         {
             item.selectEntered.AddListener(OnSecondHandGrab);
             item.selectExited.AddListener(OnSecondHandRelease);
-            item.enabled = false;
         }
     }
 
@@ -45,126 +39,86 @@ public class TwoHandInteractable : XRGrabInteractable
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
-        // compute rotation
-
-        if (!oneHanded)
+        if (secondInteractor != null && firstInteractorSelecting != null)
         {
-            if (firstInteractor != null && secondInteractor != null)
+            if (snapToSecondHand)
             {
-                if (snapToSecondHand)
-                {
-                    firstInteractor.transform.rotation = GetTwoHandRotation();
-                }
-                else
-                {
-                    firstInteractor.transform.rotation = GetTwoHandRotation() * initialRotationoffset;
-                }
+                firstInteractorSelecting.transform.rotation = GetTwoHandRotation();
+            }
 
-                foreach (var grab in secondHandGrabPoints)
+            else
+            {
+                firstInteractorSelecting.transform.rotation = GetTwoHandRotation() * initialRotationOffset;
+            }
+
+            foreach (var grab in secondHandGrabPoints)
+            {
+                if (grab.isSelected)
                 {
-                    if (grab.isSelected)
+                    if (Mathf.Abs(Vector3.Distance(secondInteractor.transform.position, grab.transform.position)) > breakDistance)
                     {
-                        if (Mathf.Abs(Vector3.Distance(secondInteractor.transform.position, grab.transform.position)) > breakDistance)
-                        {
-                            grab.enabled = false;
-                            grab.enabled = true;
-                        }
+                        grab.enabled = false;
+                        grab.enabled = true;
                     }
                 }
-                
             }
+
         }
-
-
         base.ProcessInteractable(updatePhase);
     }
 
+
     private Quaternion GetTwoHandRotation()
     {
-        Quaternion targetRotation;
-        try
+        Transform attachTransform1 = firstInteractorSelecting.transform;
+        Transform attachTransform2 = secondInteractor.transform;
+
+        switch (twoHandRotationType)
         {
-            if (twoHandRotationType == TwoHandRotationType.None)
-            {
-                targetRotation = Quaternion.LookRotation(secondInteractor.transform.position - firstInteractor.transform.position);
-            }
-            else if (twoHandRotationType == TwoHandRotationType.First)
-            {
+            case TwoHandRotationType.None:
+                return Quaternion.LookRotation(attachTransform2.position - attachTransform1.position);
 
-                targetRotation = Quaternion.LookRotation(secondInteractor.transform.position - firstInteractor.transform.position, firstInteractor.transform.up);
+            case TwoHandRotationType.First:
+                return Quaternion.LookRotation(attachTransform2.position - attachTransform1.position, firstInteractorSelecting.transform.up);
 
-            }
-            else
-            {
-                targetRotation = Quaternion.LookRotation(secondInteractor.transform.position - firstInteractor.transform.position, secondInteractor.transform.up);
-            }
+            case TwoHandRotationType.Second:
+                return Quaternion.LookRotation(attachTransform2.position - attachTransform1.position, secondInteractor.transform.up);
+
+            default:
+                return Quaternion.LookRotation(attachTransform2.position - attachTransform1.position, secondInteractor.transform.up);
         }
-        catch
-        {
-            return Quaternion.identity;
-        }
-
-        return targetRotation;
-    }
-
-
-    protected override void OnSelectEntered(SelectEnterEventArgs args)
-    {
-        SetParentToXRRig();
-        firstInteractor = args.interactorObject;
-        attachInitialRotation = args.interactorObject.transform.localRotation;
-
-        foreach (var item in secondHandGrabPoints)
-        {
-            item.enabled = true;
-        }
-
-        SetParentToXRRig();
-        base.OnSelectEntered(args);
-    }
-    protected override void OnSelectExited(SelectExitEventArgs args)
-    {
-        firstInteractor = null;
-        secondInteractor = null;
-
-        foreach (var item in secondHandGrabPoints)
-        {
-            item.enabled = false;
-        }
-
-        args.interactorObject.transform.localRotation = attachInitialRotation;
-        base.OnSelectExited(args);
 
     }
 
     public void OnSecondHandGrab(SelectEnterEventArgs args)
     {
         secondInteractor = args.interactorObject;
-        initialRotationoffset = Quaternion.Inverse(GetTwoHandRotation()) * firstInteractor.transform.rotation;
+        initialRotationOffset = Quaternion.Inverse(GetTwoHandRotation()) * secondInteractor.transform.rotation;
     }
 
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
+
         secondInteractor = null;
+    }
+
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    {
+
+        attachInitialRotation = args.interactorObject.transform.localRotation;
+        base.OnSelectEntered(args);
+    }
+
+    protected override void OnSelectExited(SelectExitEventArgs args)
+    {
+        secondInteractor = null;
+        args.interactorObject.transform.localRotation = attachInitialRotation;
+        base.OnSelectExited(args);
     }
 
     public override bool IsSelectableBy(IXRSelectInteractor interactor)
     {
-        bool isAlreadyGrabbed = isSelected && !interactor.Equals(firstInteractorSelecting);
-        //bool isAlreadyGrabbed = selectingInteractor && !interactor.Equals(selectingInteractor) && !inHolster;
-        return base.IsSelectableBy(interactor);
+        bool isalreadygrabbed = firstInteractorSelecting != null && !interactor.Equals(firstInteractorSelecting);
+        return base.IsSelectableBy(interactor) && !isalreadygrabbed;
     }
-
-    public void SetParentToXRRig()
-    {
-        if (!inHolster)
-            transform.SetParent(firstInteractorSelecting.transform);
-    }
-
-    public void SetParentToWorld()
-    {
-        transform.SetParent(null);
-    }
-
-
 }
