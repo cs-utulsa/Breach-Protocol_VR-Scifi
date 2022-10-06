@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0260faadfaf1b04dbdddc967e2d51e5, type: 3}
+  m_Name: AOE_Data
+  m_EditorClassIdentifier: 
+  range: 5
+  detonationTimer: 6
+  flashRateSpeedUp: 1.25
+  beepSound: {fileID: 0}
+  detonationAudio: {fileID: 0}
+  activationAudio: {fileID: 0}
+  activateParam: Activate
+  particles: []
+  layerMask:
+  - Player
+  - Enemy
+  - Default
+  - Teammate
