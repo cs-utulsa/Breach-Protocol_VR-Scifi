@@ -18,7 +18,6 @@ public class TwoHandInteractable : XRGrabInteractable
     private Quaternion attachInitialRotation;
     private Quaternion initialRotationOffset;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +28,13 @@ public class TwoHandInteractable : XRGrabInteractable
             item.selectEntered.AddListener(OnSecondHandGrab);
             item.selectExited.AddListener(OnSecondHandRelease);
         }
+        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-
+        
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -121,4 +121,24 @@ public class TwoHandInteractable : XRGrabInteractable
         bool isalreadygrabbed = firstInteractorSelecting != null && !interactor.Equals(firstInteractorSelecting);
         return base.IsSelectableBy(interactor) && !isalreadygrabbed;
     }
+
+    public void ChangeLayerOnDrop(float delay)
+    {
+        foreach (Collider collider in colliders)
+        {
+            collider.gameObject.layer = LayerMask.NameToLayer("WorldCollision");
+        }
+        StartCoroutine(RestoreLayers(delay));
+    }
+
+    private IEnumerator RestoreLayers(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        foreach (Collider collider in colliders)
+        {
+
+            collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
+        }
+    }
+
 }
