@@ -24,7 +24,7 @@ public class RaycastWeapon : MonoBehaviour
     RaycastHit hitInfo;
     LayerMask layerMask;
 
-    private bool isCharging = false;
+    protected bool isCharging = false;
     private WaitForSeconds regenTick;
 
     protected virtual void Awake()
@@ -40,7 +40,7 @@ public class RaycastWeapon : MonoBehaviour
     public void TriggerPulled()
     {
         animator.SetTrigger(weaponData.shootParam);
-        if (currentAmmo > 0)
+        if (currentAmmo > 0 && !isCharging)
         {
             Shoot();
         }
