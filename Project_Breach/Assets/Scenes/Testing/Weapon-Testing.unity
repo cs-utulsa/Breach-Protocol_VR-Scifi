@@ -1562,9 +1562,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 464259518}
-  - component: {fileID: 464259521}
   - component: {fileID: 464259520}
   - component: {fileID: 464259519}
+  - component: {fileID: 464259521}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -1646,19 +1646,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1986912690}
-        m_TargetAssemblyTypeName: HandPresencePhysics, Assembly-CSharp
-        m_MethodName: EnableColliderDelay
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1.5
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -1713,7 +1701,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 464259517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b1f1642b074a4d4593ce5025c99027e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UpdateTrackingType: 0
@@ -1731,7 +1719,7 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 26d2aaa4-6518-4d33-8fae-419043a723d4
+      m_Id: 97d06257-147b-4388-88f3-665f27eab10e
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1744,7 +1732,7 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: d7a15530-737b-416a-9d5d-a8b51ba6c682
+      m_Id: a3dfa4fa-a956-4652-8c93-fbef0518d552
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1757,7 +1745,7 @@ MonoBehaviour:
       m_Name: Tracking State
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: e12d3305-8866-42f0-a9b8-2cd7f4310c31
+      m_Id: c99a6a7f-e056-4fc7-bf78-6e8f8e084daf
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1770,7 +1758,7 @@ MonoBehaviour:
       m_Name: Select
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 05483079-4b7c-4369-9176-fb8514428e98
+      m_Id: 49dd0d7f-77a8-459b-a6c4-3bb3726739ce
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1783,7 +1771,7 @@ MonoBehaviour:
       m_Name: Select Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 8e42f062-fb45-44df-9825-35e1dfc18834
+      m_Id: 33160614-c846-4d6f-bd4d-3a8b6329f7b6
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1796,7 +1784,7 @@ MonoBehaviour:
       m_Name: Activate
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 38e5c09b-96d2-40e4-ae8e-3bfb9eb16727
+      m_Id: e6c9d3b7-3145-440a-9903-9487649f244e
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1809,7 +1797,7 @@ MonoBehaviour:
       m_Name: Activate Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: ff2b1032-d7ae-4e1a-8e8a-a5556d5f8db5
+      m_Id: 869e99f4-99ef-485e-97c1-213662427ade
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1822,7 +1810,7 @@ MonoBehaviour:
       m_Name: UI Press
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 347fe4ac-83bc-44f7-a0d2-2793a5775161
+      m_Id: 79ed2272-2f58-41ba-ac12-6558d1131bba
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1835,7 +1823,7 @@ MonoBehaviour:
       m_Name: UI Press Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 8b29ebc3-3830-4622-8c66-56f3a9b98d73
+      m_Id: 767b690e-fec4-421d-93e3-f58faf415ec2
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1848,7 +1836,7 @@ MonoBehaviour:
       m_Name: Haptic Device
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 35cfed17-bcaf-4ff9-9fe0-fa1727b7619b
+      m_Id: 2c85ed00-c88b-4908-ac68-a053127b4b62
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1861,12 +1849,12 @@ MonoBehaviour:
       m_Name: Rotate Anchor
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 4fcd4b62-1769-4cc4-aaee-aea2fc40d24f
+      m_Id: d9a77bb3-16e9-4409-ad15-deba63a26fbf
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -7363382999065477798, guid: c348712bda248c246b8c49b3db54643f,
+    m_Reference: {fileID: 8248158260566104461, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_TranslateAnchorAction:
     m_UseReference: 1
@@ -1874,7 +1862,7 @@ MonoBehaviour:
       m_Name: Translate Anchor
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 7bfe4461-8d15-4a61-9fa6-28ce950c9996
+      m_Id: dccc9048-eb04-4a78-be2c-ff90650fe3aa
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1882,6 +1870,32 @@ MonoBehaviour:
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+  m_PrimaryButtonAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Primary Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b39c13b8-c8c7-4abd-8f56-e0692948a922
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 4468915147276294506, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  m_SecondaryButtonAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Secondary Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 9a0dc23c-5ded-4759-9711-5d36727cebe3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 4225274171064581003, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
 --- !u!1 &471766656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,6 +2179,10 @@ MonoBehaviour:
   target: {fileID: 1468444048}
   ghostHand: {fileID: 199467962}
   ghostHandDistance: 0.05
+  handTeleportThreshold: 0.2
+  moveJoystick: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  interactor: {fileID: 0}
 --- !u!54 &505298553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2176,11 +2194,11 @@ Rigidbody:
   m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &505298554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5092,9 +5110,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1372645463}
   - component: {fileID: 1372645462}
-  - component: {fileID: 1372645461}
-  - component: {fileID: 1372645460}
   - component: {fileID: 1372645459}
+  - component: {fileID: 1372645464}
+  - component: {fileID: 1372645465}
   m_Layer: 13
   m_Name: Base Pistol
   m_TagString: Untagged
@@ -5198,7 +5216,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1372645460
+--- !u!54 &1372645462
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372645458}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!4 &1372645463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372645458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4987, y: 1.1228, z: 1.666}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1398103165140009625}
+  - {fileID: 33995999}
+  - {fileID: 433804942}
+  - {fileID: 1477753630}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1372645464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5207,23 +5260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1372645458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a619b9da38bc7428ac934ce7f74955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 03c25578400195d448c62db75dde1317, type: 2}
-  raycastOrigin: {fileID: 433804942}
-  source: {fileID: 1372645459}
-  animator: {fileID: 1742013203005921316}
---- !u!114 &1372645461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372645458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 79ad09175b62738409379b0f58154237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 1904877260}
@@ -5234,7 +5271,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967295
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -5257,14 +5294,50 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1372645465}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1372645464}
+        m_TargetAssemblyTypeName: OneHandInteractable, Assembly-CSharp
+        m_MethodName: ChangeLayerOnDrop
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1372645465}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1372645460}
+      - m_Target: {fileID: 1372645465}
         m_TargetAssemblyTypeName: RaycastWeapon, Assembly-CSharp
         m_MethodName: TriggerPulled
         m_Mode: 1
@@ -5307,7 +5380,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AttachTransform: {fileID: 1477753630}
-  m_AttachEaseInTime: 0.15
+  m_AttachEaseInTime: 0
   m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -5340,44 +5413,26 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
-  m_ForceGravityOnDetach: 1
+  m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!54 &1372645462
-Rigidbody:
+--- !u!114 &1372645465
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372645458}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!4 &1372645463
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372645458}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4987, y: 1.1228, z: 1.666}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 1398103165140009625}
-  - {fileID: 33995999}
-  - {fileID: 433804942}
-  - {fileID: 1477753630}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2012bd76e805e2640be9ded1991e53ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 03c25578400195d448c62db75dde1317, type: 2}
+  raycastOrigin: {fileID: 1477753630}
+  source: {fileID: 1372645459}
+  animator: {fileID: 1742013203005921316}
+  interactable: {fileID: 1372645464}
 --- !u!1 &1388930071
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,9 +5770,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1468444048}
-  - component: {fileID: 1468444051}
   - component: {fileID: 1468444050}
   - component: {fileID: 1468444049}
+  - component: {fileID: 1468444051}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -5799,19 +5854,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 505298552}
-        m_TargetAssemblyTypeName: HandPresencePhysics, Assembly-CSharp
-        m_MethodName: EnableColliderDelay
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1.5
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -5866,7 +5909,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1468444047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b1f1642b074a4d4593ce5025c99027e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UpdateTrackingType: 0
@@ -5884,7 +5927,7 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 93ead265-4bff-4199-8ddf-33c028dcfee9
+      m_Id: 7f5c5ada-5da5-4ba4-b88f-154fc81d5f08
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5897,7 +5940,7 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: cd9a8368-32d3-4e58-86a0-6fe78d199369
+      m_Id: c4dd5e54-0a8c-4d12-b567-05bed5ad861d
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5910,7 +5953,7 @@ MonoBehaviour:
       m_Name: Tracking State
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 7964ebc4-45e1-4431-a17a-7f2206e38661
+      m_Id: 6f7d6acf-e85b-45ed-a7d8-0dc9c8850cc2
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5923,7 +5966,7 @@ MonoBehaviour:
       m_Name: Select
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 3207346a-8b2f-4b24-b45a-90ea1cdef7fb
+      m_Id: addcba38-d590-4f7b-a1be-82342e8e5b3d
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5936,7 +5979,7 @@ MonoBehaviour:
       m_Name: Select Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: dcf177a1-4c6d-42a7-b095-5f68848dadf1
+      m_Id: ac401ac7-b5b6-4bda-a951-5e45d1dbbfaf
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5949,7 +5992,7 @@ MonoBehaviour:
       m_Name: Activate
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: ed3be3cd-637e-48d6-ae4b-dd97305eaa40
+      m_Id: 1e5e49db-fc51-4ab8-a9f6-89a4969ea028
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5962,7 +6005,7 @@ MonoBehaviour:
       m_Name: Activate Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: af4d694a-0159-4acb-bf36-7b78c35a10d5
+      m_Id: a5d6263c-5d19-4462-997b-250698fd480b
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5975,7 +6018,7 @@ MonoBehaviour:
       m_Name: UI Press
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 55ce5c5d-aad8-4ebf-9f21-899ff595a062
+      m_Id: e5792124-8a39-4195-889a-6e5bb222be78
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5988,7 +6031,7 @@ MonoBehaviour:
       m_Name: UI Press Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: cdab09f7-ec37-4eee-b72c-06339cc37c8b
+      m_Id: c35fb6af-344e-469b-ae0f-3347567f8273
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -6001,7 +6044,7 @@ MonoBehaviour:
       m_Name: Haptic Device
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 60f81e0e-3fab-4e26-90b6-a5ab762e2bb1
+      m_Id: a4b17c8e-5367-4247-97bf-a80efd1d38c7
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -6014,7 +6057,7 @@ MonoBehaviour:
       m_Name: Rotate Anchor
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: aca8fec0-a925-428d-a6b7-25cfbd478258
+      m_Id: b5d89dfa-2a18-4906-992b-b865bbf7d8a3
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -6027,7 +6070,7 @@ MonoBehaviour:
       m_Name: Translate Anchor
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 161874b5-2545-4bb2-bea4-eeddeb4fabf6
+      m_Id: 11f4b854-66fa-4c0e-9355-9d4fc79578d6
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -6035,6 +6078,32 @@ MonoBehaviour:
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+  m_PrimaryButtonAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Primary Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 40edd2dd-a650-415e-b5c3-1d6708abf8d1
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6908383440651807720, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  m_SecondaryButtonAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Secondary Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 876842d5-f1af-4611-9956-edace34b0529
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1165809491829528415, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
 --- !u!1 &1477753629
 GameObject:
   m_ObjectHideFlags: 0
@@ -8024,6 +8093,10 @@ MonoBehaviour:
   target: {fileID: 464259518}
   ghostHand: {fileID: 1706543268}
   ghostHandDistance: 0.05
+  handTeleportThreshold: 0.2
+  moveJoystick: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  interactor: {fileID: 0}
 --- !u!54 &1986912691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8035,11 +8108,11 @@ Rigidbody:
   m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &1986912692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8942,31 +9015,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3305420785519491321, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3586471277274907423, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012441427526783285, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012441427975790855, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012441428382662146, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 6012441428384942595, guid: 1db462e19014dc14e990bb489e67d5ca,
         type: 3}
       propertyPath: m_InteractionManager
@@ -9032,51 +9080,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 6012441428384942606, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 6012441428863917169, guid: 1db462e19014dc14e990bb489e67d5ca,
         type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1904877260}
-    - target: {fileID: 6012441428863917183, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012441429193632402, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012441429396430536, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6956072421533377198, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7060964540361954204, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065125739263584294, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7410932570799772936, guid: 1db462e19014dc14e990bb489e67d5ca,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db462e19014dc14e990bb489e67d5ca, type: 3}
 --- !u!1 &6698298857610138467

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1128803478156417532}
   - component: {fileID: 5638084382711036023}
   - component: {fileID: 764298282300397066}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4219420073073088933}
   - component: {fileID: 4219420073073088932}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AMP_140
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6012441427526783284}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Attach Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6012441427975790873}
   - component: {fileID: 6012441427975790854}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collider 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6012441428382662149}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Main Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,9 +260,9 @@ GameObject:
   - component: {fileID: 6012441428384942597}
   - component: {fileID: 6012441428384942594}
   - component: {fileID: 6012441428384942595}
-  - component: {fileID: 6012441428384942592}
   - component: {fileID: 6012441428384942593}
-  m_Layer: 0
+  - component: {fileID: 6012441429121272750}
+  m_Layer: 13
   m_Name: Test Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,13 +298,13 @@ Rigidbody:
   m_GameObject: {fileID: 6012441428384942606}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &6012441428384942595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,14 +348,50 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6012441429121272750}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6012441428384942595}
+        m_TargetAssemblyTypeName: TwoHandInteractable, Assembly-CSharp
+        m_MethodName: ChangeLayerOnDrop
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6012441429121272750}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6012441428384942592}
+      - m_Target: {fileID: 6012441429121272750}
         m_TargetAssemblyTypeName: RaycastWeapon, Assembly-CSharp
         m_MethodName: TriggerPulled
         m_Mode: 1
@@ -399,7 +435,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 6012441427526783284}
   m_AttachEaseInTime: 0
-  m_MovementType: 0
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -440,22 +476,6 @@ MonoBehaviour:
   snapToSecondHand: 1
   breakDistance: 0.1
   rb: {fileID: 0}
---- !u!114 &6012441428384942592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6012441428384942606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a619b9da38bc7428ac934ce7f74955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 03c25578400195d448c62db75dde1317, type: 2}
-  raycastOrigin: {fileID: 6012441429396430539}
-  source: {fileID: 6012441428384942593}
-  animator: {fileID: 4219420073073088932}
 --- !u!82 &6012441428384942593
 AudioSource:
   m_ObjectHideFlags: 0
@@ -552,6 +572,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6012441429121272750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012441428384942606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2012bd76e805e2640be9ded1991e53ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 03c25578400195d448c62db75dde1317, type: 2}
+  raycastOrigin: {fileID: 6012441429396430539}
+  source: {fileID: 6012441428384942593}
+  animator: {fileID: 4219420073073088932}
+  interactable: {fileID: 6012441428384942595}
 --- !u!1 &6012441428863917183
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +600,7 @@ GameObject:
   - component: {fileID: 6012441428863917182}
   - component: {fileID: 6012441428863917168}
   - component: {fileID: 6012441428863917169}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Vert Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6012441429193632405}
   - component: {fileID: 6012441429193632404}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collider 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6012441429396430539}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Raycast Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +801,7 @@ GameObject:
   - component: {fileID: 92062173934412741}
   - component: {fileID: 3470000112694759765}
   - component: {fileID: 3797626661161151649}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Vertical Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +884,7 @@ GameObject:
   - component: {fileID: 5407040075575554139}
   - component: {fileID: 6893581793249069970}
   - component: {fileID: 5307470672189193690}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Laser Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +967,7 @@ GameObject:
   - component: {fileID: 5871763593153473502}
   - component: {fileID: 6330377533375546935}
   - component: {fileID: 2284347164739081515}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Gun Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1013,7 +1050,7 @@ GameObject:
   - component: {fileID: 2453268714887894192}
   - component: {fileID: 8797018393657589094}
   - component: {fileID: 4486685301853511003}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

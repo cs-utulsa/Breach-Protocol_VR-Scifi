@@ -17,7 +17,7 @@ TagManager:
   - Left Hand Physics
   - Right Hand Physics
   - Ghost Hands
-  - SecondHandGrab
+  - WorldCollision
   - Enemy
   - Teammate
   - Interactable
