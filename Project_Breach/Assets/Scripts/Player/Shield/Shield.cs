@@ -24,6 +24,7 @@ public class Shield : MonoBehaviour
         currentShield = playerData.maxShield;
         source = GetComponent<AudioSource>();
         playerHealth = GetComponent<Health>();
+        timeFromLastHit = playerData.maxRegenTimer;
     }
 
     void FixedUpdate()
@@ -85,5 +86,10 @@ public class Shield : MonoBehaviour
             playerHealth.TakeDamage(value);
         }
         timeFromLastHit = 0.0f;
+    }
+
+    public float getShieldCharge()
+    {
+        return currentShield;
     }
 }
