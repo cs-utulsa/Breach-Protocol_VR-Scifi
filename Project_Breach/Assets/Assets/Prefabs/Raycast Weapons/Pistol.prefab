@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2012bd76e805e2640be9ded1991e53ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 03c25578400195d448c62db75dde1317, type: 2}
+  weaponData: {fileID: 11400000, guid: f1bee71545409154b8f235b17d1eecb8, type: 2}
   raycastOrigin: {fileID: 3289255890996517846}
   source: {fileID: 3289255891936666891}
   animator: {fileID: 3857639885000889724}

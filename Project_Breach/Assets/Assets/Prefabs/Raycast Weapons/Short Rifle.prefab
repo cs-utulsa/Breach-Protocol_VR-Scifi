@@ -709,7 +709,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &5357947997610878476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df3688bd9ee323f4997ff06c95c91a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: f1bee71545409154b8f235b17d1eecb8, type: 2}
+  weaponData: {fileID: 11400000, guid: 2d622dfa72c723843b819208e77f8665, type: 2}
   raycastOrigin: {fileID: 5357947996512367300}
   source: {fileID: 5357947997610878478}
   animator: {fileID: 0}
