@@ -10,6 +10,8 @@ public class WeaponData : ScriptableObject
     public int maxAmmo;
     public float damage;
     public float rechargeTime;
+    public int RPM;
+
 
     [Header("Audio")]
     public AudioClip shootClip;
