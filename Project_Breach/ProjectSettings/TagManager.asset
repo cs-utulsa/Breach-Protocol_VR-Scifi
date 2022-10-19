@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Teammate
+  - Primary Weapon
+  - Secondary Weapon
+  - Throwable
+  - Inventory
   layers:
   - Default
   - TransparentFX

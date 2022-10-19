@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 9183341643109712978}
   m_Layer: 13
   m_Name: Exp. Grenade
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

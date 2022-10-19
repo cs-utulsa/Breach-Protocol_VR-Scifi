@@ -17,6 +17,7 @@ public class TwoHandInteractable : XRGrabInteractable
     private IXRSelectInteractor firstInteractor, secondInteractor;
     private Quaternion attachInitialRotation;
     private Quaternion initialRotationOffset;
+    private bool inInventory = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class TwoHandInteractable : XRGrabInteractable
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
-        if (secondInteractor != null && firstInteractorSelecting != null)
+        if (secondInteractor != null && firstInteractorSelecting != null && !firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
             if (snapToSecondHand)
             {
@@ -98,14 +99,16 @@ public class TwoHandInteractable : XRGrabInteractable
 
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
-
         secondInteractor = null;
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-
         attachInitialRotation = args.interactorObject.transform.localRotation;
+        if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
+        {
+            inInventory = true;
+        }
         base.OnSelectEntered(args);
     }
 
@@ -118,8 +121,11 @@ public class TwoHandInteractable : XRGrabInteractable
 
     public override bool IsSelectableBy(IXRSelectInteractor interactor)
     {
-        bool isalreadygrabbed = firstInteractorSelecting != null && !interactor.Equals(firstInteractorSelecting);
-        return base.IsSelectableBy(interactor) && !isalreadygrabbed;
+        bool isalreadygrabbed = firstInteractorSelecting != null && !firstInteractorSelecting.transform.gameObject.CompareTag("Inventory") &&
+            !interactor.Equals(firstInteractorSelecting) && !inInventory;
+
+        return (base.IsSelectableBy(interactor) && !isalreadygrabbed);
+        
     }
 
     public void ChangeLayerOnDrop(float delay)
@@ -136,7 +142,6 @@ public class TwoHandInteractable : XRGrabInteractable
         yield return new WaitForSeconds(delay);
         foreach (Collider collider in colliders)
         {
-
             collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
         }
     }

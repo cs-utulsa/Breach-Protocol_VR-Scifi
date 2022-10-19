@@ -74,8 +74,8 @@ public class RaycastWeapon : MonoBehaviour
         // Hit Detection
         if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask))
         {
-            Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
-            Debug.Log(hitInfo.transform);
+            //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+            //Debug.Log(hitInfo.transform);
             //impactEffect.transform.position = hitInfo.point;
             //impactEffect.transform.forward = hitInfo.normal;
             //impactEffect.Emit(1);
@@ -95,6 +95,10 @@ public class RaycastWeapon : MonoBehaviour
                 Debug.Log(hitInfo.transform);
             }
 
+        }
+        else
+        {
+            tracer.transform.position = transform.position + transform.forward * 10;
         }
     }
 
