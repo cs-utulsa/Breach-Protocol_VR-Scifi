@@ -9,7 +9,7 @@ public class RaycastWeapon : MonoBehaviour
     [Header("Weapon Data")]
     public WeaponData weaponData = null;
     public Transform raycastOrigin = null;
-    private int currentAmmo;
+    protected int currentAmmo;
 
     [Header("Audio")]
     public AudioSource source = null;
@@ -25,6 +25,7 @@ public class RaycastWeapon : MonoBehaviour
     LayerMask layerMask;
 
     protected bool isCharging = false;
+    protected bool triggerHeld = false;
     private WaitForSeconds regenTick;
 
     protected virtual void Awake()
@@ -40,6 +41,7 @@ public class RaycastWeapon : MonoBehaviour
     public void TriggerPulled()
     {
         animator.SetTrigger(weaponData.shootParam);
+        triggerHeld = true;
         if (currentAmmo > 0 && !isCharging)
         {
             Shoot();
@@ -48,6 +50,11 @@ public class RaycastWeapon : MonoBehaviour
         {
             source.PlayOneShot(weaponData.emptyClip);
         }
+    }
+
+    public void TriggerReleased()
+    {
+        triggerHeld = false;
     }
 
     public virtual void Shoot()
