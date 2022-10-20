@@ -10,6 +10,8 @@ public class AOE_Data : ScriptableObject
     public float range = 5.0f;
     public float detonationTimer = 6.0f;
     public float flashRateSpeedUp = 1.25f;
+    public float damage = 0.0f;
+    public float stunDuration = 0.0f;
 
     [Header("Audio")]
     public AudioClip beepSound;
