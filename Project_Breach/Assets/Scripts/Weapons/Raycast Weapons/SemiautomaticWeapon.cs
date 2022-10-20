@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class PlayerWeapon : RaycastWeapon
+public class SemiautomaticWeapon : RaycastWeapon
 {
     [Header("Interactable")]
     public XRBaseInteractable interactable;
 
-    private void Start()
+    protected override void Awake()
     {
         interactable = GetComponent<XRGrabInteractable>();
+        base.Awake();
     }
 
-    private void LateUpdate()
+    public virtual void LateUpdate()
     {
         if (interactable.isSelected)
         {

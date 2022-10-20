@@ -10,7 +10,7 @@ public class AOE_Base : MonoBehaviour
     [Header("Visuals")]
     public Rigidbody rb = null;
     public Light beepLight = null;
-    public MeshRenderer meshRenderer = null;
+    public MeshRenderer[] meshRenderers;
 
     [Header("Audio")]
     public AudioSource source = null;
@@ -19,6 +19,7 @@ public class AOE_Base : MonoBehaviour
     protected float currentTime = 0.0f;
 
     [SerializeField] protected LayerMask mask;
+    [SerializeField] protected Collider[] collidersInRange;
 
 
     private void Awake()
@@ -26,7 +27,7 @@ public class AOE_Base : MonoBehaviour
         activated = false;
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
         beepLight = GetComponentInChildren<Light>();
         beepLight.enabled = false;
         mask = LayerMask.GetMask(aoeData.layerMask);
@@ -74,7 +75,10 @@ public class AOE_Base : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
         rb.constraints = RigidbodyConstraints.FreezePosition;
-        meshRenderer.enabled = false;
+        foreach (MeshRenderer mesh in meshRenderers)
+        {
+            mesh.enabled = false;
+        }
 
         source.PlayOneShot(aoeData.detonationAudio);
 
@@ -94,16 +98,10 @@ public class AOE_Base : MonoBehaviour
 
     protected virtual void CheckForEffected()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, aoeData.range, mask);  // Memory leak?
-        //List<AIHealth> aiHealths = new List<AIHealth>();
-        foreach (Collider c in colliders)
+        collidersInRange = Physics.OverlapSphere(transform.position, aoeData.range, mask);
+        foreach (Collider c in collidersInRange)
         {
-           /*
-            if ((c.CompareTag("Grunt") || c.CompareTag("Turret")) && !aiHealths.Contains(c.GetComponentInParent<AIHealth>()))
-            {
-                aiHealths.Add(c.GetComponentInParent<AIHealth>());
-            }
-           */
+            Debug.Log(c + " is in the area of effect.");
         }
     }
 

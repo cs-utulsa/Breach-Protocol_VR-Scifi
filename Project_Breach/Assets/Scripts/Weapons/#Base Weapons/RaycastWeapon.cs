@@ -9,7 +9,7 @@ public class RaycastWeapon : MonoBehaviour
     [Header("Weapon Data")]
     public WeaponData weaponData = null;
     public Transform raycastOrigin = null;
-    private int currentAmmo;
+    protected int currentAmmo;
 
     [Header("Audio")]
     public AudioSource source = null;
@@ -25,6 +25,7 @@ public class RaycastWeapon : MonoBehaviour
     LayerMask layerMask;
 
     protected bool isCharging = false;
+    protected bool triggerHeld = false;
     private WaitForSeconds regenTick;
 
     protected virtual void Awake()
@@ -40,6 +41,7 @@ public class RaycastWeapon : MonoBehaviour
     public void TriggerPulled()
     {
         animator.SetTrigger(weaponData.shootParam);
+        triggerHeld = true;
         if (currentAmmo > 0 && !isCharging)
         {
             Shoot();
@@ -48,6 +50,11 @@ public class RaycastWeapon : MonoBehaviour
         {
             source.PlayOneShot(weaponData.emptyClip);
         }
+    }
+
+    public void TriggerReleased()
+    {
+        triggerHeld = false;
     }
 
     public virtual void Shoot()
@@ -67,8 +74,8 @@ public class RaycastWeapon : MonoBehaviour
         // Hit Detection
         if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask))
         {
-            Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
-            Debug.Log(hitInfo.transform);
+            //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+            //Debug.Log(hitInfo.transform);
             //impactEffect.transform.position = hitInfo.point;
             //impactEffect.transform.forward = hitInfo.normal;
             //impactEffect.Emit(1);
@@ -88,6 +95,10 @@ public class RaycastWeapon : MonoBehaviour
                 Debug.Log(hitInfo.transform);
             }
 
+        }
+        else
+        {
+            tracer.transform.position = transform.position + transform.forward * 10;
         }
     }
 
