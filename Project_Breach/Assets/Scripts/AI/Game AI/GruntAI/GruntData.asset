@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2842e10224acdbe4590c1b76885c8592, type: 3}
+  m_Name: GruntData
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 10
+  minShootTimer: 1
+  maxShootTimer: 3
+  speed: 1.5
+  scanDistance: 10
+  scanAngle: 90
+  scanHeight: 5
+  scanFrequency: 30
+  beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
+  speedParam: Speed
+  attackParam: Attack
+  targetLayers:
+  - Player
+  - Teammate
+  occlusionLayers:
+  - Default

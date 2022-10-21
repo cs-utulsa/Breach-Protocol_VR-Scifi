@@ -10,6 +10,8 @@ TagManager:
   - Secondary Weapon
   - Throwable
   - Inventory
+  - Bullet
+  - Target
   layers:
   - Default
   - TransparentFX
