@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using behaviorNameSpace;
 
-public class MoveToPosition : ActionNode
+public class ChaseTarget : ActionNode
 {
     public float speed = 5.0f;
     public float stoppingDistance = 0.1f;
@@ -11,7 +11,8 @@ public class MoveToPosition : ActionNode
     public float acceleration = 40.0f;
     public float tolerance = 1.0f;
 
-    protected override void OnStart() {
+    protected override void OnStart()
+    {
         context.agent.stoppingDistance = stoppingDistance;
         context.agent.speed = speed;
         context.agent.destination = blackboard.moveToPosition;
@@ -19,34 +20,38 @@ public class MoveToPosition : ActionNode
         context.agent.acceleration = acceleration;
     }
 
-    protected override void OnStop() {
+    protected override void OnStop()
+    {
     }
 
-    protected override State OnUpdate() {
-        if (context.aiAgent.sensor.Objects.Count > 0)
+    protected override State OnUpdate()
+    {
+        if (context.aiAgent.sensor.target != null)
         {
-            blackboard.target = context.aiAgent.sensor.Objects[0];
-            blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
+            blackboard.target = context.aiAgent.sensor.target;
             return State.Failure;
         }
 
-        if (context.agent.pathPending) {
+        if (context.agent.pathPending)
+        {
             context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
             return State.Running;
         }
 
-        if (context.agent.remainingDistance < tolerance) {
+        if (context.agent.remainingDistance < tolerance)
+        {
             context.animator.SetFloat("Speed", 0.0f);
             return State.Success;
         }
 
-        if (context.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid) {
+        if (context.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid)
+        {
             context.animator.SetFloat("Speed", 0.0f);
 
             return State.Failure;
         }
 
-
+        blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
         context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
         return State.Running;
     }
