@@ -113,6 +113,16 @@ public class WeaponIK : MonoBehaviour
             weight += 0.01f;
             yield return new WaitForSeconds(.1f);
         }
-        
+        weight = 1.0f;
+    }
+    public IEnumerator EaseOutBoneWeight()
+    {
+        while (weight > 0)
+        {
+            weight -= 0.5f;
+            yield return new WaitForSeconds(.1f);
+        }
+        weight = 0.0f;
+
     }
 }

@@ -76,12 +76,12 @@ public class AI_Sensor : MonoBehaviour
         Vector3 origin = transform.position;
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest - origin;
-        if (direction.y < 0 || direction.y > aiData.scanHeight)
+        if (direction.y < -1 || direction.y > aiData.scanHeight)
         {
             return false;
         }
 
-        direction.y = 0;
+        direction.y = -1;
         float deltaAngle = Vector3.Angle(direction, transform.forward);
         if (deltaAngle > aiData.scanAngle)
         {
@@ -195,9 +195,10 @@ public class AI_Sensor : MonoBehaviour
       mesh = CreateWedgeMesh();
       scanInterval = 1.0f / aiData.scanFrequency;
   }
+    */
     
 
-
+    /*
   private void OnDrawGizmos()
   {
       if (mesh)
@@ -218,10 +219,10 @@ public class AI_Sensor : MonoBehaviour
       {
           Gizmos.DrawSphere(obj.transform.position, 0.2f);
       }
-
+    
   }
+    
     */
-
 
 
 

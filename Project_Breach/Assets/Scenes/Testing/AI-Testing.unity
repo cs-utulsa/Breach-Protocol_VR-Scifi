@@ -1733,6 +1733,21 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1694121827}
+    - target: {fileID: 5357947997610878476, guid: 91846a681fdb81b4ab30609a5839f62b,
+        type: 3}
+      propertyPath: m_Colliders.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357947997610878476, guid: 91846a681fdb81b4ab30609a5839f62b,
+        type: 3}
+      propertyPath: m_Colliders.Array.data[5]
+      value: 
+      objectReference: {fileID: 934743411}
+    - target: {fileID: 5357947997610878476, guid: 91846a681fdb81b4ab30609a5839f62b,
+        type: 3}
+      propertyPath: m_Colliders.Array.data[6]
+      value: 
+      objectReference: {fileID: 934743411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91846a681fdb81b4ab30609a5839f62b, type: 3}
 --- !u!1 &351925822
@@ -2549,7 +2564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454875507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.19, y: 0.24, z: -2.71}
+  m_LocalPosition: {x: 3.19, y: 1.01, z: -2.71}
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5440,6 +5455,12 @@ Transform:
   m_Father: {fileID: 1377827599}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &934743411 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5357947996216293415, guid: 91846a681fdb81b4ab30609a5839f62b,
+    type: 3}
+  m_PrefabInstance: {fileID: 322505727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &943118473
 GameObject:
   m_ObjectHideFlags: 0

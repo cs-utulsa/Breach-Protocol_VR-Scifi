@@ -33,7 +33,7 @@ public class AI_Health : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0.0f)
         {
-            ragdoll.ApplyForce(direction);
+            ragdoll.ApplyForce(direction.normalized);
             Die();
         }
     }

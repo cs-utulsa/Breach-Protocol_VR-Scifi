@@ -253,7 +253,7 @@ MonoBehaviour:
   - {fileID: 2058009690611207007}
   twoHandRotationType: 1
   snapToSecondHand: 1
-  breakDistance: 0.1
+  breakDistance: 0.2
   rb: {fileID: 0}
 --- !u!114 &2058009688927180146
 MonoBehaviour:
@@ -1140,7 +1140,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0.95
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6256843178297243298
@@ -1188,6 +1188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiData: {fileID: 11400000, guid: cfd1eda4c40948346a79d993d4b14002, type: 2}
   meshColor: {r: 1, g: 0, b: 0, a: 1}
+  objects: []
   target: {fileID: 0}
 --- !u!114 &6256843178297243325
 MonoBehaviour:
@@ -1221,7 +1222,7 @@ MonoBehaviour:
   weight: 0
   humanBones:
   - bone: 7
-    weight: 0.2
+    weight: 0.25
   - bone: 8
     weight: 0.5
   - bone: 54

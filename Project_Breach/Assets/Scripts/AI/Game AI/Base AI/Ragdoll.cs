@@ -28,7 +28,6 @@ public class Ragdoll : MonoBehaviour
         foreach (var rigidBody in rigidBodies)
         {
             rigidBody.isKinematic = false;
-
         }
         animator.enabled = false;
     }
@@ -36,7 +35,7 @@ public class Ragdoll : MonoBehaviour
     public void ApplyForce(Vector3 force)
     {
         var rigidBody = animator.GetBoneTransform(HumanBodyBones.Neck).GetComponent<Rigidbody>();
-        rigidBody.AddForce(force, ForceMode.VelocityChange);
+        rigidBody.AddForce(force/10f, ForceMode.VelocityChange);
     }
 
 }

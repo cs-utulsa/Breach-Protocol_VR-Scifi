@@ -34,7 +34,7 @@ public class Death : ActionNode
             {
                 interactable.enabled = true;
             }
-        }
+        } 
         context.aiAgent.weapon.interactable.enabled = true;
         context.aiAgent.weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         context.aiAgent.weapon.transform.SetParent(null);
