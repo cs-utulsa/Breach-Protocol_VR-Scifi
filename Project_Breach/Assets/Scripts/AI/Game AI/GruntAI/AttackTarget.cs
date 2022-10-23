@@ -25,12 +25,12 @@ public class AttackTarget : ActionNode
         context.agent.updateRotation = updateRotation;
         context.agent.acceleration = acceleration;
         context.agent.destination = blackboard.moveToPosition;
-        context.animator.SetBool("Attack", true);
+        context.animator.SetBool(context.aiAgent.aiData.attackParam, true);
     }
 
     protected override void OnStop()
     {
-        context.animator.SetBool("Attack", false);
+        context.animator.SetBool(context.aiAgent.aiData.attackParam, false);
     }
 
     protected override State OnUpdate()
@@ -50,9 +50,10 @@ public class AttackTarget : ActionNode
 
         
 
-        if (context.aiAgent.weapon.GetAmmo() > 0 && timer <= 0)
+        if (context.aiAgent.weapon.GetAmmo() > 0 && timer <= 0 && !context.aiAgent.weapon.GetIsCharging())
         {
             context.aiAgent.weapon.TriggerPulled();
+            context.aiAgent.weapon.TriggerReleased();
             timer = Random.Range(context.aiAgent.aiData.minShootTimer, context.aiAgent.aiData.maxShootTimer);
         }
         else if (context.aiAgent.weapon.GetAmmo() == 0 && !context.aiAgent.weapon.GetIsCharging())
@@ -63,7 +64,7 @@ public class AttackTarget : ActionNode
         {
             timer -= Time.deltaTime;
         }
-        context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
+        context.animator.SetFloat(context.aiAgent.aiData.speedParam, context.agent.velocity.magnitude);
         Debug.Log("I am attacking you.");
         return State.Running;
 

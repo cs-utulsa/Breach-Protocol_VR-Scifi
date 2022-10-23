@@ -84,7 +84,7 @@ public class RaycastWeapon : MonoBehaviour
 
             if (hitInfo.collider.CompareTag("Player") || hitInfo.collider.CompareTag("Teammate"))
             {
-                Debug.Log(hitInfo.transform);
+                //Debug.Log(hitInfo.transform);
                 if (hitInfo.collider.TryGetComponent<Shield>(out Shield player))
                 {
                     player.TakeDamage(weaponData.damage);
@@ -92,7 +92,7 @@ public class RaycastWeapon : MonoBehaviour
             }
             else if (hitInfo.collider.CompareTag("Enemy"))
             {
-                Debug.Log(hitInfo.transform);
+                //Debug.Log(hitInfo.transform);
                 if (hitInfo.collider.TryGetComponent<Hitbox>(out Hitbox aiHitbox))
                 {
                     aiHitbox.OnRaycastHit(weaponData.damage, ray.direction);

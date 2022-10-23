@@ -35,23 +35,23 @@ public class MoveToPosition : ActionNode
         }
 
         if (context.agent.pathPending) {
-            context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
+            context.animator.SetFloat(context.aiAgent.aiData.speedParam, context.agent.velocity.magnitude);
             return State.Running;
         }
 
         if (context.agent.remainingDistance < tolerance) {
-            context.animator.SetFloat("Speed", 0.0f);
+            context.animator.SetFloat(context.aiAgent.aiData.speedParam, 0.0f);
             return State.Success;
         }
 
         if (context.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid) {
-            context.animator.SetFloat("Speed", 0.0f);
+            context.animator.SetFloat(context.aiAgent.aiData.speedParam, 0.0f);
 
             return State.Failure;
         }
 
 
-        context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
+        context.animator.SetFloat(context.aiAgent.aiData.speedParam, context.agent.velocity.magnitude);
         return State.Running;
     }
 }

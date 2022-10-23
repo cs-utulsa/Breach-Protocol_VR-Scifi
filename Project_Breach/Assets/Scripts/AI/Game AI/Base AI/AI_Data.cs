@@ -18,7 +18,6 @@ public class AI_Data : ScriptableObject
     public float scanDistance = 10.0f;
     public float scanAngle = 180f;
     public float scanHeight = 5.0f;
-    public int scanFrequency = 30;
 
 
     [Header("Audio")]

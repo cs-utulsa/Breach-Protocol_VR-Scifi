@@ -18,8 +18,8 @@ MonoBehaviour:
   maxShootTimer: 1
   speed: 1.5
   scanDistance: 25
-  scanAngle: 120
-  scanHeight: 5
+  scanAngle: 135
+  scanHeight: 1
   scanFrequency: 30
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
   speedParam: Speed

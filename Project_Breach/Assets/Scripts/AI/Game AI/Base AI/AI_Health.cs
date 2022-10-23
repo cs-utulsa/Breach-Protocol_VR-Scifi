@@ -20,7 +20,7 @@ public class AI_Health : MonoBehaviour
         Rigidbody[] rigidBodies = GetComponentsInChildren<Rigidbody>();
         foreach(Rigidbody rigidBody in rigidBodies)
         {
-            if (!rigidBody.TryGetComponent<SemiautomaticWeapon>(out SemiautomaticWeapon semiWeapon) && !rigidBody.TryGetComponent<AutomaticWeapon>(out AutomaticWeapon autoWeapon))
+            if (!rigidBody.CompareTag("Primary Weapon") || !rigidBody.CompareTag("Secondary Weapon"))
             {
                 Hitbox hitBox = rigidBody.AddComponent<Hitbox>();
                 hitBox.aiHealth = this;

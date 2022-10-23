@@ -21,9 +21,33 @@ MonoBehaviour:
     target: {fileID: 0}
   description: 
   drawGizmos: 0
-  child: {fileID: -3190854350748662945}
+  child: {fileID: -7906974654465477393}
   restartOnSuccess: 1
   restartOnFailure: 1
+--- !u!114 &-7906974654465477393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460be9e34c566ea45b9e282b1adcb028, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: a7aa60e8458a1014daf3ffc292e1f16c
+  position: {x: -22, y: 18}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    target: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: 6017280603073825560}
+  - {fileID: -540772330094962638}
 --- !u!114 &-6495698265599387594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,30 +148,6 @@ MonoBehaviour:
   - {fileID: -6495698265599387594}
   - {fileID: 8131362891612007356}
   - {fileID: -2461257936905941845}
---- !u!114 &-3190854350748662945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
-  m_Name: Sequencer
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 9fb74ebdcfac8834996cb644a9894e1c
-  position: {x: -21.999893, y: 20.33847}
-  blackboard:
-    moveToPosition: {x: 0, y: 0, z: 0}
-    target: {fileID: 0}
-  description: 
-  drawGizmos: 0
-  children:
-  - {fileID: -540772330094962638}
-  - {fileID: 6017280603073825560}
 --- !u!114 &-2461257936905941845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,13 +217,13 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 296a48c95096e544f8c545829bb679e7
-  position: {x: -200.74187, y: 184.00008}
+  position: {x: 172, y: 160}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     target: {fileID: 0}
   description: 
   drawGizmos: 0
-  timer: 0
+  timer: 3
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,8 +251,8 @@ MonoBehaviour:
   - {fileID: 4483988211611304652}
   - {fileID: -3452232960868290140}
   - {fileID: 8131362891612007356}
-  - {fileID: -3190854350748662945}
   - {fileID: -540772330094962638}
+  - {fileID: -7906974654465477393}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     target: {fileID: 0}

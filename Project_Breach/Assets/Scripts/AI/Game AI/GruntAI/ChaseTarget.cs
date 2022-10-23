@@ -40,7 +40,7 @@ public class ChaseTarget : ActionNode
         } 
         else
         {
-            blackboard.target = context.aiAgent.sensor.Objects[0];
+            blackboard.target = context.aiAgent.sensor.objects[0];
             context.aiAgent.weaponIK.targetTransform = blackboard.target.transform;
             blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
             context.agent.destination = blackboard.moveToPosition;
@@ -48,31 +48,31 @@ public class ChaseTarget : ActionNode
 
         if (Mathf.Abs(Vector3.Distance(context.agent.transform.position, blackboard.target.transform.position)) < attackRange)
         {
-            context.animator.SetBool("Attack", true);
+            context.animator.SetBool(context.aiAgent.aiData.attackParam, true);
             return State.Success;
         }
 
         if (context.agent.pathPending)
         {
-            context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
+            context.animator.SetFloat(context.aiAgent.aiData.speedParam, context.agent.velocity.magnitude);
             return State.Running;
         }
 
         if (context.agent.remainingDistance < tolerance)
         {
-            context.animator.SetFloat("Speed", 0.0f);
+            context.animator.SetFloat(context.aiAgent.aiData.speedParam, 0.0f);
             return State.Success;
         }
 
         if (context.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid)
         {
-            context.animator.SetFloat("Speed", 0.0f);
+            context.animator.SetFloat(context.aiAgent.aiData.speedParam, 0.0f);
 
             return State.Failure;
         }
 
         Debug.Log("I am chasing the target.");
-        context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
+        context.animator.SetFloat(context.aiAgent.aiData.speedParam, context.agent.velocity.magnitude);
         return State.Running;
     }
 }

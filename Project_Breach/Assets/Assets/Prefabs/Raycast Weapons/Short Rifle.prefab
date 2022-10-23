@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4702861999745835340}
   - component: {fileID: 6100239878890275681}
   - component: {fileID: 1319563910472194800}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube.001
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5357947995933896266}
   m_Layer: 13
   m_Name: Collider 1 (3)
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 5357947995979526270}
   m_Layer: 13
   m_Name: Vert Grip
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 5357947996216293414}
   m_Layer: 13
   m_Name: Vert Grip (1)
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 5357947996271740571}
   m_Layer: 13
   m_Name: Collider 1
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 5357947996512367300}
   m_Layer: 13
   m_Name: Raycast Origin
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5357947996512511765}
   m_Layer: 13
   m_Name: Collider 1 (2)
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -508,9 +508,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5357947996619682372}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Grip
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 5357947996790406459}
   m_Layer: 13
   m_Name: Attach Point
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 5357947997205318921}
   m_Layer: 13
   m_Name: Collider 1 (1)
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 5357947997583646834}
   m_Layer: 13
   m_Name: Collider 1 (4)
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -709,7 +709,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &5357947997610878476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,7 +907,7 @@ MonoBehaviour:
   - {fileID: 5357947996216293414}
   twoHandRotationType: 1
   snapToSecondHand: 1
-  breakDistance: 0.1
+  breakDistance: 0.2
   rb: {fileID: 0}
 --- !u!114 &5357947997610878475
 MonoBehaviour:
@@ -924,7 +924,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 2d622dfa72c723843b819208e77f8665, type: 2}
   raycastOrigin: {fileID: 5357947996512367300}
   source: {fileID: 5357947997610878478}
-  animator: {fileID: 3173497112370708704}
+  animator: {fileID: 2126195761}
   interactable: {fileID: 5357947997610878476}
   lastFired: 0
   timeBetweenShots: 0
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 5357947997612249610}
   m_Layer: 13
   m_Name: Main Colliders
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1069,10 +1069,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9107078643622715146}
-  - component: {fileID: 3173497112370708704}
-  m_Layer: 0
+  - component: {fileID: 2126195761}
+  m_Layer: 13
   m_Name: ShortRifle (Model)
-  m_TagString: Untagged
+  m_TagString: Primary Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1093,7 +1093,7 @@ Transform:
   m_Father: {fileID: 5357947997610878474}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3173497112370708704
+--- !u!95 &2126195761
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
