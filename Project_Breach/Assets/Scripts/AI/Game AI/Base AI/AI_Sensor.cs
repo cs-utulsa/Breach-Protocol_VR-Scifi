@@ -38,6 +38,7 @@ public class AI_Sensor : MonoBehaviour
         occlusionLayers = LayerMask.GetMask(aiData.occlusionLayers);
     }
 
+    /*
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -48,8 +49,9 @@ public class AI_Sensor : MonoBehaviour
             Scan();
         }
     }
+    */
 
-    public void Scan()
+    public bool Scan()
     {
         count = Physics.OverlapSphereNonAlloc(transform.position, aiData.scanDistance, colliders, targetLayers, QueryTriggerInteraction.Collide);
         objects.Clear();
@@ -62,6 +64,12 @@ public class AI_Sensor : MonoBehaviour
                 objects.Add(obj);
             }
         }
+
+        if (Objects.Count > 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public bool IsInSight(GameObject obj)

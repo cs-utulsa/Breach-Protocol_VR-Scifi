@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using behaviorNameSpace;
+using UnityEditor.Rendering.LookDev;
 
 public class ChaseTarget : ActionNode
 {
@@ -10,9 +11,11 @@ public class ChaseTarget : ActionNode
     public bool updateRotation = true;
     public float acceleration = 40.0f;
     public float tolerance = 1.0f;
+    public float attackRange = 10.0f;
 
     protected override void OnStart()
     {
+        context.aiAgent.weaponIK.enabled = false;
         context.agent.stoppingDistance = stoppingDistance;
         context.agent.speed = speed;
         context.agent.destination = blackboard.moveToPosition;
@@ -26,10 +29,27 @@ public class ChaseTarget : ActionNode
 
     protected override State OnUpdate()
     {
-        if (context.aiAgent.sensor.target != null)
+        if (context.aiAgent.aiHealth.GetIsDead())
         {
-            blackboard.target = context.aiAgent.sensor.target;
             return State.Failure;
+        }
+
+        if (!context.aiAgent.sensor.Scan())
+        {
+            return State.Failure;
+        } 
+        else
+        {
+            blackboard.target = context.aiAgent.sensor.Objects[0];
+            context.aiAgent.weaponIK.targetTransform = blackboard.target.transform;
+            blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
+            context.agent.destination = blackboard.moveToPosition;
+        }
+
+        if (Mathf.Abs(Vector3.Distance(context.agent.transform.position, blackboard.target.transform.position)) < attackRange)
+        {
+            context.animator.SetBool("Attack", true);
+            return State.Success;
         }
 
         if (context.agent.pathPending)
@@ -51,7 +71,7 @@ public class ChaseTarget : ActionNode
             return State.Failure;
         }
 
-        blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
+        Debug.Log("I am chasing the target.");
         context.animator.SetFloat("Speed", context.agent.velocity.magnitude);
         return State.Running;
     }

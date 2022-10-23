@@ -93,6 +93,10 @@ public class RaycastWeapon : MonoBehaviour
             else if (hitInfo.collider.CompareTag("Enemy"))
             {
                 Debug.Log(hitInfo.transform);
+                if (hitInfo.collider.TryGetComponent<Hitbox>(out Hitbox aiHitbox))
+                {
+                    aiHitbox.OnRaycastHit(weaponData.damage, ray.direction);
+                }
             }
 
         }
@@ -102,7 +106,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
-    protected virtual void Recharge()
+    public virtual void Recharge()
     {
         if (!isCharging)
         {
@@ -123,5 +127,15 @@ public class RaycastWeapon : MonoBehaviour
         }
         currentAmmo = weaponData.maxAmmo;
         isCharging = false;
+    }
+
+    public int GetAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public bool GetIsCharging()
+    {
+        return isCharging;
     }
 }

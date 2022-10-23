@@ -12,6 +12,7 @@ public class MoveToPosition : ActionNode
     public float tolerance = 1.0f;
 
     protected override void OnStart() {
+        context.aiAgent.weaponIK.enabled = false;
         context.agent.stoppingDistance = stoppingDistance;
         context.agent.speed = speed;
         context.agent.destination = blackboard.moveToPosition;
@@ -23,10 +24,13 @@ public class MoveToPosition : ActionNode
     }
 
     protected override State OnUpdate() {
-        if (context.aiAgent.sensor.Objects.Count > 0)
+        if (context.aiAgent.aiHealth.GetIsDead())
         {
-            blackboard.target = context.aiAgent.sensor.Objects[0];
-            blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
+            return State.Failure;
+        }
+
+        if (context.aiAgent.sensor.Scan())
+        {
             return State.Failure;
         }
 

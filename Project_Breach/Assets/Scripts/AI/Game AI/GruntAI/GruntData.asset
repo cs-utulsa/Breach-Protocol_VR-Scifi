@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damage: 10
-  minShootTimer: 1
-  maxShootTimer: 3
+  minShootTimer: 0.1
+  maxShootTimer: 1
   speed: 1.5
-  scanDistance: 10
-  scanAngle: 90
+  scanDistance: 25
+  scanAngle: 120
   scanHeight: 5
   scanFrequency: 30
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
