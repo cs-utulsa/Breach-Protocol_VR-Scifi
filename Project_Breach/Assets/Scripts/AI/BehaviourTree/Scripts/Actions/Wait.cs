@@ -15,6 +15,11 @@ namespace behaviorNameSpace {
         }
 
         protected override State OnUpdate() {
+            if (context.aiAgent.aiHealth.GetIsDead())
+            {
+                return State.Failure;
+            }
+
             if (Time.time - startTime > duration) {
                 return State.Success;
             }

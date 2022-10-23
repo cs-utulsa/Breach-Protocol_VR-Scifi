@@ -8,7 +8,8 @@ public class AI_Agent : MonoBehaviour
     public AI_Sensor sensor;
     public AI_Health aiHealth;
     public AI_Data aiData;
-
+    public WeaponIK weaponIK;
+    public SemiautomaticWeapon weapon;
     public Animator animator;
 
     // Start is called before the first frame update
@@ -17,6 +18,16 @@ public class AI_Agent : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         sensor = GetComponent<AI_Sensor>();
         aiHealth = GetComponent<AI_Health>();
+        weaponIK = GetComponent<WeaponIK>();
+
+        if (weapon == null)
+        {
+            weapon = GetComponentInChildren<AutomaticWeapon>();
+            if (weapon == null)
+            {
+                weapon = GetComponentInChildren<SemiautomaticWeapon>();
+            }
+        }
     }
 
 }
