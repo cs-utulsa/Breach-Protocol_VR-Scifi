@@ -22,22 +22,23 @@ public class AI_Sensor : MonoBehaviour
         }
     }
 
-    private List<GameObject> objects = new List<GameObject>();
+    public List<GameObject> objects = new List<GameObject>();
     public GameObject target;
 
     Mesh mesh;
     int count;
-    float scanInterval;
-    float scanTimer;
+    //float scanInterval;
+    //float scanTimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        scanInterval = 1.0f / aiData.scanFrequency;
+        //scanInterval = 1.0f / aiData.scanFrequency;
         targetLayers = LayerMask.GetMask(aiData.targetLayers);
         occlusionLayers = LayerMask.GetMask(aiData.occlusionLayers);
     }
 
+    /*
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -48,8 +49,9 @@ public class AI_Sensor : MonoBehaviour
             Scan();
         }
     }
+    */
 
-    public void Scan()
+    public bool Scan()
     {
         count = Physics.OverlapSphereNonAlloc(transform.position, aiData.scanDistance, colliders, targetLayers, QueryTriggerInteraction.Collide);
         objects.Clear();
@@ -58,10 +60,15 @@ public class AI_Sensor : MonoBehaviour
             GameObject obj = colliders[i].gameObject;
             if (IsInSight(obj) && obj.CompareTag("Target"))
             {
-                //&& obj.CompareTag("Target")
                 objects.Add(obj);
             }
         }
+
+        if (objects.Count > 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public bool IsInSight(GameObject obj)
@@ -69,12 +76,12 @@ public class AI_Sensor : MonoBehaviour
         Vector3 origin = transform.position;
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest - origin;
-        if (direction.y < 0 || direction.y > aiData.scanHeight)
+        if (direction.y < -1 || direction.y > aiData.scanHeight)
         {
             return false;
         }
 
-        direction.y = 0;
+        direction.y = -1;
         float deltaAngle = Vector3.Angle(direction, transform.forward);
         if (deltaAngle > aiData.scanAngle)
         {
@@ -82,6 +89,7 @@ public class AI_Sensor : MonoBehaviour
         }
         origin.y += aiData.scanHeight / 2;
         dest.y = origin.y;
+
         if (Physics.Linecast(origin, dest, occlusionLayers))
         {
             return false;
@@ -90,8 +98,8 @@ public class AI_Sensor : MonoBehaviour
     }
 
 
-    /*
 
+    /*
   Mesh CreateWedgeMesh()
   {
       Mesh mesh = new Mesh();
@@ -181,14 +189,16 @@ public class AI_Sensor : MonoBehaviour
   }
 
 
-
+    /*
   private void OnValidate()
   {
       mesh = CreateWedgeMesh();
       scanInterval = 1.0f / aiData.scanFrequency;
   }
+    */
+    
 
-
+    /*
   private void OnDrawGizmos()
   {
       if (mesh)
@@ -209,9 +219,10 @@ public class AI_Sensor : MonoBehaviour
       {
           Gizmos.DrawSphere(obj.transform.position, 0.2f);
       }
-
+    
   }
-  */
+    
+    */
 
 
 
