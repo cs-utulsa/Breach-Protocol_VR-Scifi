@@ -26,8 +26,8 @@ public class RandomPosition : ActionNode
             return State.Failure;
         }
 
-        blackboard.moveToPosition.x = Random.Range(min.x, max.x);
-        blackboard.moveToPosition.z = Random.Range(min.y, max.y);
+        blackboard.moveToPosition.x = Random.Range(context.aiAgent.transform.position.x + min.x, context.aiAgent.transform.position.x + max.x);
+        blackboard.moveToPosition.z = Random.Range(context.aiAgent.transform.position.z + min.y, context.aiAgent.transform.position.z + max.y);
         return State.Success;
     }
 }

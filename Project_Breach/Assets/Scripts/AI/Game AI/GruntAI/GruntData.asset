@@ -22,12 +22,12 @@ MonoBehaviour:
   yInaccuracy: 0.1
   minShootTimer: 0.5
   maxShootTimer: 1.5
-  minAttackStoppingDistance: 25
-  maxAttackStoppingDistance: 35
-  attackRange: 40
-  scanDistance: 50
+  minAttackStoppingDistance: 90
+  maxAttackStoppingDistance: 100
+  attackRange: 100
+  scanDistance: 100
   scanAngle: 135
-  scanHeight: 1
+  scanHeight: 3
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
   speedParam: Speed
   attackParam: Attack

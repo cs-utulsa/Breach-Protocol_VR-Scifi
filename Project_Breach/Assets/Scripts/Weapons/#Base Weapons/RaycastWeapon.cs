@@ -31,6 +31,7 @@ public class RaycastWeapon : MonoBehaviour
     protected virtual void Awake()
     {
         source = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
         currentAmmo = weaponData.maxAmmo;
         layerMask = LayerMask.GetMask(weaponData.layerMask);
         regenTick = new WaitForSeconds(weaponData.rechargeTime / weaponData.maxAmmo);
@@ -112,7 +113,7 @@ public class RaycastWeapon : MonoBehaviour
         }
         else
         {
-            tracer.transform.position = transform.position + transform.forward * 10;
+            tracer.transform.position = transform.position + transform.forward * 30;
         }
     }
 

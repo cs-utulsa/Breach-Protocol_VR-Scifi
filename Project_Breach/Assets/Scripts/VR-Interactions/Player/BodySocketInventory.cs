@@ -33,7 +33,7 @@ public class BodySocketInventory : MonoBehaviour
 
     private void UpdateBodySocketHeight(BodySocket bs)
     {
-        bs.gameObject.transform.position = new Vector3(bs.gameObject.transform.position.x, currentHMDPosition.y * bs.heightRatio, bs.gameObject.transform.position.z);
+        bs.gameObject.transform.position = new Vector3(bs.gameObject.transform.position.x, (transform.parent.transform.position.y + currentHMDPosition.y) * bs.heightRatio, bs.gameObject.transform.position.z);
     }
 
     private void UpdateSocketInventory()
