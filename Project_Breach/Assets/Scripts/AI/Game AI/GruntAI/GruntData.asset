@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: GruntData
   m_EditorClassIdentifier: 
   maxHealth: 100
-  minShootTimer: 0.1
-  maxShootTimer: 1
-  speed: 1.5
+  acceleration: 40
+  chaseSpeed: 2.25
+  walkspeed: 1.5
+  moveTolerance: 1
+  standardStoppingDistance: 0.25
   xInaccuracy: 0.2
   yInaccuracy: 0.1
-  scanDistance: 25
+  minShootTimer: 0.5
+  maxShootTimer: 1.5
+  minAttackStoppingDistance: 25
+  maxAttackStoppingDistance: 35
+  attackRange: 40
+  scanDistance: 50
   scanAngle: 135
   scanHeight: 1
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
