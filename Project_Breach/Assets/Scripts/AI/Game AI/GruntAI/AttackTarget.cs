@@ -23,7 +23,6 @@ public class AttackTarget : ActionNode
         context.agent.speed = context.aiAgent.aiData.walkspeed;
 
         // Move the AI towards the player.
-        context.agent.destination = blackboard.moveToPosition;
         context.agent.updateRotation = true;
         context.agent.acceleration = context.aiAgent.aiData.acceleration;
         context.agent.destination = blackboard.moveToPosition;
