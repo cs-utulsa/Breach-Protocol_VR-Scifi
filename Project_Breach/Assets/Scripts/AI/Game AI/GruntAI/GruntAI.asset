@@ -327,8 +327,8 @@ MonoBehaviour:
     target: {fileID: 0}
   description: 
   drawGizmos: 0
-  min: {x: -20, y: -20}
-  max: {x: 20, y: 20}
+  min: {x: -5, y: -5}
+  max: {x: 5, y: 5}
 --- !u!114 &8131362891612007356
 MonoBehaviour:
   m_ObjectHideFlags: 0

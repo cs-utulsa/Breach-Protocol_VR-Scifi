@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 6256843178297243300}
   - component: {fileID: 6256843178297243307}
   m_Layer: 11
-  m_Name: Agent
+  m_Name: Grunt AI Copy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
