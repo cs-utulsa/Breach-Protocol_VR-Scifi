@@ -34,7 +34,7 @@ public class Ragdoll : MonoBehaviour
 
     public void ApplyForce(Vector3 force)
     {
-        var rigidBody = animator.GetBoneTransform(HumanBodyBones.Neck).GetComponent<Rigidbody>();
+        var rigidBody = animator.GetBoneTransform(HumanBodyBones.Hips).GetComponent<Rigidbody>();
         rigidBody.AddForce(force/10f, ForceMode.VelocityChange);
     }
 
