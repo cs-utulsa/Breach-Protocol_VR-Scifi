@@ -31,6 +31,7 @@ public class RaycastWeapon : MonoBehaviour
     protected virtual void Awake()
     {
         source = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
         currentAmmo = weaponData.maxAmmo;
         layerMask = LayerMask.GetMask(weaponData.layerMask);
         regenTick = new WaitForSeconds(weaponData.rechargeTime / weaponData.maxAmmo);
@@ -45,37 +46,49 @@ public class RaycastWeapon : MonoBehaviour
         if (currentAmmo > 0 && !isCharging)
         {
             Shoot();
-        }
+        } 
         else
         {
             source.PlayOneShot(weaponData.emptyClip);
         }
     }
-
     public void TriggerReleased()
     {
         triggerHeld = false;
     }
-
     public virtual void Shoot()
     {
         source.PlayOneShot(weaponData.shootClip);
         currentAmmo--;
-
         ray.origin = raycastOrigin.position;
         ray.direction = raycastOrigin.forward;
+        BulletRegistration();
+    }
+    public virtual void AI_Shoot(float xInacc, float yInacc)
+    {
+        if (currentAmmo > 0 && !isCharging)
+        {
+            source.PlayOneShot(weaponData.shootClip);
+            currentAmmo--;
+            ray.origin = raycastOrigin.position;
+            ray.direction = raycastOrigin.forward + new Vector3(Random.Range(-xInacc, xInacc), Random.Range(-yInacc, yInacc));
+            BulletRegistration();
+        }
+        else
+        {
+            source.PlayOneShot(weaponData.emptyClip);
+        }
 
+    }
+    private void BulletRegistration()
+    {
         //foreach (var particle in muzzleFlash) particle.Emit(1);
-
         var tracer = Instantiate(weaponData.tracerEffect, ray.origin, Quaternion.identity);
         tracer.AddPosition(ray.origin);
-
-
         // Hit Detection
         if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask))
         {
             //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
-            //Debug.Log(hitInfo.transform);
             //impactEffect.transform.position = hitInfo.point;
             //impactEffect.transform.forward = hitInfo.normal;
             //impactEffect.Emit(1);
@@ -84,7 +97,6 @@ public class RaycastWeapon : MonoBehaviour
 
             if (hitInfo.collider.CompareTag("Player") || hitInfo.collider.CompareTag("Teammate"))
             {
-                Debug.Log(hitInfo.transform);
                 if (hitInfo.collider.TryGetComponent<Shield>(out Shield player))
                 {
                     player.TakeDamage(weaponData.damage);
@@ -92,17 +104,20 @@ public class RaycastWeapon : MonoBehaviour
             }
             else if (hitInfo.collider.CompareTag("Enemy"))
             {
-                Debug.Log(hitInfo.transform);
+                if (hitInfo.collider.TryGetComponent<Hitbox>(out Hitbox aiHitbox))
+                {
+                    aiHitbox.OnRaycastHit(weaponData.damage, ray.direction);
+                }
             }
 
         }
         else
         {
-            tracer.transform.position = transform.position + transform.forward * 10;
+            tracer.transform.position = transform.position + transform.forward * 30;
         }
     }
 
-    protected virtual void Recharge()
+    public virtual void Recharge()
     {
         if (!isCharging)
         {
@@ -123,5 +138,15 @@ public class RaycastWeapon : MonoBehaviour
         }
         currentAmmo = weaponData.maxAmmo;
         isCharging = false;
+    }
+
+    public int GetAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public bool GetIsCharging()
+    {
+        return isCharging;
     }
 }

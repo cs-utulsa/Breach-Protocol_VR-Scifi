@@ -10,6 +10,10 @@ TagManager:
   - Secondary Weapon
   - Throwable
   - Inventory
+  - Bullet
+  - Target
+  - Breachable Surface
+  - Breaching Charge
   layers:
   - Default
   - TransparentFX
@@ -25,8 +29,8 @@ TagManager:
   - Enemy
   - Teammate
   - Interactable
-  - 
-  - 
+  - Despawn
+  - Objective
   - 
   - 
   - 

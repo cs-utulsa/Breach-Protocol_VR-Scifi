@@ -71,7 +71,15 @@ public class TwoHandInteractable : XRGrabInteractable
 
     private Quaternion GetTwoHandRotation()
     {
-        Transform attachTransform1 = firstInteractorSelecting.transform;
+        Transform attachTransform1;
+        if (firstInteractorSelecting.transform == null)
+        {
+            attachTransform1 = secondInteractor.transform;
+        }
+        else
+        {
+             attachTransform1= firstInteractorSelecting.transform;
+        }
         Transform attachTransform2 = secondInteractor.transform;
 
         switch (twoHandRotationType)
