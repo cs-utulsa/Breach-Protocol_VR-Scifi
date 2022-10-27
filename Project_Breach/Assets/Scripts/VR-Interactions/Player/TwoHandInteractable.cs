@@ -18,6 +18,7 @@ public class TwoHandInteractable : XRGrabInteractable
     private Quaternion attachInitialRotation;
     private Quaternion initialRotationOffset;
     private bool inInventory = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +33,6 @@ public class TwoHandInteractable : XRGrabInteractable
         
     }
 
-    
-    void Update()
-    {
-        
-    }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
