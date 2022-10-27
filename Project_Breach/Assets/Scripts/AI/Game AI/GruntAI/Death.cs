@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using behaviorNameSpace;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class Death : ActionNode
@@ -32,7 +31,7 @@ public class Death : ActionNode
         if (context.aiAgent.weapon.interactable.CompareTag("Primary Weapon")){
             foreach (XRSimpleInteractable interactable in context.aiAgent.weapon.GetComponentsInChildren<XRSimpleInteractable>())
             {
-                interactable.enabled = true;
+                interactable.enabled = false;
             }
         } 
         context.aiAgent.weapon.interactable.enabled = true;
