@@ -16,9 +16,10 @@ public class Lever : MonoBehaviour
     public Rigidbody rb;
 
     [SerializeField] private bool isPulled;
-    
+    [SerializeField] private bool isInitalized;
 
-     void Start()
+
+    void Start()
     {
         hinge = GetComponent<HingeJoint>();
         handleInteractable = GetComponent<XRGrabInteractable>();
@@ -33,11 +34,17 @@ public class Lever : MonoBehaviour
         hinge.spring = spring;
         transform.rotation = new Quaternion(0.0f, transform.rotation.y, transform.rotation.z, 0.0f);
         isPulled = false;
+        isInitalized = false;
     }
 
      void Update()
     {
-        
+        if (!isInitalized)
+        {
+            isInitalized = true;
+            this.enabled = false;
+        }
+
         if(transform.localRotation.x >= threshhold)
         {
             isPulled = true;
@@ -46,6 +53,10 @@ public class Lever : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
             this.enabled = false;
         }
+    }
 
+    public bool GetIsPulled()
+    {
+        return isPulled;
     }
 }
