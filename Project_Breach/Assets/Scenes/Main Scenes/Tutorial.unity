@@ -4290,6 +4290,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226214346898900228, guid: 7db2781a7119c574b970f4ec3f91bb6a,
+        type: 3}
+      propertyPath: m_Name
+      value: Detonator Model
+      objectReference: {fileID: 0}
     - target: {fileID: 3453439154555380315, guid: 7db2781a7119c574b970f4ec3f91bb6a,
         type: 3}
       propertyPath: m_Name
@@ -21277,6 +21282,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Breachable Surface
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595642285330878523, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1595642285330878527, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
         type: 3}
@@ -41516,7 +41526,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh472926
+  m_Name: pb_Mesh31724
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -66572,6 +66582,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breachable Surface (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1595642285330878523, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1595642285330878527, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
         type: 3}
       propertyPath: m_RootOrder
@@ -79128,6 +79143,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3904570627218261298, guid: 58d0cad941c95c741bb095ca19d5480c,
+        type: 3}
+      propertyPath: blowUpAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: fa69fa6f319729040a7853a922ed3992, type: 3}
     - target: {fileID: 3904570627218261454, guid: 58d0cad941c95c741bb095ca19d5480c,
         type: 3}
       propertyPath: m_Name
