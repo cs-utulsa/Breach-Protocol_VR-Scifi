@@ -14,6 +14,7 @@ TagManager:
   - Target
   - Breachable Surface
   - Breaching Charge
+  - Detonator
   layers:
   - Default
   - TransparentFX

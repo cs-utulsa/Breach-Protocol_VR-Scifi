@@ -112,6 +112,7 @@ public class TwoHandInteractable : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        StopAllCoroutines();
         attachInitialRotation = args.interactorObject.transform.localRotation;
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
