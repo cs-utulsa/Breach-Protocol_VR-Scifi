@@ -72,7 +72,7 @@ public class Detonator : MonoBehaviour
             rend.enabled = false;
         }
 
-        breachCharge.GetSurfaceToBreach().gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
+        //breachCharge.GetSurfaceToBreach().gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
         breachCharge.GetSurfaceToBreach().gameObject.GetComponent<BoxCollider>().enabled = false;
         breachCharge.GetSurfaceToBreach().socket.enabled = false;
 

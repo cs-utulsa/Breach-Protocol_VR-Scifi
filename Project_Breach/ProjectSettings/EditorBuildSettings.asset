@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing/VR-Testing.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Main Scenes/Tutorial.unity
+    guid: 1d496ed1186f8514984f136ad44fbb4b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c99c0c370c90f2547b80052b602ff669,
       type: 2}

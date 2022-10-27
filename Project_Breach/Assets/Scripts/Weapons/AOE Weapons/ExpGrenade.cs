@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class ExpGrenade : AOE_Base
 {
+    List<Shield> teamShields = new List<Shield>();
+    List<AI_Health> aiHealths = new List<AI_Health>();
     protected override void CheckForEffected()
     {
         collidersInRange = Physics.OverlapSphere(transform.position, aoeData.range, mask);
-        List<Shield> teamShields = new List<Shield>();
         foreach (Collider c in collidersInRange)
         {
-            Debug.Log(c + " is in the explosive range.");
+            //Debug.Log(c + " is in the explosive range.");
             if (c.TryGetComponent<Shield>(out Shield teammate)){
                 Debug.Log("Teammate Detected");
                 if (!teamShields.Contains(teammate))
                 {
-                    teamShields.Add(teammate);
                     float proximity = (this.transform.position - c.transform.position).magnitude;
                     float actualDamage = aoeData.damage * (1 - (proximity / aoeData.range));
+                    teamShields.Add(teammate);
+                    
                     if (actualDamage > teammate.getShieldCharge())
                     {
                         float shieldLeft = teammate.getShieldCharge();
@@ -29,9 +31,20 @@ public class ExpGrenade : AOE_Base
                         teammate.TakeDamage(actualDamage);
                     }
                 }
-            }
-
-            // Detect enemy AI in the future.
+            } else if (c.TryGetComponent<Hitbox>(out Hitbox hitbox))
+            {
+                if (!aiHealths.Contains(hitbox.aiHealth))
+                {
+                    aiHealths.Add(hitbox.aiHealth);
+                    float proximity = (this.transform.position - c.transform.position).magnitude;
+                    float actualDamage = aoeData.damage * (1 - (proximity / aoeData.range));
+                    Vector3 direction = (c.transform.position - this.transform.position).normalized;
+                    hitbox.aiHealth.TakeDamage(actualDamage, direction);
+                    Debug.Log(actualDamage);
+                }
+            }            
         }
+        teamShields.Clear();
+        aiHealths.Clear();
     }
 }
