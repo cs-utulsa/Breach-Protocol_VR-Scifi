@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using behaviorNameSpace;
 using UnityEngine.XR.Interaction.Toolkit;
+using System.Net.Mime;
 
 public class Death : ActionNode
 {
@@ -22,6 +23,7 @@ public class Death : ActionNode
         // Disable the AI Movement.
         context.aiAgent.weapon.interactable.enabled = true;
         context.aiAgent.weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        context.aiAgent.weapon.ammoCounter.text = context.aiAgent.weapon.GetAmmo().ToString();
         context.aiAgent.weapon.transform.SetParent(null);
         context.aiAgent.weaponIK.enabled = false;
         context.agent.destination = context.aiAgent.transform.position;

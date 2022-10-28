@@ -26,7 +26,7 @@ public class RaycastWeapon : MonoBehaviour
 
     protected bool isCharging = false;
     protected bool triggerHeld = false;
-    private WaitForSeconds regenTick;
+    protected WaitForSeconds regenTick;
 
     protected virtual void Awake()
     {
@@ -56,7 +56,7 @@ public class RaycastWeapon : MonoBehaviour
     {
         triggerHeld = false;
     }
-    public virtual void Shoot()
+    protected virtual void Shoot()
     {
         source.PlayOneShot(weaponData.shootClip);
         currentAmmo--;
@@ -126,7 +126,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
-    private IEnumerator StartRecharge()
+    protected virtual IEnumerator StartRecharge()
     {
         isCharging = true;
         currentAmmo = 0;
