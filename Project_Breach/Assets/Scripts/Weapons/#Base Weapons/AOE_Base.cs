@@ -22,7 +22,7 @@ public class AOE_Base : MonoBehaviour
     [SerializeField] protected Collider[] collidersInRange;
 
 
-    private void Awake()
+    public virtual void Awake()
     {
         activated = false;
         source = GetComponent<AudioSource>();
