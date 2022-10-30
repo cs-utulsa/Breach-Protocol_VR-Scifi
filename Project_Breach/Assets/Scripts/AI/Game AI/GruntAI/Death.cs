@@ -8,6 +8,7 @@ using System.Net.Mime;
 public class Death : ActionNode
 {
     public float timer = 3.0f;
+    public bool deathTriggered = false;
     protected override void OnStart() {
     }
 
@@ -28,6 +29,12 @@ public class Death : ActionNode
         context.aiAgent.weaponIK.enabled = false;
         context.agent.destination = context.aiAgent.transform.position;
         context.agent.speed = 0.0f;
+        
+        if (!deathTriggered && context.aiAgent.spawner != null)
+        {
+            deathTriggered = true;
+            context.aiAgent.spawner.AiHasDied();
+        }
 
         // Drop the AI's Weapon.
         if (context.aiAgent.weapon.interactable.CompareTag("Primary Weapon")){

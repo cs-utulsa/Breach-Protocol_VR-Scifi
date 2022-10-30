@@ -11,6 +11,7 @@ public class AI_Agent : MonoBehaviour
     public WeaponIK weaponIK;
     public SemiautomaticWeapon weapon;
     public Animator animator;
+    public AI_Spawner spawner;
 
     // Start is called before the first frame update
     void Start()
