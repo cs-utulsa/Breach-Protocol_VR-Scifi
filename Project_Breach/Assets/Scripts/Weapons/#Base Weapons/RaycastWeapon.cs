@@ -107,6 +107,9 @@ public class RaycastWeapon : MonoBehaviour
                 if (hitInfo.collider.TryGetComponent<Hitbox>(out Hitbox aiHitbox))
                 {
                     aiHitbox.OnRaycastHit(weaponData.damage, ray.direction);
+                } else if (hitInfo.collider.TryGetComponent<Health>(out Health aiHealth))
+                {
+                    aiHealth.TakeDamage(weaponData.damage);
                 }
             }
 
