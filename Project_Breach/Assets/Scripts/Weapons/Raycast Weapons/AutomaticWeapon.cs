@@ -11,7 +11,6 @@ public class AutomaticWeapon : SemiautomaticWeapon
     [SerializeField] private float timeBetweenShots;
     protected override void Awake()
     {
-        interactable = GetComponent<XRGrabInteractable>();
         lastFired = 0.0f;
         timeBetweenShots = (1.0f / (weaponData.RPM / 60.0f));
         base.Awake();
@@ -29,7 +28,7 @@ public class AutomaticWeapon : SemiautomaticWeapon
         }
     }
 
-    public override void Shoot()
+    protected override void Shoot()
     {
         lastFired = 0.0f;
         base.Shoot();
