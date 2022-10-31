@@ -69,11 +69,17 @@ public class Health : MonoBehaviour
 
     public void Revive()
     {
-        currentHealth = playerData.maxHealth;
-        source.PlayOneShot(playerData.playerRevive);
-        moveProvider.enabled = true;
-        isDNBO = false;
-        animator.SetBool("DBNO", isDNBO);
+        if (isDNBO)
+        {
+            currentHealth = playerData.maxHealth;
+            source.PlayOneShot(playerData.playerRevive);
+            if (this.tag == "Player")
+            {
+            moveProvider.enabled = true;
+            }
+            isDNBO = false;
+            animator.SetBool("DBNO", isDNBO);
+        }
     }
 
     public float getCurrentHealth()
