@@ -21,9 +21,9 @@ public class XRGrabNetworkInteractable : XRGrabInteractable
         
     }
     //bruh
-    protected override void OnSelectEnter (XRBaseInteractor interactor)
+    protected override void OnSelectEntered (SelectEnterEventArgs args)
     {
         photonView.RequestOwnership();
-        base.OnSelectEnter(interactor);
+        base.OnSelectEntered(args);
     }
 }
