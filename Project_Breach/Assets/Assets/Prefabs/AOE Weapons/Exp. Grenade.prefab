@@ -318,7 +318,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9183341643109712978}
         m_TargetAssemblyTypeName: AOE_Base, Assembly-CSharp
-        m_MethodName: ActivateThrowable
+        m_MethodName: RPCActivateThrowable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -518,6 +518,7 @@ MonoBehaviour:
   meshRenderers:
   - {fileID: 5114316805423448866}
   - {fileID: 7007361694420882981}
+  photonView: {fileID: 0}
   source: {fileID: 9183341643109712977}
   mask:
     serializedVersion: 2

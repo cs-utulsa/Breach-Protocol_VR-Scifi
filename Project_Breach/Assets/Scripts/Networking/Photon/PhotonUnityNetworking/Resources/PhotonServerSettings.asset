@@ -44,6 +44,15 @@ MonoBehaviour:
   - ChangeColour
   - Shoot
   - TriggerPulled
+  - StartRecharge
+  - Recharge
+  - ActivateThrowable
+  - Beep
+  - CheckForEffected
+  - Detonate
+  - DetonateRoutine
+  - DetonatorPulled
+  - AiHasDied
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

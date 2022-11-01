@@ -14,12 +14,12 @@ public class TwoHandInteractable : XRGrabInteractable
     public bool snapToSecondHand = true;
     public float breakDistance = 0.1f;
     public Rigidbody rb = null;
+    public PhotonView photonView;
 
     private IXRSelectInteractor firstInteractor, secondInteractor;
     private Quaternion attachInitialRotation;
     private Quaternion initialRotationOffset;
     private bool inInventory = false;
-    private PhotonView photonView;
 
     // Start is called before the first frame update
     void Start()

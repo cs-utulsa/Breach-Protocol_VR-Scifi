@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class ExpGrenade : AOE_Base
 {
     List<Shield> teamShields = new List<Shield>();
     List<AI_Health> aiHealths = new List<AI_Health>();
+
+    [PunRPC]
     protected override void CheckForEffected()
     {
         collidersInRange = Physics.OverlapSphere(transform.position, aoeData.range, mask);

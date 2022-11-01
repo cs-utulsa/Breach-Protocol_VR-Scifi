@@ -33,7 +33,7 @@ public class SemiautomaticWeapon : RaycastWeapon
                 float primaryButtonValue = actionController.primaryButtonAction.action.ReadValue<float>();
                 if (primaryButtonValue >= 1.0f && !isCharging)
                 {
-                    Recharge();
+                    photonView.RPC("Recharge", RpcTarget.AllBuffered);
                 }
             }
         }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Grunt_Spawner
   m_EditorClassIdentifier: 
   spawnableAI:
-  - {fileID: 1108129848804994591, guid: bb50e1a5858f5bd4fa38ca3cbb614435, type: 3}
+  - {fileID: 1108129848804994591, guid: d55a478d52e6e8b40b8502204661e7a5, type: 3}
   spawntime: 7.5
   maxSpawnable: 6

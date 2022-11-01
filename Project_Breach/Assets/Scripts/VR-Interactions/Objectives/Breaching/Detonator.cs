@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +18,16 @@ public class Detonator : MonoBehaviour
     [SerializeField] bool pulledOnce = false;
     [SerializeField] BreachCharge breachCharge = null;
 
+    [Header("Photon")]
+    public PhotonView photonView;
+
     void Awake()
     {
         detonatorRange = GetComponent<Collider>();
         detonatorRange.isTrigger = true;
         readyToDetonate = false;
         breachIndicatorMat.SetColor("_EmissionColor", Color.red);
+        photonView = GetComponent<PhotonView>();
     }
 
     void OnTriggerStay(Collider other)
@@ -48,6 +53,7 @@ public class Detonator : MonoBehaviour
         }
 
     }
+    [PunRPC]
     public void DetonatorPulled()
     {
         if (readyToDetonate && breachCharge.GetSurfaceToBreach().IsBreacherAttached() && !pulledOnce)
@@ -84,16 +90,22 @@ public class Detonator : MonoBehaviour
         */
 
         // Add Damage Radius Later
-        
+
 
 
         Destroy(breachCharge.GetSurfaceToBreach().gameObject, 3.0f);
+        //photonView.RPC("Destroy", RpcTarget.AllBuffered, breachCharge.GetSurfaceToBreach().gameObject, 3.0f);
         breachIndicatorMat.SetColor("_EmissionColor", Color.red);
         breachCharge.flashRate = breachCharge.flashRate * 10.0f;
         yield return new WaitForSeconds(0.25f);
         breachCharge.source.mute = false;
         pulledOnce = false;
         breachCharge = null;
+    }
+
+    public void RPCDetonatorPulled()
+    {
+        photonView.RPC("DetonatorPulled", RpcTarget.AllBuffered);
     }
 
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1562408822691717054}
   - component: {fileID: 1562408822691717055}
   m_Layer: 13
-  m_Name: Breaching Charge Model
+  m_Name: Detonator Model
   m_TagString: Breaching Charge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: -6521127571250444370}
   m_Layer: 13
   m_Name: Detonator
-  m_TagString: Untagged
+  m_TagString: Detonator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3453439154555380317}
         m_TargetAssemblyTypeName: Detonator, Assembly-CSharp
-        m_MethodName: DetonatorPulled
+        m_MethodName: RPCDetonatorPulled
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -339,6 +339,7 @@ MonoBehaviour:
   readyToDetonate: 0
   pulledOnce: 0
   breachCharge: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!135 &3453439154555380316
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -368,7 +369,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: -6521127571250444370}

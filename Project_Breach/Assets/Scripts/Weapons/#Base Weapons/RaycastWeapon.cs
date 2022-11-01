@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
+using Photon.Pun;
 
 public class RaycastWeapon : MonoBehaviour
 {
@@ -118,6 +119,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public virtual void Recharge()
     {
         if (!isCharging)
