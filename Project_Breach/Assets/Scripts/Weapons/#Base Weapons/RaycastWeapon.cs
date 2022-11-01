@@ -11,6 +11,7 @@ public class RaycastWeapon : MonoBehaviour
     public WeaponData weaponData = null;
     public Transform raycastOrigin = null;
     protected int currentAmmo;
+    public PhotonView photonView;
 
     [Header("Audio")]
     public AudioSource source = null;
@@ -38,6 +39,7 @@ public class RaycastWeapon : MonoBehaviour
         regenTick = new WaitForSeconds(weaponData.rechargeTime / weaponData.maxAmmo);
         isCharging = false;
         ray.origin = raycastOrigin.position;
+        photonView = GetComponent<PhotonView>();
     }
 
     public virtual void TriggerPulled()
@@ -101,14 +103,16 @@ public class RaycastWeapon : MonoBehaviour
             {
                 if (hitInfo.collider.TryGetComponent<Shield>(out Shield player))
                 {
-                    player.TakeDamage(weaponData.damage);
+                    //player.TakeDamage(weaponData.damage);
+                    player.GetComponentInParent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, weaponData.damage);
                 }
             }
             else if (hitInfo.collider.CompareTag("Enemy"))
             {
                 if (hitInfo.collider.TryGetComponent<Hitbox>(out Hitbox aiHitbox))
                 {
-                    aiHitbox.OnRaycastHit(weaponData.damage, ray.direction);
+                    //aiHitbox.OnRaycastHit(weaponData.damage, ray.direction);
+                    aiHitbox.GetComponentInParent<PhotonView>().RPC("OnRaycastHit", RpcTarget.AllBuffered,  weaponData.damage, ray.direction);
                 }
             }
 

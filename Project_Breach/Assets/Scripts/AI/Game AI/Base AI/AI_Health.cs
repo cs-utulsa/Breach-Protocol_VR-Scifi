@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
+using Photon.Pun;
 
 public class AI_Health : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class AI_Health : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void TakeDamage(float damage, Vector3 direction)
     {
         currentHealth -= damage;
@@ -38,6 +40,7 @@ public class AI_Health : MonoBehaviour
         }
     }
 
+    //[PunRPC]
     private void Die()
     {
         isDead = true;
