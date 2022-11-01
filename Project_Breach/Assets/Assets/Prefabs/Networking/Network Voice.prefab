@@ -93,7 +93,7 @@ MonoBehaviour:
   statsResetInterval: 1000
   speakerPrefab: {fileID: 0}
   primaryRecorder: {fileID: 4918243281509473973}
-  usePrimaryRecorder: 0
+  usePrimaryRecorder: 1
   Settings:
     AppIdRealtime: 
     AppIdFusion: 
