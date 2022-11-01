@@ -85,12 +85,12 @@ public class Detonator : MonoBehaviour
         breachCharge.GetSurfaceToBreach().socket.enabled = false;
         breachCharge.gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
 
-        /*
-        foreach (var particle in explosionParticles)
+        
+        foreach (var particle in breachCharge.explosiveParticles)
         {
             particle.Emit(5);
         }
-        */
+        
 
         // Add Damage Radius Later
 

@@ -873,6 +873,8 @@ MonoBehaviour:
   photonView: {fileID: 0}
   source: {fileID: 5357947997610878478}
   animator: {fileID: 2126195761}
+  muzzleFlash:
+  - {fileID: 2172146437038347079}
   interactable: {fileID: 5357947997610878476}
   ammoCounter: {fileID: 0}
   lastFired: 0
@@ -1385,6 +1387,12 @@ PrefabInstance:
 --- !u!4 &2059369500433007181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011227296186, guid: 36fb23f95221ef64d842ad9abb902b23,
+    type: 3}
+  m_PrefabInstance: {fileID: 2061078919701443575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2172146437038347079 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198000012944515248, guid: 36fb23f95221ef64d842ad9abb902b23,
     type: 3}
   m_PrefabInstance: {fileID: 2061078919701443575}
   m_PrefabAsset: {fileID: 0}
