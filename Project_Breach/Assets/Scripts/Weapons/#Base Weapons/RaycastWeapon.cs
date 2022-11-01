@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
+using Photon.Pun;
 
 public class RaycastWeapon : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class RaycastWeapon : MonoBehaviour
     public WeaponData weaponData = null;
     public Transform raycastOrigin = null;
     protected int currentAmmo;
+    public PhotonView photonView;
 
     [Header("Audio")]
     public AudioSource source = null;
 
     [Header("Animations")]
     public Animator animator = null;
-    //public ParticleSystem[] muzzleFlash;
+    public ParticleSystem[] muzzleFlash;
     //public ParticleSystem impactEffect;
 
     [Header("Hit Detection")]
@@ -37,9 +39,10 @@ public class RaycastWeapon : MonoBehaviour
         regenTick = new WaitForSeconds(weaponData.rechargeTime / weaponData.maxAmmo);
         isCharging = false;
         ray.origin = raycastOrigin.position;
+        photonView = GetComponent<PhotonView>();
     }
 
-    public void TriggerPulled()
+    public virtual void TriggerPulled()
     {
         animator.SetTrigger(weaponData.shootParam);
         triggerHeld = true;
@@ -56,6 +59,7 @@ public class RaycastWeapon : MonoBehaviour
     {
         triggerHeld = false;
     }
+
     protected virtual void Shoot()
     {
         source.PlayOneShot(weaponData.shootClip);
@@ -64,6 +68,8 @@ public class RaycastWeapon : MonoBehaviour
         ray.direction = raycastOrigin.forward;
         BulletRegistration();
     }
+
+    [PunRPC]
     public virtual void AI_Shoot(float xInacc, float yInacc)
     {
         if (currentAmmo > 0 && !isCharging)
@@ -82,7 +88,7 @@ public class RaycastWeapon : MonoBehaviour
     }
     private void BulletRegistration()
     {
-        //foreach (var particle in muzzleFlash) particle.Emit(1);
+        foreach (var particle in muzzleFlash) particle.Emit(1);
         var tracer = Instantiate(weaponData.tracerEffect, ray.origin, Quaternion.identity);
         tracer.AddPosition(ray.origin);
         // Hit Detection
@@ -100,6 +106,7 @@ public class RaycastWeapon : MonoBehaviour
                 if (hitInfo.collider.TryGetComponent<Shield>(out Shield player))
                 {
                     player.TakeDamage(weaponData.damage);
+                    //player.GetComponentInParent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, weaponData.damage);
                 }
             }
             else if (hitInfo.collider.CompareTag("Enemy"))
@@ -120,6 +127,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public virtual void Recharge()
     {
         if (!isCharging)

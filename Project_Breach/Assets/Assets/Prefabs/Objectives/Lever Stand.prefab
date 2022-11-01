@@ -518,6 +518,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5a52878d58ca7c47a5e9ee509f4a48e, type: 3}
+--- !u!1 &7139689445295659747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8183102332088850520, guid: f5a52878d58ca7c47a5e9ee509f4a48e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1334610913854456507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &465194438939696522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139689445295659747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 8239382071680633971}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &8239382071680633971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139689445295659747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!4 &7139689445295659751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8183102332088850524, guid: f5a52878d58ca7c47a5e9ee509f4a48e,
@@ -530,7 +575,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1334610913854456507}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7139689445295659747}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f51d82408ee0ec43b21566d47ed8051, type: 3}

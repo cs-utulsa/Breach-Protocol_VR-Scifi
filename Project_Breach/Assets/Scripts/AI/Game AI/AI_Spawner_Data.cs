@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 
 [CreateAssetMenu(fileName = "AI_Spawner_Data", menuName = "AI Spawner Data")]

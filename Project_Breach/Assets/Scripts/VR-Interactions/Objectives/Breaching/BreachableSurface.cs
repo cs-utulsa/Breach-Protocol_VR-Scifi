@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,16 @@ public class BreachableSurface : MonoBehaviour
     [Header("Socket")]
     public SocketTagCheck socket;
 
+    [Header("Photon")]
+    public PhotonView photonView;
+
     [Header("Debug")]
     [SerializeField] bool breacherAttached = false;
 
     void Awake()
     {
         socket = GetComponentInChildren<SocketTagCheck>();
+        photonView = GetComponent<PhotonView>();
         breacherAttached = false;
     }
 

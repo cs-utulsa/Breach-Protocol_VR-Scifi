@@ -237,6 +237,8 @@ GameObject:
   - component: {fileID: 3904570627218261455}
   - component: {fileID: 3904570627218261299}
   - component: {fileID: 3904570627218261298}
+  - component: {fileID: 2747206106095343531}
+  - component: {fileID: -5393083865517166036}
   m_Layer: 13
   m_Name: Breaching Charge
   m_TagString: Breaching Charge
@@ -518,7 +520,7 @@ MonoBehaviour:
   source: {fileID: 3904570627218261299}
   beepLight: {fileID: 3904570626011878674}
   beepAudio: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
-  blowUpAudio: {fileID: 0}
+  blowUpAudio: {fileID: 8300000, guid: fa69fa6f319729040a7853a922ed3992, type: 3}
   flashRate: 1
   SurfaceTag: Breachable Surface
   chargeInSocketRange: 0
@@ -527,6 +529,45 @@ MonoBehaviour:
   timeFromLastFlash: 0
   interactable: {fileID: 3904570627218261455}
   explosiveRange: 0
+--- !u!114 &2747206106095343531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904570627218261454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -5393083865517166036}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-5393083865517166036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904570627218261454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &3927183262327625698
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +629,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d55dcc1472db4734fab80fee2cb35870, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -671,7 +712,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 990eaddb821258240a01e966a3b674e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

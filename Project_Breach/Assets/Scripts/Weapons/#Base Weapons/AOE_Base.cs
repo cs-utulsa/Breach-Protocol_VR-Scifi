@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class AOE_Base : MonoBehaviour
     public Rigidbody rb = null;
     public Light beepLight = null;
     public MeshRenderer[] meshRenderers;
+    public PhotonView photonView;
 
     [Header("Audio")]
     public AudioSource source = null;
@@ -30,9 +32,11 @@ public class AOE_Base : MonoBehaviour
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
         beepLight = GetComponentInChildren<Light>();
         beepLight.enabled = false;
+        photonView = GetComponent<PhotonView>();
         mask = LayerMask.GetMask(aoeData.layerMask);
     }
 
+    [PunRPC]
     public void ActivateThrowable()
     {
         if (!activated)
@@ -53,7 +57,8 @@ public class AOE_Base : MonoBehaviour
             currentTime += Time.deltaTime;
             if (timeFromLastFlash >= flashRate)
             {
-                Beep();
+                //Beep();
+                photonView.RPC("Beep", RpcTarget.AllBuffered);
                 timeFromLastFlash = 0.0f;
                 flashRate /= aoeData.flashRateSpeedUp;
             }
@@ -63,12 +68,16 @@ public class AOE_Base : MonoBehaviour
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        Detonate();
-        CheckForEffected();
-        Destroy(gameObject, 3.0f);
+        //Detonate();
+        photonView.RPC("Detonate", RpcTarget.AllBuffered);
+        //CheckForEffected();
+        photonView.RPC("CheckForEffected", RpcTarget.AllBuffered);
+        //Destroy(gameObject, 3.0f);
+
     }
 
-    private void Detonate()
+    [PunRPC]
+    protected void Detonate()
     {
         beepLight.enabled = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX;
@@ -86,16 +95,18 @@ public class AOE_Base : MonoBehaviour
         {
             particle.Emit(5);
         }
+        Destroy(this.gameObject, 3.0f);
     }
 
 
-    private void Beep()
+    [PunRPC]
+    protected void Beep()
     {
         beepLight.enabled = !beepLight.enabled;
         source.PlayOneShot(aoeData.beepSound);
     }
 
-
+    [PunRPC]
     protected virtual void CheckForEffected()
     {
         collidersInRange = Physics.OverlapSphere(transform.position, aoeData.range, mask);
@@ -103,6 +114,11 @@ public class AOE_Base : MonoBehaviour
         {
             Debug.Log(c + " is in the area of effect.");
         }
+    }
+
+    public void RPCActivateThrowable()
+    {
+        photonView.RPC("ActivateThrowable", RpcTarget.AllBuffered);
     }
 
 }

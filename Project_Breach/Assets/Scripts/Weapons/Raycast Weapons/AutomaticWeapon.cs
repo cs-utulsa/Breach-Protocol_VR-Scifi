@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.XR.Interaction.Toolkit;
+using Photon.Pun;
 
 public class AutomaticWeapon : SemiautomaticWeapon
 {
@@ -24,10 +25,11 @@ public class AutomaticWeapon : SemiautomaticWeapon
 
         if (triggerHeld && (lastFired >= timeBetweenShots) && currentAmmo > 0 && !isCharging)
         {
-            Shoot();
+            photonView.RPC("Shoot", RpcTarget.AllBuffered);
+            //Shoot();
         }
     }
-
+    [PunRPC]
     protected override void Shoot()
     {
         lastFired = 0.0f;
