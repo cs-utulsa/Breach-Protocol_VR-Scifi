@@ -409,7 +409,6 @@ GameObject:
   - component: {fileID: 5641995292810233902}
   - component: {fileID: 5108067069620367005}
   - component: {fileID: -4496680908068236683}
-  - component: {fileID: -3027907619236339462}
   m_Layer: 13
   m_Name: Long Rifle
   m_TagString: Primary Weapon
@@ -834,24 +833,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &-3027907619236339462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5641995292810233889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd7fea91fe63f4e1b884ef1e16a975c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playDelayConfig:
-    Low: 200
-    High: 400
-    Max: 1000
-    SpeedUpPerc: 5
-  restartOnDeviceChange: 1
 --- !u!1 &5641995292837465685
 GameObject:
   m_ObjectHideFlags: 0

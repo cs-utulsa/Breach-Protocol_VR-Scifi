@@ -39,7 +39,7 @@ public class RaycastWeapon : MonoBehaviour
         ray.origin = raycastOrigin.position;
     }
 
-    public void TriggerPulled()
+    public virtual void TriggerPulled()
     {
         animator.SetTrigger(weaponData.shootParam);
         triggerHeld = true;

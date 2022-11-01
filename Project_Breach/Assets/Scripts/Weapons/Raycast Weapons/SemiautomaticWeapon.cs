@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,10 +13,14 @@ public class SemiautomaticWeapon : RaycastWeapon
     [Header("Weapon UI")]
     public TextMeshProUGUI ammoCounter;
 
+    [Header("Photon")]
+    public PhotonView photonView;
+
     protected override void Awake()
     {
         interactable = GetComponent<XRGrabInteractable>();
         ammoCounter = GetComponentInChildren<TextMeshProUGUI>();
+        photonView = GetComponent<PhotonView>();
         base.Awake();
     }
 
@@ -31,6 +36,21 @@ public class SemiautomaticWeapon : RaycastWeapon
                     Recharge();
                 }
             }
+        }
+    }
+
+    public override void TriggerPulled()
+    {
+        animator.SetTrigger(weaponData.shootParam);
+        triggerHeld = true;
+        if (currentAmmo > 0 && !isCharging)
+        {
+            photonView.RPC("Shoot", RpcTarget.AllBuffered);
+            Shoot();
+        }
+        else
+        {
+            source.PlayOneShot(weaponData.emptyClip);
         }
     }
 
