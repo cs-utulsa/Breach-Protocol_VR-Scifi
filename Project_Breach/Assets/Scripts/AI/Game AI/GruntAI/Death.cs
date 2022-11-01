@@ -4,6 +4,7 @@ using UnityEngine;
 using behaviorNameSpace;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.Net.Mime;
+using Photon.Pun;
 
 public class Death : ActionNode
 {
@@ -33,7 +34,8 @@ public class Death : ActionNode
         if (!deathTriggered && context.aiAgent.spawner != null)
         {
             deathTriggered = true;
-            context.aiAgent.spawner.AiHasDied();
+            //context.aiAgent.spawner.AiHasDied();
+            context.aiAgent.spawner.photonView.RPC("AiHasDied", RpcTarget.AllBuffered);
         }
 
         // Drop the AI's Weapon.

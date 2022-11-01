@@ -76,7 +76,7 @@ public class AI_Sensor : MonoBehaviour
         Vector3 origin = transform.position;
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest - origin;
-        if (direction.y < -1 || direction.y > aiData.scanHeight)
+        if (direction.y < -aiData.scanHeight || direction.y > aiData.scanHeight)
         {
             return false;
         }

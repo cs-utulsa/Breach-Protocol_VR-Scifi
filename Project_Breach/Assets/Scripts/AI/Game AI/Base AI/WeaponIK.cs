@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
+using JetBrains.Annotations;
 
 [System.Serializable]
 public class HumanBone
@@ -28,6 +29,7 @@ public class WeaponIK : MonoBehaviour
 
     public float angleLimit = 90.0f;
     public float distanceLimit = .5f;
+    public PhotonView photonView;
 
 
     // Start is called before the first frame update
@@ -35,6 +37,7 @@ public class WeaponIK : MonoBehaviour
     {
         Animator animator = GetComponentInChildren<Animator>();
         boneTransforms = new Transform[humanBones.Length];
+        photonView = GetComponent<PhotonView>();
 
         for (int i = 0; i < boneTransforms.Length; i++)
         {
@@ -80,6 +83,7 @@ public class WeaponIK : MonoBehaviour
                 Transform bone = boneTransforms[b];
                 float boneWeight = humanBones[b].weight * weight;
                 AimAtTarget(bone, targetPosition, boneWeight);
+                //photonView.RPC("AimAtTarget", RpcTarget.AllBuffered, bone, targetPosition, boneWeight);
             }
             //AimAtTarget(bone, targetPosition, weight);
         }

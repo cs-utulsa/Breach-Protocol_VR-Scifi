@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: 07695d30-a364-4b99-be46-d4ac8a50fb86
     AppIdFusion: 
     AppIdChat: c3860313-39ef-416a-beac-15201c6ef346
-    AppIdVoice: 
+    AppIdVoice: 4cb9a340-3c65-41a4-9b5b-a4f671c48658
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
@@ -39,6 +39,24 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - CantHearYou
+  - HeresWhy
+  - ChangeColour
+  - Shoot
+  - TriggerPulled
+  - StartRecharge
+  - Recharge
+  - ActivateThrowable
+  - Beep
+  - CheckForEffected
+  - Detonate
+  - DetonateRoutine
+  - DetonatorPulled
+  - AiHasDied
+  - Die
+  - TakeDamage
+  - OnRaycastHit
+  - AI_Shoot
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 1

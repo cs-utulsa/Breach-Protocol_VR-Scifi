@@ -212,6 +212,8 @@ GameObject:
   - component: {fileID: 9183341643109712982}
   - component: {fileID: 9183341643109712977}
   - component: {fileID: 9183341643109712978}
+  - component: {fileID: 5556838118688378381}
+  - component: {fileID: -3015576726700481909}
   m_Layer: 13
   m_Name: Exp. Grenade
   m_TagString: Throwable
@@ -316,7 +318,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9183341643109712978}
         m_TargetAssemblyTypeName: AOE_Base, Assembly-CSharp
-        m_MethodName: ActivateThrowable
+        m_MethodName: RPCActivateThrowable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -516,11 +518,51 @@ MonoBehaviour:
   meshRenderers:
   - {fileID: 5114316805423448866}
   - {fileID: 7007361694420882981}
+  photonView: {fileID: 0}
   source: {fileID: 9183341643109712977}
   mask:
     serializedVersion: 2
     m_Bits: 0
   collidersInRange: []
+--- !u!114 &5556838118688378381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183341643109712981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -3015576726700481909}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-3015576726700481909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183341643109712981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &9183341643624591580
 GameObject:
   m_ObjectHideFlags: 0

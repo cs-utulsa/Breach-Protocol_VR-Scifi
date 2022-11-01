@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1562408822691717054}
   - component: {fileID: 1562408822691717055}
   m_Layer: 13
-  m_Name: Breaching Charge Model
+  m_Name: Detonator Model
   m_TagString: Breaching Charge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,9 +150,11 @@ GameObject:
   - component: {fileID: 3453439154555380314}
   - component: {fileID: 3453439154555380317}
   - component: {fileID: 3453439154555380316}
+  - component: {fileID: 6292961693733594846}
+  - component: {fileID: -6521127571250444370}
   m_Layer: 13
   m_Name: Detonator
-  m_TagString: Untagged
+  m_TagString: Detonator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +243,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3453439154555380317}
         m_TargetAssemblyTypeName: Detonator, Assembly-CSharp
-        m_MethodName: DetonatorPulled
+        m_MethodName: RPCDetonatorPulled
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -337,6 +339,7 @@ MonoBehaviour:
   readyToDetonate: 0
   pulledOnce: 0
   breachCharge: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!135 &3453439154555380316
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -350,6 +353,45 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6292961693733594846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453439154555380315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -6521127571250444370}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-6521127571250444370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453439154555380315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &7203659109457602499
 GameObject:
   m_ObjectHideFlags: 0

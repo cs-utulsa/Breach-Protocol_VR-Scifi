@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Scenes/Menu-Lobby.unity
+    guid: d23951ca027e84e4f922cc7f0a8bccf3
+  - enabled: 1
     path: Assets/Scenes/Main Scenes/Tutorial.unity
     guid: 1d496ed1186f8514984f136ad44fbb4b
+  - enabled: 1
+    path: Assets/Scenes/Testing/Weapon-Testing.unity
+    guid: 0bf136e91dea61d4280217c6415dd957
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c99c0c370c90f2547b80052b602ff669,
       type: 2}
