@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.XR.Interaction.Toolkit;
+using Photon.Pun;
 
 public class AutomaticWeapon : SemiautomaticWeapon
 {
@@ -27,7 +28,7 @@ public class AutomaticWeapon : SemiautomaticWeapon
             Shoot();
         }
     }
-
+    [PunRPC]
     protected override void Shoot()
     {
         lastFired = 0.0f;

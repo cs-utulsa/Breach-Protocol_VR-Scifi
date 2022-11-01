@@ -39,6 +39,7 @@ public class SemiautomaticWeapon : RaycastWeapon
         }
     }
 
+    [PunRPC]
     public override void TriggerPulled()
     {
         animator.SetTrigger(weaponData.shootParam);
@@ -46,7 +47,7 @@ public class SemiautomaticWeapon : RaycastWeapon
         if (currentAmmo > 0 && !isCharging)
         {
             photonView.RPC("Shoot", RpcTarget.AllBuffered);
-            Shoot();
+            //Shoot();
         }
         else
         {
@@ -54,6 +55,7 @@ public class SemiautomaticWeapon : RaycastWeapon
         }
     }
 
+    [PunRPC]
     protected override void Shoot()
     {
         base.Shoot();

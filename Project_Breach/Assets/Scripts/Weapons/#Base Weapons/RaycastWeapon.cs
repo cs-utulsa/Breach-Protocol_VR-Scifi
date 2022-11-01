@@ -56,6 +56,7 @@ public class RaycastWeapon : MonoBehaviour
     {
         triggerHeld = false;
     }
+
     protected virtual void Shoot()
     {
         source.PlayOneShot(weaponData.shootClip);

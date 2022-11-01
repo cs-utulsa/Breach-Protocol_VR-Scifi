@@ -42,6 +42,8 @@ MonoBehaviour:
   - CantHearYou
   - HeresWhy
   - ChangeColour
+  - Shoot
+  - TriggerPulled
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
