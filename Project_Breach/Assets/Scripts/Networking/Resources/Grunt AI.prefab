@@ -2097,6 +2097,7 @@ MonoBehaviour:
     weight: 0.5
   angleLimit: 90
   distanceLimit: 0.5
+  photonView: {fileID: 0}
 --- !u!114 &1108129848804994570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6607,11 +6608,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 2d622dfa72c723843b819208e77f8665, type: 2}
   raycastOrigin: {fileID: 4988756286734850332}
+  photonView: {fileID: 2599037528900264227}
   source: {fileID: 4988756285671198166}
   animator: {fileID: 1108129847047768041}
   interactable: {fileID: 4988756285671198164}
   ammoCounter: {fileID: 0}
-  photonView: {fileID: 2599037528900264227}
   lastFired: 0
   timeBetweenShots: 0
 --- !u!82 &4988756285671198166
