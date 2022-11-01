@@ -1,4 +1,5 @@
 
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -18,12 +19,13 @@ public class TwoHandInteractable : XRGrabInteractable
     private Quaternion attachInitialRotation;
     private Quaternion initialRotationOffset;
     private bool inInventory = false;
-    
+    private PhotonView photonView;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        photonView = GetComponent<PhotonView>();
         rb.maxAngularVelocity = 20.0f;
         foreach (var item in secondHandGrabPoints)
         {
@@ -109,6 +111,7 @@ public class TwoHandInteractable : XRGrabInteractable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         StopAllCoroutines();
+        photonView.RequestOwnership();
         attachInitialRotation = args.interactorObject.transform.localRotation;
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
