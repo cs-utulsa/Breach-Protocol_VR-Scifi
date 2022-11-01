@@ -24414,6 +24414,115 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &781367407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2003566508427078924, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_Name
+      value: Network Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078926, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: roomUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: defaultRooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: defaultRooms.Array.data[0].roomName
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: defaultRooms.Array.data[1].roomName
+      value: Weapon-Testing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: defaultRooms.Array.data[0].maxPlayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: defaultRooms.Array.data[1].maxPlayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: defaultRooms.Array.data[0].sceneIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003566508427078927, guid: d751857b845502d43b6e9fba0be1f4ef,
+        type: 3}
+      propertyPath: defaultRooms.Array.data[1].sceneIndex
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d751857b845502d43b6e9fba0be1f4ef, type: 3}
 --- !u!43 &782812561
 Mesh:
   m_ObjectHideFlags: 0
