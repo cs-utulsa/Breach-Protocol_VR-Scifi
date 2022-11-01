@@ -77,24 +77,27 @@ public class Detonator : MonoBehaviour
         {
             rend.enabled = false;
         }
-
-        //breachCharge.GetSurfaceToBreach().gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
+        foreach (MeshRenderer rend in breachCharge.gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            rend.enabled = false;
+        }
         breachCharge.GetSurfaceToBreach().gameObject.GetComponent<BoxCollider>().enabled = false;
         breachCharge.GetSurfaceToBreach().socket.enabled = false;
+        breachCharge.gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
 
-        /*
-        foreach (var particle in explosionParticles)
+        
+        foreach (var particle in breachCharge.explosiveParticles)
         {
             particle.Emit(5);
         }
-        */
+        
 
         // Add Damage Radius Later
 
 
 
         Destroy(breachCharge.GetSurfaceToBreach().gameObject, 3.0f);
-        //photonView.RPC("Destroy", RpcTarget.AllBuffered, breachCharge.GetSurfaceToBreach().gameObject, 3.0f);
+        //Destroy(breachCharge.gameObject, 5.0f);
         breachIndicatorMat.SetColor("_EmissionColor", Color.red);
         breachCharge.flashRate = breachCharge.flashRate * 10.0f;
         yield return new WaitForSeconds(0.25f);

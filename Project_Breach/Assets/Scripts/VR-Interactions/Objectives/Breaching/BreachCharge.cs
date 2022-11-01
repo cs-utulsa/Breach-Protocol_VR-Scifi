@@ -12,6 +12,7 @@ public class BreachCharge : MonoBehaviour
     public AudioClip blowUpAudio = null;
     public float flashRate = 1.0f;
     public string SurfaceTag = "Breachable Surface";
+    public ParticleSystem[] explosiveParticles;
     
 
     [Header("Debug")]

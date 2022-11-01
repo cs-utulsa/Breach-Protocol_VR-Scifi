@@ -22,7 +22,7 @@ MonoBehaviour:
   activationAudio: {fileID: 8300000, guid: 0fdc148d741bfc647be852af5147cf6a, type: 3}
   activateParam: Activate
   particles:
-  - {fileID: 7128116595253261282, guid: 51395adced567fb439e48d53dae82e6c, type: 3}
+  - {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   layerMask:
   - Player
   - Enemy

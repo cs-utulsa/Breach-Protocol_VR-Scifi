@@ -12,10 +12,6 @@ public class SemiautomaticWeapon : RaycastWeapon
 
     [Header("Weapon UI")]
     public TextMeshProUGUI ammoCounter;
-
-    [Header("Photon")]
-    public PhotonView photonView;
-
     protected override void Awake()
     {
         interactable = GetComponent<XRGrabInteractable>();

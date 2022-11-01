@@ -53,6 +53,10 @@ MonoBehaviour:
   - DetonateRoutine
   - DetonatorPulled
   - AiHasDied
+  - Die
+  - TakeDamage
+  - OnRaycastHit
+  - AI_Shoot
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

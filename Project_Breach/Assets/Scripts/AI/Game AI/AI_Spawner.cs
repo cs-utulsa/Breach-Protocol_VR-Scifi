@@ -22,7 +22,7 @@ public class AI_Spawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (this.isActiveAndEnabled && timer < 0 && aiAlive < spawnerData.maxSpawnable)
+        if (this.isActiveAndEnabled && timer < 0 && aiAlive < spawnerData.maxSpawnable && PhotonNetwork.IsMasterClient)
         {
             timer = spawnerData.spawntime;
             //GameObject spawnedAI = Instantiate(spawnerData.spawnableAI[Random.Range(0, spawnerData.spawnableAI.Length - 1)], spawnPoint);
