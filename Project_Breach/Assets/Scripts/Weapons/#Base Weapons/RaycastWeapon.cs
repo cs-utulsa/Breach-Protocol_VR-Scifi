@@ -18,7 +18,7 @@ public class RaycastWeapon : MonoBehaviour
 
     [Header("Animations")]
     public Animator animator = null;
-    //public ParticleSystem[] muzzleFlash;
+    public ParticleSystem[] muzzleFlash;
     //public ParticleSystem impactEffect;
 
     [Header("Hit Detection")]
@@ -88,7 +88,7 @@ public class RaycastWeapon : MonoBehaviour
     }
     private void BulletRegistration()
     {
-        //foreach (var particle in muzzleFlash) particle.Emit(1);
+        foreach (var particle in muzzleFlash) particle.Emit(1);
         var tracer = Instantiate(weaponData.tracerEffect, ray.origin, Quaternion.identity);
         tracer.AddPosition(ray.origin);
         // Hit Detection

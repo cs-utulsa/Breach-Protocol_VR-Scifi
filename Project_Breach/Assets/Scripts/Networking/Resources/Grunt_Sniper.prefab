@@ -6611,6 +6611,7 @@ MonoBehaviour:
   photonView: {fileID: 2599037528900264227}
   source: {fileID: 4988756285671198166}
   animator: {fileID: 1108129847047768041}
+  muzzleFlash: []
   interactable: {fileID: 4988756285671198164}
   ammoCounter: {fileID: 0}
   lastFired: 0
