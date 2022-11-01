@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 816605099646742621}
   - component: {fileID: 3445473689160255092}
   - component: {fileID: 2609345552162596742}
+  - component: {fileID: -8877431347295039151}
   m_Layer: 13
   m_Name: SMG
   m_TagString: Secondary Weapon
@@ -707,6 +708,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   interactable: {fileID: 816605099646742623}
   ammoCounter: {fileID: 0}
+  photonView: {fileID: 0}
   lastFired: 0
   timeBetweenShots: 0
 --- !u!82 &816605099646742621
@@ -835,7 +837,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816605099646742610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
   m_Name: 
@@ -844,6 +846,22 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-8877431347295039151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816605099646742610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1154289733650637601
 GameObject:
   m_ObjectHideFlags: 0
