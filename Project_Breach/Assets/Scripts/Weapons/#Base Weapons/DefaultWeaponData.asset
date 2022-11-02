@@ -15,6 +15,7 @@ MonoBehaviour:
   maxAmmo: 30
   damage: 25
   rechargeTime: 2
+  RPM: 1
   shootClip: {fileID: 8300000, guid: aac12a7aa1a0dc444bf9105f762253be, type: 3}
   emptyClip: {fileID: 8300000, guid: 1d6805d1922023d46a8d1fd0d51edf01, type: 3}
   rechargeClip: {fileID: 8300000, guid: 1fee1e16eca251e4ebd10ed11fe9fe82, type: 3}

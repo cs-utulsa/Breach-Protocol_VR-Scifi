@@ -6,6 +6,15 @@ TagManager:
   tags:
   - Enemy
   - Teammate
+  - Primary Weapon
+  - Secondary Weapon
+  - Throwable
+  - Inventory
+  - Bullet
+  - Target
+  - Breachable Surface
+  - Breaching Charge
+  - Detonator
   layers:
   - Default
   - TransparentFX
@@ -21,11 +30,11 @@ TagManager:
   - Enemy
   - Teammate
   - Interactable
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Despawn
+  - Objective
+  - Spawner
+  - Shield Wall
+  - Cover
   - 
   - 
   - 

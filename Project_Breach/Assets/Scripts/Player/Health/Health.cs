@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -25,6 +24,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveProvider = GetComponentInChildren<ActionBasedContinuousMoveProvider>();
         currentHealth = playerData.maxHealth;
         source = GetComponent<AudioSource>();
     }
@@ -65,5 +65,10 @@ public class Health : MonoBehaviour
         source.PlayOneShot(playerData.playerRevive);
         moveProvider.enabled = true;
         isDNBO = false;
+    }
+
+    public float getCurrentHealth()
+    {
+        return currentHealth;
     }
 }

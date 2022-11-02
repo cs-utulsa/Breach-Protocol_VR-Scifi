@@ -1,11 +1,17 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class OneHandInteractable : XRGrabInteractable
 {
+    private PhotonView photonView;
+
+    public void Start()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
     public void ChangeLayerOnDrop(float delay)
     {
         foreach (Collider collider in colliders)
@@ -23,5 +29,11 @@ public class OneHandInteractable : XRGrabInteractable
 
             collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
         }
+    }
+
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    {
+        photonView.RequestOwnership();
+        base.OnSelectEntered(args);
     }
 }
