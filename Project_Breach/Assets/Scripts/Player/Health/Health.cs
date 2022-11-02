@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
     [Header("Audio")]
     public AudioSource source;
 
+    [Header("Animator")]
+    public Animator animator;
+
     [Header("Runtime Variables")]
     [SerializeField] private float currentHealth;
     [SerializeField] private bool isDNBO;
@@ -27,6 +30,7 @@ public class Health : MonoBehaviour
         moveProvider = GetComponentInChildren<ActionBasedContinuousMoveProvider>();
         currentHealth = playerData.maxHealth;
         source = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void TakeDamage(float value)
@@ -50,7 +54,11 @@ public class Health : MonoBehaviour
     {
         source.PlayOneShot(playerData.playerDNBO);
         isDNBO = true;
-        moveProvider.enabled = false;
+        if (this.tag == "Player")
+        {
+            moveProvider.enabled = false;
+        }
+        animator.SetBool("DBNO", isDNBO);
         
     }
 
@@ -61,14 +69,33 @@ public class Health : MonoBehaviour
 
     public void Revive()
     {
-        currentHealth = playerData.maxHealth;
-        source.PlayOneShot(playerData.playerRevive);
-        moveProvider.enabled = true;
-        isDNBO = false;
+        if (isDNBO)
+        {
+            currentHealth = playerData.maxHealth;
+            source.PlayOneShot(playerData.playerRevive);
+            if (this.tag == "Player")
+            {
+            moveProvider.enabled = true;
+            }
+            isDNBO = false;
+            animator.SetBool("DBNO", isDNBO);
+        }
     }
 
     public float getCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public void Heal(float amount)
+    {
+        if (currentHealth + amount >= playerData.maxHealth)
+        {
+            currentHealth = playerData.maxHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
     }
 }
