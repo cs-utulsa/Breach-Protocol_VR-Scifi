@@ -1101,7 +1101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1621086080452167918}
-  - component: {fileID: 2466023944201256054}
+  - component: {fileID: 1726876584744723754}
   m_Layer: 0
   m_Name: PlayerCUBody
   m_TagString: Untagged
@@ -1132,7 +1132,7 @@ Transform:
   m_Father: {fileID: 5882054142581835828}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2466023944201256054
+--- !u!114 &1726876584744723754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HMD: {fileID: 5882054143278137858}
-  offset: {x: 0, y: -0.1, z: 0.36}
+  offset: {x: 0, y: 0, z: 0.3}
   setXRotation: 0
   setYRotation: 0
 --- !u!1 &2136476607915337767
@@ -2941,6 +2941,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5191516753328063283}
+  - component: {fileID: 8807899231333460327}
+  - component: {fileID: 4595605242505886810}
   m_Layer: 0
   m_Name: PlayerCULeftArm
   m_TagString: Untagged
@@ -2967,6 +2969,41 @@ Transform:
   m_Father: {fileID: 5882054143402376726}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -75, y: 0, z: 90}
+--- !u!95 &8807899231333460327
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845917556083235209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 185f9f750339ac04798c9d59f52675b5, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8b5582c03c8674f4b9bcfe3a38a0a655, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4595605242505886810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845917556083235209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b4a737903b82a43bb95804a2149147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerCharacteristics: 320
+  handAnimator: {fileID: 8807899231333460327}
+  mesh: {fileID: 246230510947248588}
 --- !u!1 &5034578911214665736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,7 +3873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5882054142619704376
 Transform:
   m_ObjectHideFlags: 0
@@ -3921,7 +3958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5882054142642177416
 Transform:
   m_ObjectHideFlags: 0
@@ -5685,19 +5722,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5882054142619704379}
-        m_TargetAssemblyTypeName: HandPresencePhysics, Assembly-CSharp
-        m_MethodName: DisableCollider
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -8737,19 +8762,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5882054142642177419}
-        m_TargetAssemblyTypeName: HandPresencePhysics, Assembly-CSharp
-        m_MethodName: DisableCollider
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -14354,6 +14367,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7111584047473088803}
+  - component: {fileID: 5341451600248267078}
+  - component: {fileID: 3835569662524640254}
   m_Layer: 0
   m_Name: PlayerCURightArm
   m_TagString: Untagged
@@ -14380,6 +14395,41 @@ Transform:
   m_Father: {fileID: 5882054142948492342}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -75, y: -0.001, z: -89.999}
+--- !u!95 &5341451600248267078
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636623580939649945}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: bc831ade51e60714d839d7c78fcf55b5, type: 3}
+  m_Controller: {fileID: 9100000, guid: e4544bbb87adbbc458a48f2b38b22f31, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3835569662524640254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636623580939649945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b4a737903b82a43bb95804a2149147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerCharacteristics: 576
+  handAnimator: {fileID: 5341451600248267078}
+  mesh: {fileID: 3758943099051780497}
 --- !u!1 &7728222350725257224
 GameObject:
   m_ObjectHideFlags: 0

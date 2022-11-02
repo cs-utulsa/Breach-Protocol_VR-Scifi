@@ -1078,8 +1078,10 @@ MonoBehaviour:
   - {fileID: 2922925486652774309}
   - {fileID: 8812365844285855325}
   - {fileID: 2646079587390575038}
+  - {fileID: 3106884592854367349}
   - {fileID: 1898131448269069933}
   - {fileID: 1333238814693750934}
+  - {fileID: 1743562280812069499}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1098,6 +1100,7 @@ MonoBehaviour:
   Head: {fileID: 4922963668583816229}
   leftHand: {fileID: 3481627571866114057}
   rightHand: {fileID: 8845843553472964315}
+  body: {fileID: 3462808640658505756}
   leftHandAnimator: {fileID: 1173531241533920963}
   rightHandAnimator: {fileID: 5172139896415928823}
 --- !u!114 &1168212035266425172
@@ -3167,9 +3170,9 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6358748798641400976}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d0c255d07fd68f14b94e55d388e7e6bb, type: 3}
-  m_Controller: {fileID: 9100000, guid: 011fededf8deb2f479afbcb453d11410, type: 2}
-  m_CullingMode: 0
+  m_Avatar: {fileID: 9000000, guid: bc831ade51e60714d839d7c78fcf55b5, type: 3}
+  m_Controller: {fileID: 9100000, guid: e4544bbb87adbbc458a48f2b38b22f31, type: 2}
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -3786,9 +3789,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3462808640658505756}
-  - component: {fileID: 3777023149587873500}
   m_Layer: 0
-  m_Name: PlayerCUBody
+  m_Name: PlayerCUBodyNetwork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3817,22 +3819,6 @@ Transform:
   m_Father: {fileID: 8870796265754544842}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3777023149587873500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092661152487681949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e266293ff27158d4bab99d4b414c5785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HMD: {fileID: 0}
-  offset: {x: 0, y: -0.1, z: 0.36}
-  setXRotation: 0
-  setYRotation: 0
 --- !u!1 &7207468590237182881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,9 +4908,9 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8937479380237130207}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ca20b3907ff1c794cb89c1ad2cce8282, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0284ecac7be7e2d409126f62358d744b, type: 2}
-  m_CullingMode: 0
+  m_Avatar: {fileID: 9000000, guid: 185f9f750339ac04798c9d59f52675b5, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8b5582c03c8674f4b9bcfe3a38a0a655, type: 2}
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

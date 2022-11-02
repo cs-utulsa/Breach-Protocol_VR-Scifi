@@ -93,7 +93,8 @@ public class AOE_Base : MonoBehaviour
 
         foreach (var particle in aoeData.particles)
         {
-            particle.Emit(5);
+            ParticleSystem thisParticle = Instantiate(particle, this.transform.position, Quaternion.identity);
+            thisParticle.Emit(5);
         }
         Destroy(this.gameObject, 3.0f);
     }
