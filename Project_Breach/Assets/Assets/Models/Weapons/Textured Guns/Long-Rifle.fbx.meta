@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Black
-    second: {fileID: 2100000, guid: e0aa4caa501bf334281f806c26079498, type: 2}
+    second: {fileID: 2100000, guid: ae6e82bb0baf72f44a636b0744c35ec8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BlackMetal
-    second: {fileID: 2100000, guid: e0aa4caa501bf334281f806c26079498, type: 2}
+    second: {fileID: 2100000, guid: ae6e82bb0baf72f44a636b0744c35ec8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Light
-    second: {fileID: 2100000, guid: e0aa4caa501bf334281f806c26079498, type: 2}
+    second: {fileID: 2100000, guid: 67275629f5ea0cc4a958bf6523942a00, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: WhiteMetal
-    second: {fileID: 2100000, guid: e0aa4caa501bf334281f806c26079498, type: 2}
+    second: {fileID: 2100000, guid: 6a7a905f38bed0646a9a97f1cf31e91e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
