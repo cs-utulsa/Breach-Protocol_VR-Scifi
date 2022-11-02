@@ -3084,6 +3084,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2466023944201256054, guid: 126823d0c4671c149a2905336e582f3a,
+        type: 3}
+      propertyPath: offset.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466023944201256054, guid: 126823d0c4671c149a2905336e582f3a,
+        type: 3}
+      propertyPath: offset.z
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191516753328063283, guid: 126823d0c4671c149a2905336e582f3a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5882054142701131965, guid: 126823d0c4671c149a2905336e582f3a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3168,6 +3183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111584047473088803, guid: 126823d0c4671c149a2905336e582f3a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 126823d0c4671c149a2905336e582f3a, type: 3}
