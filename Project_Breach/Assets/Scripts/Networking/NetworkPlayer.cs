@@ -11,7 +11,6 @@ public class NetworkPlayer : MonoBehaviour
     public Transform Head;
     public Transform leftHand;
     public Transform rightHand;
-    public Transform body;
 
     public Animator leftHandAnimator;
     public Animator rightHandAnimator;
@@ -39,7 +38,6 @@ public class NetworkPlayer : MonoBehaviour
             rightHand.gameObject.SetActive(false);
             leftHand.gameObject.SetActive(false);
             Head.gameObject.SetActive(false);
-            //body.gameObject.SetActive(false);
             MapPosition(Head, headRig);
             MapPosition(leftHand, leftHandRig);
             MapPosition(rightHand, rightHandRig);
