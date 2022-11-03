@@ -1101,8 +1101,8 @@ MonoBehaviour:
   leftHand: {fileID: 3481627571866114057}
   rightHand: {fileID: 8845843553472964315}
   body: {fileID: 3462808640658505756}
-  leftHandAnimator: {fileID: 1173531241533920963}
-  rightHandAnimator: {fileID: 5172139896415928823}
+  leftHandAnimator: {fileID: 6524992716375082886}
+  rightHandAnimator: {fileID: 3433479070034442274}
 --- !u!114 &1168212035266425172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5113,12 +5113,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2121c8d819597349ac6f3e6043fa1f3, type: 3}
---- !u!95 &5172139896415928823 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5686134208192617028, guid: d2121c8d819597349ac6f3e6043fa1f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 661489537326504883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5172139896422903329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: d2121c8d819597349ac6f3e6043fa1f3,
@@ -5229,12 +5223,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7811abe38615a86438f679bcf79f5b92, type: 3}
---- !u!95 &1173531241533920963 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 109434732388006827, guid: 7811abe38615a86438f679bcf79f5b92,
-    type: 3}
-  m_PrefabInstance: {fileID: 1282947814797634920}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1173531241541182837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 109434732395284509, guid: 7811abe38615a86438f679bcf79f5b92,
