@@ -18,7 +18,7 @@ MonoBehaviour:
   damage: 200
   stunDuration: 0
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
-  detonationAudio: {fileID: 8300000, guid: fa69fa6f319729040a7853a922ed3992, type: 3}
+  detonationAudio: {fileID: 8300000, guid: 0b6c240dae1f1d54aa0b48a997777474, type: 3}
   activationAudio: {fileID: 8300000, guid: 0fdc148d741bfc647be852af5147cf6a, type: 3}
   activateParam: Activate
   particles:

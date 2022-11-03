@@ -13,6 +13,7 @@ public class PlayerData : ScriptableObject
 
     public AudioClip shieldHit;
     public AudioClip shieldBreak;
+    public AudioClip shieldRecharge;
     public AudioClip healthHit;
     public AudioClip playerDNBO;
     public AudioClip playerRevive;

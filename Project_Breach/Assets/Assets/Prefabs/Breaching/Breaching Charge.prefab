@@ -324,7 +324,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3904570627218261298}
+        m_TargetAssemblyTypeName: BreachCharge, Assembly-CSharp
+        m_MethodName: PlayPlacedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
@@ -430,10 +442,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 20
+  MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -466,7 +478,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -520,8 +532,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 3904570627218261299}
   beepLight: {fileID: 3904570626011878674}
+  placedAudio: {fileID: 8300000, guid: 9eda0bdd644ca1247a39c84812b143a5, type: 3}
   beepAudio: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
-  blowUpAudio: {fileID: 8300000, guid: fa69fa6f319729040a7853a922ed3992, type: 3}
+  blowUpAudio: {fileID: 8300000, guid: 67738280f8163ad449236391ea1ba08d, type: 3}
   flashRate: 1
   SurfaceTag: Breachable Surface
   explosiveParticles:

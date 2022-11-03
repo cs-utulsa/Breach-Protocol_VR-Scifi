@@ -16,9 +16,10 @@ MonoBehaviour:
   maxShield: 100
   regenerationRate: 0.25
   maxRegenTimer: 7
-  shieldHit: {fileID: 0}
-  shieldBreak: {fileID: 0}
-  healthHit: {fileID: 0}
+  shieldHit: {fileID: 8300000, guid: d45cae5316959b04f85740486169b6c3, type: 3}
+  shieldBreak: {fileID: 8300000, guid: 6d587f99e13ae1c49b8fe27b2be3a572, type: 3}
+  shieldRecharge: {fileID: 8300000, guid: 367050fed374830488c3076040a36eb0, type: 3}
+  healthHit: {fileID: 8300000, guid: 74be66d584fa7a445a25c0b3668630d2, type: 3}
   playerDNBO: {fileID: 0}
   playerRevive: {fileID: 0}
   movementClips: []
