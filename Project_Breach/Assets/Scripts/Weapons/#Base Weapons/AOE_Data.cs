@@ -20,7 +20,7 @@ public class AOE_Data : ScriptableObject
 
     [Header("Animator Attributes")]
     public string activateParam = "Activate";
-    public ParticleSystem[] particles = null;
+    public ParticleSystem[] particles;
 
     [Header("Layer Mask")]
     public string[] layerMask = { "Player", "Enemy", "Default", "Teammate" };

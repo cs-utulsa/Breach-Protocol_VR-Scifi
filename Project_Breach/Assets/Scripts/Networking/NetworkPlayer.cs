@@ -38,7 +38,6 @@ public class NetworkPlayer : MonoBehaviour
             rightHand.gameObject.SetActive(false);
             leftHand.gameObject.SetActive(false);
             Head.gameObject.SetActive(false);
-
             MapPosition(Head, headRig);
             MapPosition(leftHand, leftHandRig);
             MapPosition(rightHand, rightHandRig);

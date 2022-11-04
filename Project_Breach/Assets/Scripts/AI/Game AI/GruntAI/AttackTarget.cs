@@ -46,15 +46,21 @@ public class AttackTarget : ActionNode
         }
 
         // If an enemy is no longer detected while chasing, return failure.
+        
         if (!context.aiAgent.sensor.Scan())
         {
-            return State.Failure;
+            //return State.Failure;
+            context.agent.destination = blackboard.target.transform.position;
+        }
+        else
+        {
+            blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
+            context.agent.destination = blackboard.moveToPosition;
         }
 
         // Every update, update the target and where to move.
         context.aiAgent.weaponIK.targetTransform = blackboard.target.transform;
-        blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
-        context.agent.destination = blackboard.moveToPosition;
+
 
         // Calculate the direction of the target between where the AI is aiming at, and the AI's position.
         Vector3 targetDirection = context.aiAgent.weaponIK.targetTransform.position - context.aiAgent.transform.position;

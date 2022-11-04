@@ -27,7 +27,7 @@ MonoBehaviour:
   attackRange: 100
   scanDistance: 100
   scanAngle: 135
-  scanHeight: 3
+  scanHeight: 5
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
   speedParam: Speed
   attackParam: Attack

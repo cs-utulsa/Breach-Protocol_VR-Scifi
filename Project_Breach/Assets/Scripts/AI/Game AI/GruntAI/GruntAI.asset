@@ -115,7 +115,7 @@ MonoBehaviour:
     target: {fileID: 0}
   description: 
   drawGizmos: 0
-  duration: 3
+  duration: 2
 --- !u!114 &-3452232960868290140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   timer: 3
+  deathTriggered: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,8 +328,8 @@ MonoBehaviour:
     target: {fileID: 0}
   description: 
   drawGizmos: 0
-  min: {x: -5, y: -5}
-  max: {x: 5, y: 5}
+  min: {x: -10, y: -10}
+  max: {x: 10, y: 10}
 --- !u!114 &8131362891612007356
 MonoBehaviour:
   m_ObjectHideFlags: 0

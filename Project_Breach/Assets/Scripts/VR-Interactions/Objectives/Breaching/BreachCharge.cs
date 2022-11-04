@@ -8,6 +8,7 @@ public class BreachCharge : MonoBehaviour
     [Header("Animation and Audio")]
     public AudioSource source;
     public Light beepLight = null;
+    public AudioClip placedAudio = null;
     public AudioClip beepAudio = null;
     public AudioClip blowUpAudio = null;
     public float flashRate = 1.0f;
@@ -98,6 +99,14 @@ public class BreachCharge : MonoBehaviour
                     yield return new WaitForSeconds(Time.fixedDeltaTime);
                 }
             }
+        }
+    }
+
+    public void PlayPlacedSound()
+    {
+        if (interactable.firstInteractorSelecting.transform.CompareTag("Breachable Surface")) 
+        {
+            source.PlayOneShot(placedAudio);
         }
     }
 

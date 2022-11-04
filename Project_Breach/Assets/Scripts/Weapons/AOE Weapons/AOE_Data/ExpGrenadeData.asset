@@ -18,11 +18,14 @@ MonoBehaviour:
   damage: 200
   stunDuration: 0
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
-  detonationAudio: {fileID: 8300000, guid: fa69fa6f319729040a7853a922ed3992, type: 3}
+  detonationAudio: {fileID: 8300000, guid: 0b6c240dae1f1d54aa0b48a997777474, type: 3}
   activationAudio: {fileID: 8300000, guid: 0fdc148d741bfc647be852af5147cf6a, type: 3}
   activateParam: Activate
   particles:
-  - {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
+  - {fileID: 2306021639104007139, guid: 9ed4b576f53305043a490066e319364f, type: 3}
+  - {fileID: 3428719621713579147, guid: 9f028f8dd464bfd40af10e9cec2de65c, type: 3}
+  - {fileID: 8648987091685365734, guid: d2bcefc9a2fd77348bd44c54d4a8326a, type: 3}
+  - {fileID: 8151683276097953313, guid: c3138c85225c26f41add2b06100a67d5, type: 3}
   layerMask:
   - Player
   - Enemy

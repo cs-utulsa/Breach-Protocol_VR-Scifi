@@ -53,6 +53,7 @@ public class Detonator : MonoBehaviour
         }
 
     }
+
     [PunRPC]
     public void DetonatorPulled()
     {
@@ -70,9 +71,9 @@ public class Detonator : MonoBehaviour
         breachCharge.flashRate = breachCharge.flashRate / 10.0f;
         yield return new WaitForSeconds(2.0f);
 
-        breachCharge.source.mute = true;
+        //breachCharge.source.mute = true;
+        breachCharge.gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
         yield return new WaitForSeconds(0.25f);
-
         foreach (MeshRenderer rend in breachCharge.GetSurfaceToBreach().gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             rend.enabled = false;
@@ -83,7 +84,6 @@ public class Detonator : MonoBehaviour
         }
         breachCharge.GetSurfaceToBreach().gameObject.GetComponent<BoxCollider>().enabled = false;
         breachCharge.GetSurfaceToBreach().socket.enabled = false;
-        breachCharge.gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
 
         
         foreach (var particle in breachCharge.explosiveParticles)

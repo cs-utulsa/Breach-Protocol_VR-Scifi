@@ -81,7 +81,7 @@ public class AI_Sensor : MonoBehaviour
             return false;
         }
 
-        direction.y = -1;
+        direction.y = 1;
         float deltaAngle = Vector3.Angle(direction, transform.forward);
         if (deltaAngle > aiData.scanAngle)
         {
