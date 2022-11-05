@@ -20,7 +20,6 @@ public class Detonator : MonoBehaviour
 
     [Header("Photon")]
     public PhotonView photonView;
-
     void Awake()
     {
         detonatorRange = GetComponent<Collider>();
@@ -28,6 +27,18 @@ public class Detonator : MonoBehaviour
         readyToDetonate = false;
         breachIndicatorMat.SetColor("_EmissionColor", Color.red);
         photonView = GetComponent<PhotonView>();
+    }
+
+    private void Update()
+    {
+        if (readyToDetonate && breachCharge.GetIsChargeArmed())
+        {
+            breachIndicatorMat.SetColor("_EmissionColor", Color.green);
+        }
+        else
+        {
+            breachIndicatorMat.SetColor("_EmissionColor", Color.red);
+        }
     }
 
     void OnTriggerStay(Collider other)
