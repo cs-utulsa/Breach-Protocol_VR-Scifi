@@ -14,6 +14,10 @@ public class BreachCharge : MonoBehaviour
     public float flashRate = 1.0f;
     public string SurfaceTag = "Breachable Surface";
     public ParticleSystem[] explosiveParticles;
+
+    [Header("Tags")]
+    public string tagArmed = "Armed Breaching Charge";
+    public string tagDisarmed = "Breaching Charge";
     
 
     [Header("Debug")]
@@ -107,6 +111,20 @@ public class BreachCharge : MonoBehaviour
         if (interactable.firstInteractorSelecting.transform.CompareTag("Breachable Surface")) 
         {
             source.PlayOneShot(placedAudio);
+        }
+    }
+
+    public void ChangeArmingStatus()
+    {
+        if (interactable.firstInteractorSelecting.transform.CompareTag("Breachable Surface"))
+        {
+            gameObject.tag = tagArmed;
+            gameObject.GetComponentInChildren<Collider>().tag = tagArmed;
+        }
+        else
+        {
+            gameObject.tag = tagDisarmed;
+            gameObject.GetComponentInChildren<Collider>().tag = tagDisarmed;
         }
     }
 

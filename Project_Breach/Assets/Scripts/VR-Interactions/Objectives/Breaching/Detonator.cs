@@ -32,7 +32,7 @@ public class Detonator : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Breaching Charge"))
+        if (other.CompareTag("Armed Breaching Charge"))
         {
             breachCharge = other.GetComponentInParent<BreachCharge>();
             if (breachCharge.GetChargeInSocketRange() && breachCharge.GetIsChargeArmed())
@@ -46,7 +46,7 @@ public class Detonator : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Breaching Charge"))
+        if (other.CompareTag("Armed Breaching Charge"))
         {
             readyToDetonate = false;
             breachIndicatorMat.SetColor("_EmissionColor", Color.red);
@@ -54,7 +54,6 @@ public class Detonator : MonoBehaviour
 
     }
 
-    [PunRPC]
     public void DetonatorPulled()
     {
         if (readyToDetonate && breachCharge.GetSurfaceToBreach().IsBreacherAttached() && !pulledOnce)
@@ -73,29 +72,23 @@ public class Detonator : MonoBehaviour
 
         //breachCharge.source.mute = true;
         breachCharge.gameObject.GetComponent<AudioSource>().PlayOneShot(breachCharge.blowUpAudio);
-        yield return new WaitForSeconds(0.25f);
-        foreach (MeshRenderer rend in breachCharge.GetSurfaceToBreach().gameObject.GetComponentsInChildren<MeshRenderer>())
-        {
-            rend.enabled = false;
-        }
         foreach (MeshRenderer rend in breachCharge.gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             rend.enabled = false;
         }
         breachCharge.GetSurfaceToBreach().gameObject.GetComponent<BoxCollider>().enabled = false;
+        foreach (MeshRenderer rend in breachCharge.GetSurfaceToBreach().gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            rend.enabled = false;
+        }
         breachCharge.GetSurfaceToBreach().socket.enabled = false;
-
-        
         foreach (var particle in breachCharge.explosiveParticles)
         {
             particle.Emit(5);
         }
-        
-
-        // Add Damage Radius Later
 
 
-
+        Destroy(breachCharge.gameObject, 3.0f);
         Destroy(breachCharge.GetSurfaceToBreach().gameObject, 3.0f);
         //Destroy(breachCharge.gameObject, 5.0f);
         breachIndicatorMat.SetColor("_EmissionColor", Color.red);
@@ -104,11 +97,6 @@ public class Detonator : MonoBehaviour
         breachCharge.source.mute = false;
         pulledOnce = false;
         breachCharge = null;
-    }
-
-    public void RPCDetonatorPulled()
-    {
-        photonView.RPC("DetonatorPulled", RpcTarget.AllBuffered);
     }
 
 

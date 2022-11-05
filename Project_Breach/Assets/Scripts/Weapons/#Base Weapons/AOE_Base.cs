@@ -36,7 +36,6 @@ public class AOE_Base : MonoBehaviour
         mask = LayerMask.GetMask(aoeData.layerMask);
     }
 
-    [PunRPC]
     public void ActivateThrowable()
     {
         if (!activated)
@@ -57,8 +56,8 @@ public class AOE_Base : MonoBehaviour
             currentTime += Time.deltaTime;
             if (timeFromLastFlash >= flashRate)
             {
-                //Beep();
-                photonView.RPC("Beep", RpcTarget.AllBuffered);
+                Beep();
+                //photonView.RPC("Beep", RpcTarget.AllBuffered);
                 timeFromLastFlash = 0.0f;
                 flashRate /= aoeData.flashRateSpeedUp;
             }
@@ -68,22 +67,19 @@ public class AOE_Base : MonoBehaviour
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        //Detonate();
-        photonView.RPC("Detonate", RpcTarget.AllBuffered);
-        //CheckForEffected();
-        photonView.RPC("CheckForEffected", RpcTarget.AllBuffered);
-        //Destroy(gameObject, 3.0f);
+        Detonate();
+        //photonView.RPC("Detonate", RpcTarget.AllBuffered);
+        CheckForEffected();
+        //photonView.RPC("CheckForEffected", RpcTarget.AllBuffered);
+        Destroy(gameObject, 3.0f);
 
     }
 
-    [PunRPC]
     protected void Detonate()
     {
         beepLight.enabled = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX;
-        rb.constraints = RigidbodyConstraints.FreezeRotationY;
-        rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+
         foreach (MeshRenderer mesh in meshRenderers)
         {
             mesh.enabled = false;
@@ -93,21 +89,19 @@ public class AOE_Base : MonoBehaviour
 
         foreach (var particle in aoeData.particles)
         {
-            ParticleSystem thisParticle = Instantiate(particle, this.transform.position, Quaternion.identity);
+            ParticleSystem thisParticle = Instantiate(particle, this.transform.position, Quaternion.identity, this.transform);
             thisParticle.Emit(5);
         }
         Destroy(this.gameObject, 3.0f);
     }
 
 
-    [PunRPC]
     protected void Beep()
     {
         beepLight.enabled = !beepLight.enabled;
         source.PlayOneShot(aoeData.beepSound);
     }
 
-    [PunRPC]
     protected virtual void CheckForEffected()
     {
         collidersInRange = Physics.OverlapSphere(transform.position, aoeData.range, mask);
@@ -115,11 +109,6 @@ public class AOE_Base : MonoBehaviour
         {
             Debug.Log(c + " is in the area of effect.");
         }
-    }
-
-    public void RPCActivateThrowable()
-    {
-        photonView.RPC("ActivateThrowable", RpcTarget.AllBuffered);
     }
 
 }

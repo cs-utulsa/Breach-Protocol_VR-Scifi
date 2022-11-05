@@ -34,8 +34,7 @@ public class Death : ActionNode
         if (!deathTriggered && context.aiAgent.spawner != null)
         {
             deathTriggered = true;
-            //context.aiAgent.spawner.AiHasDied();
-            context.aiAgent.spawner.photonView.RPC("AiHasDied", RpcTarget.AllBuffered);
+            context.aiAgent.spawner.AiHasDied();
         }
 
         // Drop the AI's Weapon.

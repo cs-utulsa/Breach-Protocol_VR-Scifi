@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SMGData
   m_EditorClassIdentifier: 
   maxAmmo: 30
-  damage: 10
-  rechargeTime: 2
-  RPM: 800
+  damage: 12.5
+  rechargeTime: 1.75
+  RPM: 600
   shootClip: {fileID: 8300000, guid: aac12a7aa1a0dc444bf9105f762253be, type: 3}
   emptyClip: {fileID: 8300000, guid: 1d6805d1922023d46a8d1fd0d51edf01, type: 3}
   rechargeClip: {fileID: 8300000, guid: 41f1f9ab45408ba4c8eae25f221d1983, type: 3}

@@ -111,7 +111,7 @@ public class TwoHandInteractable : XRGrabInteractable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         StopAllCoroutines();
-        photonView.RequestOwnership();
+        //photonView.RequestOwnership();
         attachInitialRotation = args.interactorObject.transform.localRotation;
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {

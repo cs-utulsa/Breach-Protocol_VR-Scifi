@@ -33,7 +33,7 @@ public class OneHandInteractable : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        photonView.RequestOwnership();
+        //photonView.RequestOwnership();
         base.OnSelectEntered(args);
     }
 }

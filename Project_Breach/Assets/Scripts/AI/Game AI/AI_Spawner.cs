@@ -22,11 +22,11 @@ public class AI_Spawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (this.isActiveAndEnabled && timer < 0 && aiAlive < spawnerData.maxSpawnable && PhotonNetwork.IsMasterClient)
+        if (this.isActiveAndEnabled && timer < 0 && aiAlive < spawnerData.maxSpawnable)
         {
             timer = spawnerData.spawntime;
-            //GameObject spawnedAI = Instantiate(spawnerData.spawnableAI[Random.Range(0, spawnerData.spawnableAI.Length - 1)], spawnPoint);
-            GameObject spawnedAI = PhotonNetwork.Instantiate(spawnerData.spawnableAI[Random.Range(0,spawnerData.spawnableAI.Length-1)].name, spawnPoint.position, Quaternion.identity);
+            GameObject spawnedAI = Instantiate(spawnerData.spawnableAI[Random.Range(0, spawnerData.spawnableAI.Length - 1)], spawnPoint);
+            //GameObject spawnedAI = PhotonNetwork.Instantiate(spawnerData.spawnableAI[Random.Range(0,spawnerData.spawnableAI.Length-1)].name, spawnPoint.position, Quaternion.identity);
             spawnedAI.GetComponent<AI_Agent>().spawner = this;
             //spawnedAI.transform.parent = null;
             aiAlive++;
@@ -40,8 +40,6 @@ public class AI_Spawner : MonoBehaviour
         }
     }
 
-
-    [PunRPC]
     public void AiHasDied()
     {
         aiAlive--;

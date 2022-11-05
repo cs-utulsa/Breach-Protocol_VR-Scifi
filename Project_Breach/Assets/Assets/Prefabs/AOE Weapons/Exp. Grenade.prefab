@@ -391,7 +391,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9183341643109712978}
         m_TargetAssemblyTypeName: AOE_Base, Assembly-CSharp
-        m_MethodName: RPCActivateThrowable
+        m_MethodName: ActivateThrowable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
