@@ -12267,6 +12267,7 @@ GameObject:
   - component: {fileID: 5882054144153219485}
   - component: {fileID: 5882054144153219474}
   - component: {fileID: 1060991463980545975}
+  - component: {fileID: 8370327974622148808}
   m_Layer: 6
   m_Name: XR Origin
   m_TagString: Player
@@ -12493,6 +12494,31 @@ MonoBehaviour:
   secondaryText: {fileID: 5882054143661168953}
   primarySocket: {fileID: 5882054143824971973}
   secondarySocket: {fileID: 5882054143590296898}
+--- !u!114 &8370327974622148808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5882054144153219475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5882054144153219486}
+  - {fileID: 5882054144153219487}
+  - {fileID: 1060991463980545975}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5882054144171987592
 GameObject:
   m_ObjectHideFlags: 0

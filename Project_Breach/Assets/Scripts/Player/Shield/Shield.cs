@@ -1,9 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class Shield : MonoBehaviour
+public class Shield : MonoBehaviour, IPunObservable
 {
     [Header("Player Data")]
     public PlayerData playerData;
@@ -100,5 +101,16 @@ public class Shield : MonoBehaviour
     public float getShieldCharge()
     {
         return currentShield;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentShield);
+        } else if (stream.IsReading)
+        {
+            currentShield = (float) stream.ReceiveNext();
+        }
     }
 }

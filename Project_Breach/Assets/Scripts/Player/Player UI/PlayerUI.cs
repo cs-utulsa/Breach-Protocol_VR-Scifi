@@ -1,10 +1,11 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerUI : MonoBehaviour, IPunObservable
 {
     [Header("Tracked Data")]
     public Health playerHealth;
@@ -61,6 +62,23 @@ public class PlayerUI : MonoBehaviour
         else
         {
             secondaryText.text = "No secondary.";
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(primaryFull);
+            stream.SendNext(secondaryFull);
+            stream.SendNext(playerHealth.getCurrentHealth());
+            stream.SendNext(playerShield.getShieldCharge());
+        } else if (stream.IsReading)
+        {
+            primaryFull = (bool) stream.ReceiveNext();
+            secondaryFull = (bool)stream.ReceiveNext();
+            healthSlider.value = (float)stream.ReceiveNext();
+            shieldSlider.value = (float)stream.ReceiveNext();
         }
     }
 }

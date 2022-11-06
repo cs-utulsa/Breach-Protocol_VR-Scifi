@@ -1940,6 +1940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tree: {fileID: 11400000, guid: 27bd4aea91b455c43a49a52d60b908fb, type: 2}
+  photonView: {fileID: 0}
 --- !u!114 &1108129848804994562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,6 +1960,8 @@ MonoBehaviour:
   weapon: {fileID: 0}
   animator: {fileID: 6776311673300960694}
   spawner: {fileID: 0}
+  navAgent: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!114 &1108129848804994589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2003,6 +2006,7 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   aimTransform: {fileID: 4988756286734850332}
   targetOffset: {x: 0, y: -0.2, z: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   iterations: 10
   weight: 0
   humanBones:
@@ -2043,9 +2047,10 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 1
+  OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 1108129848804994588}
   - {fileID: -274260263768357326}
   sceneViewId: 0
   InstantiationId: 0
@@ -6548,6 +6553,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 4988756285671198165}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_useGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
@@ -6598,6 +6615,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4988756285671198165}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_useGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   m_Activated:
     m_PersistentCalls:
@@ -6699,7 +6728,7 @@ MonoBehaviour:
   twoHandRotationType: 1
   snapToSecondHand: 1
   breakDistance: 0.2
-  rb: {fileID: 0}
+  rb: {fileID: 4988756285671198165}
   photonView: {fileID: 2599037528900264227}
 --- !u!114 &4988756285671198163
 MonoBehaviour:
@@ -6839,6 +6868,7 @@ MonoBehaviour:
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 4988756285671198164}
   - {fileID: 8081139745113972032}
   sceneViewId: 0
   InstantiationId: 0

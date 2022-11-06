@@ -854,7 +854,7 @@ MonoBehaviour:
   twoHandRotationType: 1
   snapToSecondHand: 1
   breakDistance: 0.2
-  rb: {fileID: 0}
+  rb: {fileID: 5357947997610878477}
   photonView: {fileID: 0}
 --- !u!114 &5357947997610878475
 MonoBehaviour:
@@ -994,6 +994,7 @@ MonoBehaviour:
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 5357947997610878476}
   - {fileID: -815888954996479949}
   sceneViewId: 0
   InstantiationId: 0

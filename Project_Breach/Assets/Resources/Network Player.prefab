@@ -1077,7 +1077,6 @@ MonoBehaviour:
   - {fileID: 2922925486652774309}
   - {fileID: 8812365844285855325}
   - {fileID: 2646079587390575038}
-  - {fileID: 0}
   - {fileID: 3106884592854367349}
   - {fileID: 1743562280812069499}
   sceneViewId: 0
@@ -1377,9 +1376,10 @@ GameObject:
   - component: {fileID: 1266182107313925763}
   - component: {fileID: 6355070347306678919}
   - component: {fileID: 8019384742793738867}
-  m_Layer: 0
+  - component: {fileID: 5819257096602513492}
+  m_Layer: 6
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1450,6 +1450,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &5819257096602513492
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580449303417970192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2669868566195764983
 GameObject:
   m_ObjectHideFlags: 0
@@ -3201,7 +3214,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Trigger
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
 --- !u!1 &6405698505482591523
 GameObject:
@@ -4939,7 +4952,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Trigger
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
 --- !u!1 &8939792279958242748
 GameObject:

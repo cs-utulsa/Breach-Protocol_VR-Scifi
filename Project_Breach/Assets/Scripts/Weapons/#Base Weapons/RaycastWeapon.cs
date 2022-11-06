@@ -69,6 +69,7 @@ public class RaycastWeapon : MonoBehaviour
         BulletRegistration();
     }
 
+    [PunRPC]
     public virtual void AI_Shoot(float xInacc, float yInacc)
     {
         if (currentAmmo > 0 && !isCharging)
@@ -126,6 +127,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public virtual void Recharge()
     {
         if (!isCharging)
@@ -157,5 +159,23 @@ public class RaycastWeapon : MonoBehaviour
     public bool GetIsCharging()
     {
         return isCharging;
+    }
+
+    [PunRPC]
+    public virtual void RPC_Shoot()
+    {
+        photonView.RPC("Shoot", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public virtual void RPC_Recharge()
+    {
+        photonView.RPC("Recharge", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public virtual void RPC_AI_Shoot(float xInacc, float yInacc)
+    {
+        photonView.RPC("AI_Shoot", RpcTarget.All, xInacc, yInacc);
     }
 }

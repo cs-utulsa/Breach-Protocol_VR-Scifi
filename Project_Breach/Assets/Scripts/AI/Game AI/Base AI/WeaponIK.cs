@@ -17,8 +17,7 @@ public class WeaponIK : MonoBehaviour
     public Transform targetTransform;
     public Transform aimTransform;
     public Vector3 targetOffset;
-
-    private Vector3 inaccuracyOffset;
+    public Vector3 targetPosition;
 
     public int iterations = 10;
     [Range(0, 1)]

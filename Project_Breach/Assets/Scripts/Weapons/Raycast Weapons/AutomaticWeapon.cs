@@ -25,12 +25,21 @@ public class AutomaticWeapon : SemiautomaticWeapon
 
         if (triggerHeld && (lastFired >= timeBetweenShots) && currentAmmo > 0 && !isCharging)
         {
-            Shoot();
+            //Shoot();
+            RPC_Shoot();
         }
     }
+
+    [PunRPC]
     protected override void Shoot()
     {
         lastFired = 0.0f;
         base.Shoot();
+    }
+
+    [PunRPC]
+    public override void RPC_Shoot()
+    {
+        photonView.RPC("Shoot", RpcTarget.All);
     }
 }

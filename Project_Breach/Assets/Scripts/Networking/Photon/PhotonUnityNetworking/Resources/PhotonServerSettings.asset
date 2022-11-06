@@ -57,6 +57,11 @@ MonoBehaviour:
   - TakeDamage
   - OnRaycastHit
   - AI_Shoot
+  - RPC_Recharge
+  - RPC_Shoot
+  - RPC_CheckForEffected
+  - RPC_AI_Shoot
+  - RPC_DetonatorPulled
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

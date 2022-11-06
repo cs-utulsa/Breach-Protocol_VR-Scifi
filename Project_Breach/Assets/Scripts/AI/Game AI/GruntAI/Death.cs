@@ -30,7 +30,6 @@ public class Death : ActionNode
         context.aiAgent.weaponIK.enabled = false;
         context.agent.destination = context.aiAgent.transform.position;
         context.agent.speed = 0.0f;
-        
         if (!deathTriggered && context.aiAgent.spawner != null)
         {
             deathTriggered = true;
@@ -52,7 +51,7 @@ public class Death : ActionNode
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Destroy(context.aiAgent.gameObject);
+            PhotonNetwork.Destroy(context.aiAgent.gameObject);
             return State.Success;
         }
         //Debug.Log("Death State Running");

@@ -111,4 +111,13 @@ public class AOE_Base : MonoBehaviour
         }
     }
 
+    public void RPC_ActivateThrowable()
+    {
+        photonView.RPC("ActivateThrowable", RpcTarget.All);
+    }
+
+    public virtual void RPC_CheckForEffected()
+    {
+        photonView.RPC("CheckForEffected", RpcTarget.All);
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Processors;
 using Photon.Pun;
 
-public class AI_Health : MonoBehaviour
+public class AI_Health : MonoBehaviour, IPunObservable
 {
     public AI_Data aiData;
     Ragdoll ragdoll;
@@ -39,7 +39,7 @@ public class AI_Health : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         isDead = true;
         ragdoll.ActivateRagdoll();
@@ -50,4 +50,28 @@ public class AI_Health : MonoBehaviour
         return isDead;
     }
 
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetCurrentHealth(float amount)
+    {
+        currentHealth = amount;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentHealth);
+        } else if (stream.IsReading)
+        {
+            currentHealth = (float) stream.ReceiveNext();
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+        }
+    }
 }

@@ -391,7 +391,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9183341643109712978}
         m_TargetAssemblyTypeName: AOE_Base, Assembly-CSharp
-        m_MethodName: ActivateThrowable
+        m_MethodName: RPC_ActivateThrowable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -477,6 +477,7 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 1
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  rb: {fileID: 0}
 --- !u!82 &9183341643109712977
 AudioSource:
   m_ObjectHideFlags: 0
@@ -616,6 +617,7 @@ MonoBehaviour:
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 9183341643109712982}
   - {fileID: -3015576726700481909}
   - {fileID: 629544233011093315}
   sceneViewId: 0

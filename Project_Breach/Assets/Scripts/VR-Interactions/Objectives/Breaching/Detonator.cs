@@ -65,6 +65,7 @@ public class Detonator : MonoBehaviour
 
     }
 
+    [PunRPC]
     public void DetonatorPulled()
     {
         if (readyToDetonate && breachCharge.GetSurfaceToBreach().IsBreacherAttached() && !pulledOnce)
@@ -108,6 +109,12 @@ public class Detonator : MonoBehaviour
         breachCharge.source.mute = false;
         pulledOnce = false;
         breachCharge = null;
+    }
+
+    [PunRPC]
+    public void RPC_DetonatorPulled()
+    {
+        photonView.RPC("DetonatorPulled", RpcTarget.All);
     }
 
 

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace behaviorNameSpace {
         public CapsuleCollider capsuleCollider;
         public CharacterController characterController;
         public AI_Agent aiAgent;
+        public PhotonView photonView;
         // Add other game specific systems here
 
         public static Context CreateFromGameObject(GameObject gameObject) {
@@ -35,6 +37,7 @@ namespace behaviorNameSpace {
             context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
             context.characterController = gameObject.GetComponent<CharacterController>();
             context.aiAgent = gameObject.GetComponent<AI_Agent>();
+            context.photonView = gameObject.GetComponent<PhotonView>();
             
             if(context.animator == null)
             {

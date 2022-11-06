@@ -29,8 +29,7 @@ public class SemiautomaticWeapon : RaycastWeapon
                 float primaryButtonValue = actionController.primaryButtonAction.action.ReadValue<float>();
                 if (primaryButtonValue >= 1.0f && !isCharging)
                 {
-                    //photonView.RPC("Recharge", RpcTarget.AllBuffered);
-                    Recharge();
+                    RPC_Recharge();
                 }
             }
         }
@@ -42,14 +41,16 @@ public class SemiautomaticWeapon : RaycastWeapon
         triggerHeld = true;
         if (currentAmmo > 0 && !isCharging)
         {
-            //photonView.RPC("Shoot", RpcTarget.AllBuffered);
-            Shoot();
+            RPC_Shoot();
+            //Shoot();
         }
         else
         {
             source.PlayOneShot(weaponData.emptyClip);
         }
     }
+
+    [PunRPC]
 
     protected override void Shoot()
     {
@@ -70,5 +71,17 @@ public class SemiautomaticWeapon : RaycastWeapon
         }
         currentAmmo = weaponData.maxAmmo;
         isCharging = false;
+    }
+
+    [PunRPC]
+    public override void RPC_Shoot()
+    {
+        photonView.RPC("Shoot", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public override void RPC_Recharge()
+    {
+        photonView.RPC("Recharge", RpcTarget.All);
     }
 }

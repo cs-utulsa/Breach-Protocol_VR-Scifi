@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Photon.Pun;
 
-public class BreachCharge : MonoBehaviour
+public class BreachCharge : MonoBehaviour, IPunObservable
 {
     [Header("Animation and Audio")]
     public AudioSource source;
@@ -18,6 +19,9 @@ public class BreachCharge : MonoBehaviour
     [Header("Tags")]
     public string tagArmed = "Armed Breaching Charge";
     public string tagDisarmed = "Breaching Charge";
+
+    [Header("Photon")]
+    public PhotonView photonView;
     
 
     [Header("Debug")]
@@ -33,6 +37,7 @@ public class BreachCharge : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         interactable = GetComponent<OneHandInteractable>();
+        photonView = GetComponent<PhotonView>();
         chargeInSocketRange = false;
         chargeArmed = false;
     }
@@ -128,4 +133,14 @@ public class BreachCharge : MonoBehaviour
         }
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(gameObject.tag);
+        } else if (stream.IsReading)
+        {
+            gameObject.tag = (string) stream.ReceiveNext();
+        }
+    }
 }
