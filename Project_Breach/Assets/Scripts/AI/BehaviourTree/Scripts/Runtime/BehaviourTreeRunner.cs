@@ -23,7 +23,7 @@ namespace behaviorNameSpace {
 
         // Update is called once per frame
         void Update() {
-            if (tree && photonView.IsMine) {
+            if (tree && PhotonNetwork.IsMasterClient) {
                 tree.Update();
             }
         }

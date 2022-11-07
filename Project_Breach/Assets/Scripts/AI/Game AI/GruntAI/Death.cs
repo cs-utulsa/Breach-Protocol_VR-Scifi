@@ -28,13 +28,14 @@ public class Death : ActionNode
         context.aiAgent.weapon.ammoCounter.text = context.aiAgent.weapon.GetAmmo().ToString();
         context.aiAgent.weapon.transform.SetParent(null);
         context.aiAgent.weaponIK.enabled = false;
+        context.aiAgent.weapon.GetComponent<PhotonRigidbodyView>().enabled = true;
         context.agent.destination = context.aiAgent.transform.position;
         context.agent.speed = 0.0f;
         if (!deathTriggered && context.aiAgent.spawner != null)
         {
-            deathTriggered = true;
             context.aiAgent.spawner.AiHasDied();
         }
+        deathTriggered = true;
 
         // Drop the AI's Weapon.
         if (context.aiAgent.weapon.interactable.CompareTag("Primary Weapon")){
@@ -46,7 +47,6 @@ public class Death : ActionNode
         context.aiAgent.weapon.interactable.enabled = true;
         context.aiAgent.weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         context.aiAgent.weapon.transform.SetParent(null);
-
         // Delete the AI.
         timer -= Time.deltaTime;
         if (timer <= 0)

@@ -18,7 +18,7 @@ public class AutomaticDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy") || other.CompareTag("Target"))
         {
             ToggleDoor();
         }
@@ -26,7 +26,7 @@ public class AutomaticDoor : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy") || other.CompareTag("Target"))
         {
             ToggleDoor();
         }

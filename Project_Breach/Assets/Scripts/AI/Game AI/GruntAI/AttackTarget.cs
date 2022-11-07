@@ -33,7 +33,8 @@ public class AttackTarget : ActionNode
     protected override void OnStop()
     {
         context.aiAgent.weaponIK.weight = 0.0f;
-        context.aiAgent.weaponIK.enabled = false;
+        //context.aiAgent.weaponIK.enabled = false;
+        context.aiAgent.weaponIK.RPC_DisableWeaponIK();
         context.animator.SetBool(context.aiAgent.aiData.attackParam, false);
     }
 
@@ -85,7 +86,7 @@ public class AttackTarget : ActionNode
         {
             // If you are out of ammo, and the weapon isn't currentlyy charging, charge the weapon.
             //context.aiAgent.weapon.photonView.RPC("Recharge", Photon.Pun.RpcTarget.AllBuffered);
-            context.aiAgent.weapon.Recharge();
+            context.aiAgent.weapon.RPC_Recharge();
         }
         else
         {

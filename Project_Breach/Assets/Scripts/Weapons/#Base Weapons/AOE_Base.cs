@@ -36,6 +36,7 @@ public class AOE_Base : MonoBehaviour
         mask = LayerMask.GetMask(aoeData.layerMask);
     }
 
+    [PunRPC]
     public void ActivateThrowable()
     {
         if (!activated)
@@ -102,6 +103,7 @@ public class AOE_Base : MonoBehaviour
         source.PlayOneShot(aoeData.beepSound);
     }
 
+    [PunRPC]
     protected virtual void CheckForEffected()
     {
         collidersInRange = Physics.OverlapSphere(transform.position, aoeData.range, mask);

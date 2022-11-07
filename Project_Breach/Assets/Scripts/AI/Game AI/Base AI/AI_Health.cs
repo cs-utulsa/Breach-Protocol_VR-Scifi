@@ -35,10 +35,11 @@ public class AI_Health : MonoBehaviour, IPunObservable
         if (currentHealth <= 0.0f)
         {
             ragdoll.ApplyForce(direction.normalized);
-            Die();
+            RPC_Die();
         }
     }
 
+    [PunRPC]
     public void Die()
     {
         isDead = true;
@@ -70,8 +71,14 @@ public class AI_Health : MonoBehaviour, IPunObservable
             currentHealth = (float) stream.ReceiveNext();
             if (currentHealth <= 0)
             {
-                Die();
+                RPC_Die();
             }
         }
+    }
+
+    [PunRPC]
+    public void RPC_Die()
+    {
+        GetComponent<PhotonView>().RPC("Die", RpcTarget.All);
     }
 }

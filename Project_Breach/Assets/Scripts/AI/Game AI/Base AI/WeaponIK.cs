@@ -12,12 +12,14 @@ public class HumanBone
 }
 
 
-public class WeaponIK : MonoBehaviour
+public class WeaponIK : MonoBehaviour, IPunObservable
 {
     public Transform targetTransform;
     public Transform aimTransform;
     public Vector3 targetOffset;
     public Vector3 targetPosition;
+    public Vector3 networkTargetPosition;
+    public PhotonView photonView;
 
     public int iterations = 10;
     [Range(0, 1)]
@@ -28,7 +30,6 @@ public class WeaponIK : MonoBehaviour
 
     public float angleLimit = 90.0f;
     public float distanceLimit = .5f;
-    public PhotonView photonView;
 
 
     // Start is called before the first frame update
@@ -36,8 +37,10 @@ public class WeaponIK : MonoBehaviour
     {
         Animator animator = GetComponentInChildren<Animator>();
         boneTransforms = new Transform[humanBones.Length];
-        photonView = GetComponent<PhotonView>();
-
+        if (photonView == null)
+        {
+            photonView = GetComponent<PhotonView>();
+        }
         for (int i = 0; i < boneTransforms.Length; i++)
         {
             boneTransforms[i] = animator.GetBoneTransform(humanBones[i].bone);
@@ -69,23 +72,33 @@ public class WeaponIK : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-
-        if (aimTransform == null || targetTransform == null)
+        if  (PhotonNetwork.IsMasterClient && (aimTransform == null || targetTransform == null))
         {
             return;
         }
-        Vector3 targetPosition = GetTargetPosition();
-        for (int i = 0; i < iterations; i++)
+
+        if (PhotonNetwork.IsMasterClient)
         {
-            for (int b = 0; b < boneTransforms.Length; b++)
-            {
-                Transform bone = boneTransforms[b];
-                float boneWeight = humanBones[b].weight * weight;
-                AimAtTarget(bone, targetPosition, boneWeight);
-                //photonView.RPC("AimAtTarget", RpcTarget.AllBuffered, bone, targetPosition, boneWeight);
-            }
-            //AimAtTarget(bone, targetPosition, weight);
+            targetPosition = GetTargetPosition();
+            networkTargetPosition = targetPosition;
         }
+        else
+        {
+            targetPosition = networkTargetPosition;
+        }
+
+            for (int i = 0; i < iterations; i++)
+            {
+                for (int b = 0; b < boneTransforms.Length; b++)
+                {
+                    Transform bone = boneTransforms[b];
+                    float boneWeight = humanBones[b].weight * weight;
+                    AimAtTarget(bone, networkTargetPosition, boneWeight);
+                    //photonView.RPC("AimAtTarget", RpcTarget.All, bone, targetPosition, boneWeight);
+                }
+                //AimAtTarget(bone, targetPosition, weight);
+            }
+
     }
 
     private void AimAtTarget(Transform bone, Vector3 targetPosition, float weight)
@@ -126,5 +139,42 @@ public class WeaponIK : MonoBehaviour
         }
         weight = 0.0f;
 
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(targetPosition);
+            stream.SendNext(weight);
+        } else if (stream.IsReading)
+        {
+            networkTargetPosition = (Vector3) stream.ReceiveNext();
+            weight = (float)stream.ReceiveNext();
+        }
+    }
+
+    [PunRPC]
+    public void RPC_EnableWeaponIK()
+    {
+        photonView.RPC("EnableWeaponIK", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void RPC_DisableWeaponIK()
+    {
+        photonView.RPC("DisableWeaponIK", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void EnableWeaponIK()
+    {
+        enabled = true;
+    }
+    [PunRPC]
+
+    public void DisableWeaponIK()
+    {
+        enabled = false;
     }
 }

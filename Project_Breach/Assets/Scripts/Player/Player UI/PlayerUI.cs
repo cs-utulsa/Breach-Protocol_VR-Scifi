@@ -21,12 +21,16 @@ public class PlayerUI : MonoBehaviour, IPunObservable
     public SocketTagCheck primarySocket;
     public SocketTagCheck secondarySocket;
 
+    [Header("Photon")]
+    public PhotonView photonView;
+
     private bool primaryFull;
     private bool secondaryFull;
     private void Start()
     {
         playerHealth = GetComponentInParent<Health>();
         playerShield = GetComponentInParent<Shield>();
+        photonView = GetComponentInParent<PhotonView>();
         healthSlider.maxValue = playerHealth.playerData.maxHealth;
         shieldSlider.maxValue = playerShield.playerData.maxShield;
         primaryFull = false;
@@ -35,8 +39,11 @@ public class PlayerUI : MonoBehaviour, IPunObservable
 
     private void Update()
     {
-        shieldSlider.value = playerShield.getShieldCharge();
-        healthSlider.value = playerHealth.getCurrentHealth();
+        if (photonView.IsMine)
+        {
+            shieldSlider.value = playerShield.getShieldCharge();
+            healthSlider.value = playerHealth.getCurrentHealth();
+        }
     }
 
     public void TogglePrimaryUI()
