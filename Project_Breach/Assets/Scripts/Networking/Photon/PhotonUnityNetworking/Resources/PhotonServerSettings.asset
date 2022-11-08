@@ -71,6 +71,14 @@ MonoBehaviour:
   - DisableWeaponIK
   - EnableWeaponIK
   - RPC_Die
+  - RPC_ToggleDoor
+  - ToggleDoor
+  - RPC_InInventory
+  - SetInInventory
+  - CloseDoor
+  - OpenDoor
+  - RPC_CloseDoor
+  - RPC_OpenDoor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
