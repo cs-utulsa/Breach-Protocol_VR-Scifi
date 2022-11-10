@@ -5765,7 +5765,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_SelectActionTrigger: 0
+  m_SelectActionTrigger: 2
   m_HideControllerOnSelect: 0
   m_AllowHoveredActivate: 0
   m_PlayAudioClipOnSelectEntered: 0
@@ -8886,7 +8886,7 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_SelectActionTrigger: 0
+  m_SelectActionTrigger: 2
   m_HideControllerOnSelect: 0
   m_AllowHoveredActivate: 0
   m_PlayAudioClipOnSelectEntered: 0
@@ -12494,6 +12494,7 @@ MonoBehaviour:
   secondaryText: {fileID: 5882054143661168953}
   primarySocket: {fileID: 5882054143824971973}
   secondarySocket: {fileID: 5882054143590296898}
+  photonView: {fileID: 0}
 --- !u!114 &8370327974622148808
 MonoBehaviour:
   m_ObjectHideFlags: 0
