@@ -117,6 +117,7 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         {
             inInventory = true;
         }
+
         base.OnSelectEntered(args);
     }
 

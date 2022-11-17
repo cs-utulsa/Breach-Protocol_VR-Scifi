@@ -4010,6 +4010,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 2
     Name: Trigger
+  - Type: 4
+    SynchronizeType: 2
+    Name: Primary Grab
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -6864,6 +6867,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 2
     Name: Trigger
+  - Type: 4
+    SynchronizeType: 2
+    Name: Primary Grab
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
