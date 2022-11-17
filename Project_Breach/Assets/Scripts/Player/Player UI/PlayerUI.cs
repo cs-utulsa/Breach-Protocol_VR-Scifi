@@ -33,6 +33,8 @@ public class PlayerUI : MonoBehaviour, IPunObservable
         photonView = GetComponentInParent<PhotonView>();
         healthSlider.maxValue = playerHealth.playerData.maxHealth;
         shieldSlider.maxValue = playerShield.playerData.maxShield;
+        secondaryText.color = Color.red;
+        primaryText.color = Color.red;
         primaryFull = false;
         secondaryFull = false;
     }
@@ -51,11 +53,13 @@ public class PlayerUI : MonoBehaviour, IPunObservable
         primaryFull = !primaryFull;
         if (primaryFull)
         {
-            primaryText.text = "You have a primary.";
+            primaryText.text = "Primary: Holstered";
+            primaryText.color = Color.green;
         }
         else
         {
-            primaryText.text = "No primary.";
+            primaryText.text = "Primary: N/A";
+            primaryText.color = Color.red;
         }
     }
 
@@ -64,11 +68,13 @@ public class PlayerUI : MonoBehaviour, IPunObservable
         secondaryFull = !secondaryFull;
         if (secondaryFull)
         {
-            secondaryText.text = "You have a secondary.";
+            secondaryText.text = "Secondary: Holstered";
+            secondaryText.color = Color.green;
         }
         else
         {
-            secondaryText.text = "No secondary.";
+            secondaryText.text = "Secondary: N/A";
+            secondaryText.color = Color.red;
         }
     }
 
