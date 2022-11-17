@@ -56,14 +56,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118223121248920106}
-  m_LocalRotation: {x: 0.7071057, y: -0, z: -0, w: 0.7071079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3904570627218261297}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3904570626011878673
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +434,7 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  rb: {fileID: 0}
 --- !u!82 &3904570627218261299
 AudioSource:
   m_ObjectHideFlags: 0
@@ -560,6 +561,7 @@ MonoBehaviour:
   - {fileID: 8856670477452767013}
   tagArmed: Armed Breaching Charge
   tagDisarmed: Breaching Charge
+  photonView: {fileID: 0}
   chargeInSocketRange: 0
   chargeArmed: 0
   breachableSurface: {fileID: 0}
@@ -585,6 +587,8 @@ MonoBehaviour:
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 3904570627218261455}
+  - {fileID: 3904570627218261298}
   - {fileID: -5393083865517166036}
   sceneViewId: 0
   InstantiationId: 0

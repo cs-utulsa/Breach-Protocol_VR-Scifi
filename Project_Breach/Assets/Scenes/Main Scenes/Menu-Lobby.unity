@@ -6439,7 +6439,7 @@ PrefabInstance:
     - target: {fileID: 4308199717024267853, guid: b0690d0989d04e143944e9662c716d1e,
         type: 3}
       propertyPath: m_Name
-      value: Player IK
+      value: Player IK Captain
       objectReference: {fileID: 0}
     - target: {fileID: 4308199717024267854, guid: b0690d0989d04e143944e9662c716d1e,
         type: 3}
