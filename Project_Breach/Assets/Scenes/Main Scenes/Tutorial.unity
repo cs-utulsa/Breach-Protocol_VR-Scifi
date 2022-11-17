@@ -19761,11 +19761,6 @@ PrefabInstance:
       propertyPath: rightHand.vrTarget
       value: 
       objectReference: {fileID: 6448560018877125567}
-    - target: {fileID: 4308199718438627897, guid: b0690d0989d04e143944e9662c716d1e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0690d0989d04e143944e9662c716d1e, type: 3}
 --- !u!1001 &667474123
