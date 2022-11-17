@@ -7,12 +7,14 @@ public class Network_Player_Spawner : MonoBehaviourPunCallbacks
 {
     private GameObject spawnedPlayerPrefab;
 
+
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             spawnedPlayerPrefab = PhotonNetwork.Instantiate("Network Player IK (Captain)", transform.position, transform.rotation);
+            
         } else if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
         {
             spawnedPlayerPrefab = PhotonNetwork.Instantiate("Network Player IK (Demo)", transform.position, transform.rotation);
