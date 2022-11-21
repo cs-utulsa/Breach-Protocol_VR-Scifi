@@ -38,7 +38,7 @@ public class VRRig : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         root.position = head.rigTarget.position + headBodyOffest;
         root.forward = Vector3.Lerp(transform.forward,

@@ -6,7 +6,7 @@ public class VRFootIK : MonoBehaviour
 {
     private Animator animator;
     public Vector3 footOffset;
-    public float footDistance = 10f;
+    public float footDistance = 1f;
     int layer_mask;
 
     [Range(0,1)]
