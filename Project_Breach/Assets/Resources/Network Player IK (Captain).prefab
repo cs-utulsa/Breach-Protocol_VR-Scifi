@@ -3221,7 +3221,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4308199717024267854, guid: b0690d0989d04e143944e9662c716d1e, type: 3}
+    - {fileID: 4308199718438627898, guid: b0690d0989d04e143944e9662c716d1e, type: 3}
+    - {fileID: 4308199718252324683, guid: b0690d0989d04e143944e9662c716d1e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b0690d0989d04e143944e9662c716d1e, type: 3}
 --- !u!1 &183518993123366640 stripped
 GameObject:
@@ -3245,6 +3248,35 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &6209377296587939698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183518993123366640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f248753a0b581842b212f1a511cd888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 0}
+  turnSmoothness: 1
+  head:
+    vrTarget: {fileID: 0}
+    rigTarget: {fileID: 0}
+    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 0, y: 0, z: 0}
+  leftHand:
+    vrTarget: {fileID: 0}
+    rigTarget: {fileID: 0}
+    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 0, y: 0, z: 0}
+  rightHand:
+    vrTarget: {fileID: 0}
+    rigTarget: {fileID: 0}
+    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &183518993123366652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4308199717024267841, guid: b0690d0989d04e143944e9662c716d1e,

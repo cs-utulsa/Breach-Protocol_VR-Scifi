@@ -24,8 +24,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - Left Hand Physics
-  - Right Hand Physics
+  - Player Hand
+  - 
   - Ghost Hands
   - WorldCollision
   - Enemy
