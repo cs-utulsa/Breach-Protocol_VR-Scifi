@@ -9,6 +9,9 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
     private PhotonView photonView;
     public Rigidbody rb;
 
+    public Transform leftAttachPoint;
+    public Transform rightAttachPoint;
+
     public void Start()
     {
         photonView = GetComponent<PhotonView>();
@@ -36,6 +39,16 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         photonView.RequestOwnership();
+
+        if (firstInteractorSelecting.transform.gameObject.CompareTag("Left Hand"))
+        {
+            attachTransform = leftAttachPoint;
+        }
+        else
+        {
+            attachTransform = rightAttachPoint;
+        }
+
         base.OnSelectEntered(args);
     }
 

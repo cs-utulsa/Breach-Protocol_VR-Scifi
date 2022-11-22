@@ -15,6 +15,8 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
     public float breakDistance = 0.1f;
     public Rigidbody rb = null;
     public PhotonView photonView;
+    public Transform leftAttachPoint;
+    public Transform rightAttachPoint;
 
     private IXRSelectInteractor firstInteractor, secondInteractor;
     private Quaternion attachInitialRotation;
@@ -27,6 +29,7 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         rb = GetComponent<Rigidbody>();
         photonView = GetComponent<PhotonView>();
         rb.maxAngularVelocity = 20.0f;
+        attachTransform = rightAttachPoint;
         foreach (var item in secondHandGrabPoints)
         {
             item.selectEntered.AddListener(OnSecondHandGrab);
@@ -116,6 +119,13 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
             inInventory = true;
+        } else if (firstInteractorSelecting.transform.gameObject.CompareTag("Left Hand"))
+        {
+            attachTransform = leftAttachPoint;
+        }
+        else
+        {
+            attachTransform = rightAttachPoint;
         }
 
         base.OnSelectEntered(args);
