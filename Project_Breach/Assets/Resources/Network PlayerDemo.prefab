@@ -3415,7 +3415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footOffset: {x: 0, y: 0, z: 0}
-  footDistance: 1
+  footDistance: 1.25
   rightFootPosWeight: 1
   rightFootRotWeight: 1
   leftFootPosWeight: 1
