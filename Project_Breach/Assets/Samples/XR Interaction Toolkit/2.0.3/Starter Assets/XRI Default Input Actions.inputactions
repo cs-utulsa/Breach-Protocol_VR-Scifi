@@ -488,6 +488,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d3ccba74-f72e-463e-97e4-2494a1083c1b",
+                    "path": "<ViveController>{LeftHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1bb936a8-3645-4307-a085-025e074c0306",
                     "path": "<XRController>{LeftHand}/primaryButton",
                     "interactions": "",
@@ -1040,6 +1051,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
+                    "action": "PrimaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c0b1dfc-2391-472e-a75d-9a9876534553",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "PrimaryButton",
                     "isComposite": false,
                     "isPartOfComposite": false

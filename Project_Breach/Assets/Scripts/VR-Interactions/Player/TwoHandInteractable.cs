@@ -1,11 +1,12 @@
 
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class TwoHandInteractable : XRGrabInteractable
+public class TwoHandInteractable : XRGrabInteractable, IPunObservable
 {
     public List<XRSimpleInteractable> secondHandGrabPoints = new List<XRSimpleInteractable>();
     public enum TwoHandRotationType { None, First, Second };
@@ -13,15 +14,18 @@ public class TwoHandInteractable : XRGrabInteractable
     public bool snapToSecondHand = true;
     public float breakDistance = 0.1f;
     public Rigidbody rb = null;
+    public PhotonView photonView;
 
     private IXRSelectInteractor firstInteractor, secondInteractor;
     private Quaternion attachInitialRotation;
     private Quaternion initialRotationOffset;
+    private bool inInventory = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        photonView = GetComponent<PhotonView>();
         rb.maxAngularVelocity = 20.0f;
         foreach (var item in secondHandGrabPoints)
         {
@@ -31,15 +35,10 @@ public class TwoHandInteractable : XRGrabInteractable
         
     }
 
-    
-    void Update()
-    {
-        
-    }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
-        if (secondInteractor != null && firstInteractorSelecting != null)
+        if (secondInteractor != null && firstInteractorSelecting != null && !firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
             if (snapToSecondHand)
             {
@@ -70,7 +69,15 @@ public class TwoHandInteractable : XRGrabInteractable
 
     private Quaternion GetTwoHandRotation()
     {
-        Transform attachTransform1 = firstInteractorSelecting.transform;
+        Transform attachTransform1;
+        if (firstInteractorSelecting.transform == null)
+        {
+            attachTransform1 = secondInteractor.transform;
+        }
+        else
+        {
+             attachTransform1= firstInteractorSelecting.transform;
+        }
         Transform attachTransform2 = secondInteractor.transform;
 
         switch (twoHandRotationType)
@@ -98,14 +105,19 @@ public class TwoHandInteractable : XRGrabInteractable
 
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
-
         secondInteractor = null;
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-
+        StopAllCoroutines();
+        photonView.RequestOwnership();
         attachInitialRotation = args.interactorObject.transform.localRotation;
+        if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
+        {
+            inInventory = true;
+        }
+
         base.OnSelectEntered(args);
     }
 
@@ -118,8 +130,11 @@ public class TwoHandInteractable : XRGrabInteractable
 
     public override bool IsSelectableBy(IXRSelectInteractor interactor)
     {
-        bool isalreadygrabbed = firstInteractorSelecting != null && !interactor.Equals(firstInteractorSelecting);
-        return base.IsSelectableBy(interactor) && !isalreadygrabbed;
+        bool isalreadygrabbed = firstInteractorSelecting != null && !firstInteractorSelecting.transform.gameObject.CompareTag("Inventory") &&
+            !interactor.Equals(firstInteractorSelecting) && !inInventory;
+
+        return (base.IsSelectableBy(interactor) && !isalreadygrabbed);
+        
     }
 
     public void ChangeLayerOnDrop(float delay)
@@ -136,8 +151,19 @@ public class TwoHandInteractable : XRGrabInteractable
         yield return new WaitForSeconds(delay);
         foreach (Collider collider in colliders)
         {
-
             collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rb.useGravity);
+        }
+        else if (stream.IsReading)
+        {
+            rb.useGravity = (bool)stream.ReceiveNext();
         }
     }
 

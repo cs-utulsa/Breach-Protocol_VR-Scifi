@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace behaviorNameSpace {
 
         // The main behaviour tree asset
         public BehaviourTree tree;
+        public PhotonView photonView;
 
         // Storage container object to hold game object subsystems
         Context context;
@@ -16,11 +18,12 @@ namespace behaviorNameSpace {
             context = CreateBehaviourTreeContext();
             tree = tree.Clone();
             tree.Bind(context);
+            photonView = GetComponent<PhotonView>();
         }
 
         // Update is called once per frame
         void Update() {
-            if (tree) {
+            if (tree && PhotonNetwork.IsMasterClient) {
                 tree.Update();
             }
         }

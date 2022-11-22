@@ -6,6 +6,16 @@ TagManager:
   tags:
   - Enemy
   - Teammate
+  - Primary Weapon
+  - Secondary Weapon
+  - Throwable
+  - Inventory
+  - Bullet
+  - Target
+  - Breachable Surface
+  - Breaching Charge
+  - Detonator
+  - Armed Breaching Charge
   layers:
   - Default
   - TransparentFX
@@ -14,19 +24,19 @@ TagManager:
   - Water
   - UI
   - Player
-  - Left Hand Physics
-  - Right Hand Physics
+  - Player Hand
+  - 
   - Ghost Hands
   - WorldCollision
   - Enemy
   - Teammate
   - Interactable
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Despawn
+  - Objective
+  - Spawner
+  - Shield Wall
+  - Cover
+  - Invisible
   - 
   - 
   - 

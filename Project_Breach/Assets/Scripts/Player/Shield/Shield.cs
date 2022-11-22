@@ -1,9 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class Shield : MonoBehaviour
+public class Shield : MonoBehaviour, IPunObservable
 {
     [Header("Player Data")]
     public PlayerData playerData;
@@ -15,7 +16,7 @@ public class Shield : MonoBehaviour
     [Header("Runtime Variables")]
     [SerializeField] private float currentShield;
     [SerializeField] private float timeFromLastHit;
-
+    [SerializeField] private bool rechargePlayed;
 
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class Shield : MonoBehaviour
         currentShield = playerData.maxShield;
         source = GetComponent<AudioSource>();
         playerHealth = GetComponent<Health>();
+        timeFromLastHit = playerData.maxRegenTimer;
     }
 
     void FixedUpdate()
@@ -48,6 +50,7 @@ public class Shield : MonoBehaviour
             }
             else
             {
+                rechargePlayed = false;
                 return false;
             }
         }
@@ -55,6 +58,12 @@ public class Shield : MonoBehaviour
 
     private void RegenerateShield()
     {
+        if (!rechargePlayed)
+        {
+            rechargePlayed = true;
+            source.PlayOneShot(playerData.shieldRecharge);
+        }
+
         if (currentShield < playerData.maxShield)
         {
             currentShield += playerData.regenerationRate;
@@ -63,6 +72,7 @@ public class Shield : MonoBehaviour
         {
             currentShield = playerData.maxShield;
         }
+        
     }
 
 
@@ -84,6 +94,23 @@ public class Shield : MonoBehaviour
         {
             playerHealth.TakeDamage(value);
         }
+        rechargePlayed = false;
         timeFromLastHit = 0.0f;
+    }
+
+    public float getShieldCharge()
+    {
+        return currentShield;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentShield);
+        } else if (stream.IsReading)
+        {
+            currentShield = (float) stream.ReceiveNext();
+        }
     }
 }

@@ -1,11 +1,11 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IPunObservable
 {
     [Header("Player Data")]
     public PlayerData playerData;
@@ -17,6 +17,9 @@ public class Health : MonoBehaviour
     [Header("Audio")]
     public AudioSource source;
 
+    [Header("Animator")]
+    public Animator animator;
+
     [Header("Runtime Variables")]
     [SerializeField] private float currentHealth;
     [SerializeField] private bool isDNBO;
@@ -25,8 +28,10 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveProvider = GetComponentInChildren<ActionBasedContinuousMoveProvider>();
         currentHealth = playerData.maxHealth;
         source = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void TakeDamage(float value)
@@ -50,7 +55,11 @@ public class Health : MonoBehaviour
     {
         source.PlayOneShot(playerData.playerDNBO);
         isDNBO = true;
-        moveProvider.enabled = false;
+        if (this.tag == "Player")
+        {
+            moveProvider.enabled = false;
+        }
+        animator.SetBool("DBNO", isDNBO);
         
     }
 
@@ -61,9 +70,48 @@ public class Health : MonoBehaviour
 
     public void Revive()
     {
-        currentHealth = playerData.maxHealth;
-        source.PlayOneShot(playerData.playerRevive);
-        moveProvider.enabled = true;
-        isDNBO = false;
+        if (isDNBO)
+        {
+            currentHealth = playerData.maxHealth;
+            source.PlayOneShot(playerData.playerRevive);
+            if (this.tag == "Player")
+            {
+            moveProvider.enabled = true;
+            }
+            isDNBO = false;
+            animator.SetBool("DBNO", isDNBO);
+        }
+    }
+
+    public float getCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void Heal(float amount)
+    {
+        if (currentHealth + amount >= playerData.maxHealth)
+        {
+            currentHealth = playerData.maxHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentHealth);
+        } else if (stream.IsReading)
+        {
+            currentHealth = (float) stream.ReceiveNext();
+            if (currentHealth <= 0)
+            {
+                PlayerDBNO();
+            }
+        }
     }
 }

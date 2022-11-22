@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0260faadfaf1b04dbdddc967e2d51e5, type: 3}
+  m_Name: ExpGrenadeData
+  m_EditorClassIdentifier: 
+  range: 7.5
+  detonationTimer: 6
+  flashRateSpeedUp: 1.25
+  damage: 200
+  stunDuration: 0
+  beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
+  detonationAudio: {fileID: 8300000, guid: 0b6c240dae1f1d54aa0b48a997777474, type: 3}
+  activationAudio: {fileID: 8300000, guid: 0fdc148d741bfc647be852af5147cf6a, type: 3}
+  activateParam: Activate
+  particles:
+  - {fileID: 2306021639104007139, guid: 9ed4b576f53305043a490066e319364f, type: 3}
+  - {fileID: 3428719621713579147, guid: 9f028f8dd464bfd40af10e9cec2de65c, type: 3}
+  - {fileID: 8648987091685365734, guid: d2bcefc9a2fd77348bd44c54d4a8326a, type: 3}
+  - {fileID: 8151683276097953313, guid: c3138c85225c26f41add2b06100a67d5, type: 3}
+  layerMask:
+  - Player
+  - Enemy
+  - Teammate
