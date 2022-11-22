@@ -12,8 +12,8 @@ public class NetworkPlayer : MonoBehaviour
     public Transform leftHand;
     public Transform rightHand;
 
-    //public Animator leftHandAnimator;
-    //public Animator rightHandAnimator;
+    public Animator rightHandAnimator;
+    public Animator leftHandAnimator;
 
     private PhotonView photonView;
 
@@ -29,7 +29,6 @@ public class NetworkPlayer : MonoBehaviour
         leftHandRig = rig.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = rig.transform.Find("Camera Offset/RightHand Controller");
 
-        
         if (photonView.IsMine)
         {
             foreach (var item in GetComponentsInChildren<Renderer>())
@@ -50,30 +49,30 @@ public class NetworkPlayer : MonoBehaviour
             MapPosition(leftHand, leftHandRig);
             MapPosition(rightHand, rightHandRig);
 
-            //UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.LeftHand), leftHandAnimator);
-            //UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.RightHand), rightHandAnimator);
+            UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.LeftHand), leftHandAnimator);
+            UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.RightHand), rightHandAnimator);
         }
 
     }
 
-    void UpdateHandAnimation(InputDevice targetDevice, Animator handAnimator)
+    void UpdateHandAnimation(InputDevice targetDevice, Animator anim)
     {
         if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {
-            handAnimator.SetFloat("Trigger", triggerValue);
+            anim.SetFloat("Trigger", triggerValue);
         }
         else
         {
-            handAnimator.SetFloat("Trigger", 0);
+            anim.SetFloat("Trigger", 0);
         }
 
         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
-            handAnimator.SetFloat("Grip", gripValue);
+            anim.SetFloat("Grip", gripValue);
         }
         else
         {
-            handAnimator.SetFloat("Grip", 0);
+            anim.SetFloat("Grip", 0);
         }
     }
 
