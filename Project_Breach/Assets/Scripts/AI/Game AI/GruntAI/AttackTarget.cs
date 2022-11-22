@@ -33,7 +33,8 @@ public class AttackTarget : ActionNode
     protected override void OnStop()
     {
         context.aiAgent.weaponIK.weight = 0.0f;
-        context.aiAgent.weaponIK.enabled = false;
+        //context.aiAgent.weaponIK.enabled = false;
+        context.aiAgent.weaponIK.RPC_DisableWeaponIK();
         context.animator.SetBool(context.aiAgent.aiData.attackParam, false);
     }
 
@@ -76,8 +77,7 @@ public class AttackTarget : ActionNode
         if (context.aiAgent.weapon.GetAmmo() > 0 && timer <= 0 && !context.aiAgent.weapon.GetIsCharging())
         {
             // Shoot using AI_Shoot method, passing in the AI's inaccuracy from its data file.
-            //context.aiAgent.weapon.AI_Shoot(context.aiAgent.aiData.xInaccuracy, context.aiAgent.aiData.yInaccuracy); ***
-            context.aiAgent.weapon.photonView.RPC("AI_Shoot", Photon.Pun.RpcTarget.AllBuffered, context.aiAgent.aiData.xInaccuracy, context.aiAgent.aiData.yInaccuracy);
+            context.aiAgent.weapon.RPC_AI_Shoot(context.aiAgent.aiData.xInaccuracy, context.aiAgent.aiData.yInaccuracy);
 
             // Pick a random time to wait to shoot next time.
             timer = Random.Range(context.aiAgent.aiData.minShootTimer, context.aiAgent.aiData.maxShootTimer);
@@ -85,7 +85,8 @@ public class AttackTarget : ActionNode
         else if (context.aiAgent.weapon.GetAmmo() == 0 && !context.aiAgent.weapon.GetIsCharging())
         {
             // If you are out of ammo, and the weapon isn't currentlyy charging, charge the weapon.
-            context.aiAgent.weapon.photonView.RPC("Recharge", Photon.Pun.RpcTarget.AllBuffered);
+            //context.aiAgent.weapon.photonView.RPC("Recharge", Photon.Pun.RpcTarget.AllBuffered);
+            context.aiAgent.weapon.RPC_Recharge();
         }
         else
         {

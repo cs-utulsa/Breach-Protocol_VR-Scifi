@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class OneHandInteractable : XRGrabInteractable
+public class OneHandInteractable : XRGrabInteractable, IPunObservable
 {
     private PhotonView photonView;
+    public Rigidbody rb;
 
     public void Start()
     {
         photonView = GetComponent<PhotonView>();
+        rb = GetComponent<Rigidbody>();
     }
     public void ChangeLayerOnDrop(float delay)
     {
@@ -35,5 +37,17 @@ public class OneHandInteractable : XRGrabInteractable
     {
         photonView.RequestOwnership();
         base.OnSelectEntered(args);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rb.useGravity);
+        }
+        else if (stream.IsReading)
+        {
+            rb.useGravity = (bool) stream.ReceiveNext();
+        }
     }
 }

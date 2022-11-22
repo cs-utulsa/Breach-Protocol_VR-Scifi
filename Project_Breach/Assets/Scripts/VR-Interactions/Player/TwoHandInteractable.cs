@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class TwoHandInteractable : XRGrabInteractable
+public class TwoHandInteractable : XRGrabInteractable, IPunObservable
 {
     public List<XRSimpleInteractable> secondHandGrabPoints = new List<XRSimpleInteractable>();
     public enum TwoHandRotationType { None, First, Second };
@@ -117,6 +117,7 @@ public class TwoHandInteractable : XRGrabInteractable
         {
             inInventory = true;
         }
+
         base.OnSelectEntered(args);
     }
 
@@ -151,6 +152,18 @@ public class TwoHandInteractable : XRGrabInteractable
         foreach (Collider collider in colliders)
         {
             collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rb.useGravity);
+        }
+        else if (stream.IsReading)
+        {
+            rb.useGravity = (bool)stream.ReceiveNext();
         }
     }
 

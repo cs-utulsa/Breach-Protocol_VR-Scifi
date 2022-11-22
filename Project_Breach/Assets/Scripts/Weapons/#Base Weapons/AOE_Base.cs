@@ -57,8 +57,8 @@ public class AOE_Base : MonoBehaviour
             currentTime += Time.deltaTime;
             if (timeFromLastFlash >= flashRate)
             {
-                //Beep();
-                photonView.RPC("Beep", RpcTarget.AllBuffered);
+                Beep();
+                //photonView.RPC("Beep", RpcTarget.AllBuffered);
                 timeFromLastFlash = 0.0f;
                 flashRate /= aoeData.flashRateSpeedUp;
             }
@@ -68,22 +68,19 @@ public class AOE_Base : MonoBehaviour
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        //Detonate();
-        photonView.RPC("Detonate", RpcTarget.AllBuffered);
-        //CheckForEffected();
-        photonView.RPC("CheckForEffected", RpcTarget.AllBuffered);
-        //Destroy(gameObject, 3.0f);
+        Detonate();
+        //photonView.RPC("Detonate", RpcTarget.AllBuffered);
+        CheckForEffected();
+        //photonView.RPC("CheckForEffected", RpcTarget.AllBuffered);
+        Destroy(gameObject, 3.0f);
 
     }
 
-    [PunRPC]
     protected void Detonate()
     {
         beepLight.enabled = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX;
-        rb.constraints = RigidbodyConstraints.FreezeRotationY;
-        rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+
         foreach (MeshRenderer mesh in meshRenderers)
         {
             mesh.enabled = false;
@@ -93,14 +90,13 @@ public class AOE_Base : MonoBehaviour
 
         foreach (var particle in aoeData.particles)
         {
-            ParticleSystem thisParticle = Instantiate(particle, this.transform.position, Quaternion.identity);
+            ParticleSystem thisParticle = Instantiate(particle, this.transform.position, Quaternion.identity, this.transform);
             thisParticle.Emit(5);
         }
         Destroy(this.gameObject, 3.0f);
     }
 
 
-    [PunRPC]
     protected void Beep()
     {
         beepLight.enabled = !beepLight.enabled;
@@ -117,9 +113,13 @@ public class AOE_Base : MonoBehaviour
         }
     }
 
-    public void RPCActivateThrowable()
+    public void RPC_ActivateThrowable()
     {
-        photonView.RPC("ActivateThrowable", RpcTarget.AllBuffered);
+        photonView.RPC("ActivateThrowable", RpcTarget.All);
     }
 
+    public virtual void RPC_CheckForEffected()
+    {
+        photonView.RPC("CheckForEffected", RpcTarget.All);
+    }
 }

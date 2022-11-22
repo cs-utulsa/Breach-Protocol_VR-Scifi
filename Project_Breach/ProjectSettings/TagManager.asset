@@ -15,6 +15,7 @@ TagManager:
   - Breachable Surface
   - Breaching Charge
   - Detonator
+  - Armed Breaching Charge
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - Left Hand Physics
-  - Right Hand Physics
+  - Player Hand
+  - 
   - Ghost Hands
   - WorldCollision
   - Enemy
@@ -35,7 +36,7 @@ TagManager:
   - Spawner
   - Shield Wall
   - Cover
-  - 
+  - Invisible
   - 
   - 
   - 

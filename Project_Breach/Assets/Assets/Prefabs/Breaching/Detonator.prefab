@@ -243,7 +243,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3453439154555380317}
         m_TargetAssemblyTypeName: Detonator, Assembly-CSharp
-        m_MethodName: RPCDetonatorPulled
+        m_MethodName: RPC_DetonatorPulled
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

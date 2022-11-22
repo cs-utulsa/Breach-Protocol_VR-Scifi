@@ -52,6 +52,7 @@ public class RaycastWeapon : MonoBehaviour
         } 
         else
         {
+            source.pitch = 1.0f;
             source.PlayOneShot(weaponData.emptyClip);
         }
     }
@@ -62,6 +63,7 @@ public class RaycastWeapon : MonoBehaviour
 
     protected virtual void Shoot()
     {
+        source.pitch = Random.Range(0.9f, 1.1f);
         source.PlayOneShot(weaponData.shootClip);
         currentAmmo--;
         ray.origin = raycastOrigin.position;
@@ -74,6 +76,7 @@ public class RaycastWeapon : MonoBehaviour
     {
         if (currentAmmo > 0 && !isCharging)
         {
+            source.pitch = Random.Range(0.9f, 1.1f);
             source.PlayOneShot(weaponData.shootClip);
             currentAmmo--;
             ray.origin = raycastOrigin.position;
@@ -133,6 +136,7 @@ public class RaycastWeapon : MonoBehaviour
         if (!isCharging)
         {
             isCharging = true;
+            source.pitch = 1.0f;
             StartCoroutine(StartRecharge());
         }
     }
@@ -159,5 +163,23 @@ public class RaycastWeapon : MonoBehaviour
     public bool GetIsCharging()
     {
         return isCharging;
+    }
+
+    [PunRPC]
+    public virtual void RPC_Shoot()
+    {
+        photonView.RPC("Shoot", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public virtual void RPC_Recharge()
+    {
+        photonView.RPC("Recharge", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public virtual void RPC_AI_Shoot(float xInacc, float yInacc)
+    {
+        photonView.RPC("AI_Shoot", RpcTarget.All, xInacc, yInacc);
     }
 }

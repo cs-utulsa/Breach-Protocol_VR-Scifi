@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Processors;
 using Photon.Pun;
 
-public class AI_Health : MonoBehaviour
+public class AI_Health : MonoBehaviour, IPunObservable
 {
     public AI_Data aiData;
     Ragdoll ragdoll;
@@ -29,19 +29,18 @@ public class AI_Health : MonoBehaviour
         }
     }
 
-    [PunRPC]
     public void TakeDamage(float damage, Vector3 direction)
     {
         currentHealth -= damage;
         if (currentHealth <= 0.0f)
         {
             ragdoll.ApplyForce(direction.normalized);
-            Die();
+            RPC_Die();
         }
     }
 
-    //[PunRPC]
-    private void Die()
+    [PunRPC]
+    public void Die()
     {
         isDead = true;
         ragdoll.ActivateRagdoll();
@@ -52,4 +51,34 @@ public class AI_Health : MonoBehaviour
         return isDead;
     }
 
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetCurrentHealth(float amount)
+    {
+        currentHealth = amount;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentHealth);
+        } else if (stream.IsReading)
+        {
+            currentHealth = (float) stream.ReceiveNext();
+            if (currentHealth <= 0)
+            {
+                RPC_Die();
+            }
+        }
+    }
+
+    [PunRPC]
+    public void RPC_Die()
+    {
+        GetComponent<PhotonView>().RPC("Die", RpcTarget.All);
+    }
 }

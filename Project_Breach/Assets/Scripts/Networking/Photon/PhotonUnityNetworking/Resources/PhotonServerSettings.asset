@@ -57,6 +57,28 @@ MonoBehaviour:
   - TakeDamage
   - OnRaycastHit
   - AI_Shoot
+  - RPC_Recharge
+  - RPC_Shoot
+  - RPC_CheckForEffected
+  - RPC_AI_Shoot
+  - RPC_DetonatorPulled
+  - PlayStoryTrigger
+  - StartEvent
+  - OnTriggerEnter
+  - AimAtTarget
+  - RPC_EnableWeaponIK
+  - RPC_DisableWeaponIK
+  - DisableWeaponIK
+  - EnableWeaponIK
+  - RPC_Die
+  - RPC_ToggleDoor
+  - ToggleDoor
+  - RPC_InInventory
+  - SetInInventory
+  - CloseDoor
+  - OpenDoor
+  - RPC_CloseDoor
+  - RPC_OpenDoor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
