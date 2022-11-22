@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Photon.Pun;
 
-public class BreachCharge : MonoBehaviour
+public class BreachCharge : MonoBehaviour, IPunObservable
 {
     [Header("Animation and Audio")]
     public AudioSource source;
@@ -14,6 +15,13 @@ public class BreachCharge : MonoBehaviour
     public float flashRate = 1.0f;
     public string SurfaceTag = "Breachable Surface";
     public ParticleSystem[] explosiveParticles;
+
+    [Header("Tags")]
+    public string tagArmed = "Armed Breaching Charge";
+    public string tagDisarmed = "Breaching Charge";
+
+    [Header("Photon")]
+    public PhotonView photonView;
     
 
     [Header("Debug")]
@@ -29,6 +37,7 @@ public class BreachCharge : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         interactable = GetComponent<OneHandInteractable>();
+        photonView = GetComponent<PhotonView>();
         chargeInSocketRange = false;
         chargeArmed = false;
     }
@@ -110,4 +119,28 @@ public class BreachCharge : MonoBehaviour
         }
     }
 
+    public void ChangeArmingStatus()
+    {
+        if (interactable.firstInteractorSelecting.transform.CompareTag("Breachable Surface"))
+        {
+            gameObject.tag = tagArmed;
+            gameObject.GetComponentInChildren<Collider>().tag = tagArmed;
+        }
+        else
+        {
+            gameObject.tag = tagDisarmed;
+            gameObject.GetComponentInChildren<Collider>().tag = tagDisarmed;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(gameObject.tag);
+        } else if (stream.IsReading)
+        {
+            gameObject.tag = (string) stream.ReceiveNext();
+        }
+    }
 }

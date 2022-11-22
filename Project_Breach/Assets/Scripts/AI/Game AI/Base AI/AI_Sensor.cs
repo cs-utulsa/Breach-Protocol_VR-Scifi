@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class AI_Sensor : MonoBehaviour
 {
     public AI_Data aiData;
     public Color meshColor = Color.red;
+    public PhotonView photonView;
 
     private LayerMask targetLayers;
     private LayerMask occlusionLayers;
@@ -36,6 +38,7 @@ public class AI_Sensor : MonoBehaviour
         //scanInterval = 1.0f / aiData.scanFrequency;
         targetLayers = LayerMask.GetMask(aiData.targetLayers);
         occlusionLayers = LayerMask.GetMask(aiData.occlusionLayers);
+        photonView = GetComponent<PhotonView>();
     }
 
     /*

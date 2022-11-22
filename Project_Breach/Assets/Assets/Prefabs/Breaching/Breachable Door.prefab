@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7453515639143439114
 Transform:
@@ -134,7 +134,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7278972275335475877
 Transform:
@@ -228,7 +228,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4595909548341126314
 Transform:
@@ -262,7 +262,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3601669989360688132
 Transform:
@@ -392,7 +392,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4659606538375371721
 Transform:
@@ -488,6 +488,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595642285049605523, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
+        type: 3}
+      propertyPath: targetTags.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595642285049605523, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
+        type: 3}
+      propertyPath: targetTags.Array.data[0]
+      value: Breaching Charge
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595642285049605523, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
+        type: 3}
+      propertyPath: targetTags.Array.data[1]
+      value: Armed Breaching Charge
       objectReference: {fileID: 0}
     - target: {fileID: 1595642285049605533, guid: 36dc96e6b9a3c0742bc8d08f7ddb7897,
         type: 3}

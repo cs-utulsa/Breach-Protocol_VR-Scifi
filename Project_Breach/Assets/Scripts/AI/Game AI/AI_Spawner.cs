@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class AI_Spawner : MonoBehaviour
+public class AI_Spawner : MonoBehaviour, IPunObservable
 {
     [Header("Spawnable AI Data")]
     public Transform spawnPoint;
@@ -28,7 +28,7 @@ public class AI_Spawner : MonoBehaviour
             //GameObject spawnedAI = Instantiate(spawnerData.spawnableAI[Random.Range(0, spawnerData.spawnableAI.Length - 1)], spawnPoint);
             GameObject spawnedAI = PhotonNetwork.Instantiate(spawnerData.spawnableAI[Random.Range(0,spawnerData.spawnableAI.Length-1)].name, spawnPoint.position, Quaternion.identity);
             spawnedAI.GetComponent<AI_Agent>().spawner = this;
-            //spawnedAI.transform.parent = null;
+            spawnedAI.transform.parent = null;
             aiAlive++;
         }
         else if  (aiAlive < spawnerData.maxSpawnable){
@@ -40,11 +40,20 @@ public class AI_Spawner : MonoBehaviour
         }
     }
 
-
-    [PunRPC]
     public void AiHasDied()
     {
         aiAlive--;
         this.enabled = true;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(aiAlive);
+        } else if (stream.IsReading)
+        {
+            aiAlive = (int) stream.ReceiveNext();
+        }
     }
 }

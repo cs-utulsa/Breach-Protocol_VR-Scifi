@@ -582,9 +582,9 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Attack
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 1
 --- !u!1 &285150701916983572
 GameObject:
@@ -679,7 +679,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377304013778205307}
   m_LocalRotation: {x: -0.015139185, y: -0.00039776228, z: 0.000039696693, w: 0.9998854}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2416}
+  m_LocalPosition: {x: 0, y: 0, z: -0.2448}
   m_LocalScale: {x: 0.049999986, y: 0.050000004, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -689,7 +689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -1.735, y: -0.046, z: 0.005}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.0263}
+  m_AnchoredPosition: {x: -0.0004, y: 0.0265}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1108698920644859838
@@ -1873,8 +1873,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1108129848804994564}
-  - component: {fileID: 1108129848804994560}
   - component: {fileID: 1108129848804994563}
+  - component: {fileID: 1108129848804994560}
   - component: {fileID: 1108129848804994562}
   - component: {fileID: 1108129848804994589}
   - component: {fileID: 1108129848804994588}
@@ -1905,6 +1905,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &1108129848804994563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108129848804994591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 11400000, guid: 27bd4aea91b455c43a49a52d60b908fb, type: 2}
+  photonView: {fileID: 1240244734509403285}
 --- !u!195 &1108129848804994560
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1927,19 +1941,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1108129848804994563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1108129848804994591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 27bd4aea91b455c43a49a52d60b908fb, type: 2}
 --- !u!114 &1108129848804994562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,6 +1960,8 @@ MonoBehaviour:
   weapon: {fileID: 0}
   animator: {fileID: 6776311673300960694}
   spawner: {fileID: 0}
+  navAgent: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!114 &1108129848804994589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1973,6 +1976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiData: {fileID: 11400000, guid: cfd1eda4c40948346a79d993d4b14002, type: 2}
   meshColor: {r: 1, g: 0, b: 0, a: 1}
+  photonView: {fileID: 0}
   objects: []
   target: {fileID: 0}
 --- !u!114 &1108129848804994588
@@ -2003,6 +2007,9 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   aimTransform: {fileID: 4988756286734850332}
   targetOffset: {x: 0, y: -0.2, z: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  networkTargetPosition: {x: 0, y: 0, z: 0}
+  photonView: {fileID: 1240244734509403285}
   iterations: 10
   weight: 0
   humanBones:
@@ -2014,7 +2021,6 @@ MonoBehaviour:
     weight: 0.5
   angleLimit: 90
   distanceLimit: 0.5
-  photonView: {fileID: 0}
 --- !u!114 &1108129848804994570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,9 +2049,11 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 1
+  OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 1108129848804994588}
+  - {fileID: 1108129848804994565}
   - {fileID: -274260263768357326}
   sceneViewId: 0
   InstantiationId: 0
@@ -6432,6 +6440,7 @@ GameObject:
   - component: {fileID: 4988756285671198166}
   - component: {fileID: 2599037528900264227}
   - component: {fileID: 8081139745113972032}
+  - component: {fileID: 5166382093961898681}
   m_Layer: 13
   m_Name: Short Rifle (AI)
   m_TagString: Primary Weapon
@@ -6548,6 +6557,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 4988756285671198165}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_useGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8081139745113972032}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5166382093961898681}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
@@ -6588,6 +6633,42 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4988756287267363750}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4988756285671198165}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_useGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8081139745113972032}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5166382093961898681}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -6699,7 +6780,7 @@ MonoBehaviour:
   twoHandRotationType: 1
   snapToSecondHand: 1
   breakDistance: 0.2
-  rb: {fileID: 0}
+  rb: {fileID: 4988756285671198165}
   photonView: {fileID: 2599037528900264227}
 --- !u!114 &4988756285671198163
 MonoBehaviour:
@@ -6839,7 +6920,9 @@ MonoBehaviour:
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 4988756285671198164}
   - {fileID: 8081139745113972032}
+  - {fileID: 5166382093961898681}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -6850,7 +6933,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4988756285671198169}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
   m_Name: 
@@ -6859,6 +6942,22 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &5166382093961898681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988756285671198169}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4988756286343554768
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,11 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IPunObservable
 {
     [Header("Player Data")]
     public PlayerData playerData;
@@ -96,6 +97,21 @@ public class Health : MonoBehaviour
         else
         {
             currentHealth += amount;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentHealth);
+        } else if (stream.IsReading)
+        {
+            currentHealth = (float) stream.ReceiveNext();
+            if (currentHealth <= 0)
+            {
+                PlayerDBNO();
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ public class ExpGrenade : AOE_Base
     List<Shield> teamShields = new List<Shield>();
     List<AI_Health> aiHealths = new List<AI_Health>();
 
-    [PunRPC]
+    
     protected override void CheckForEffected()
     {
         collidersInRange = Physics.OverlapSphere(transform.position, aoeData.range, mask);
@@ -50,4 +50,12 @@ public class ExpGrenade : AOE_Base
         teamShields.Clear();
         aiHealths.Clear();
     }
+
+    [PunRPC]
+    public override void RPC_CheckForEffected()
+    {
+        photonView.RPC("CheckForEffected", RpcTarget.All);
+    }
+
+
 }

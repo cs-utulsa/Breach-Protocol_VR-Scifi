@@ -5,8 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SocketTagCheck : XRSocketInteractor
 {
-    [Header("Tag")]
-    public string targetTag = string.Empty;
+    [Header("Tags")]
+    public string[] targetTags;
 
     [System.Obsolete]
     public override bool CanHover(XRBaseInteractable interactable)
@@ -21,6 +21,13 @@ public class SocketTagCheck : XRSocketInteractor
 
     private bool MatchUsingTag(XRBaseInteractable interactable)
     {
-        return interactable.CompareTag(targetTag);
+        foreach (string tag in targetTags)
+        {
+            if (interactable.CompareTag(tag))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
