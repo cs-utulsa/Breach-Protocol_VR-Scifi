@@ -17,6 +17,7 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
         photonView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
     }
+    /*
     public void ChangeLayerOnDrop(float delay)
     {
         foreach (Collider collider in colliders)
@@ -35,21 +36,44 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
             collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
         }
     }
+    */
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         photonView.RequestOwnership();
 
-        if (firstInteractorSelecting.transform.gameObject.CompareTag("Left Hand"))
+        if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
+        {
+            ChangeToWorldCollisionLayer();
+        }
+        else if (firstInteractorSelecting.transform.gameObject.CompareTag("Left Hand"))
         {
             attachTransform = leftAttachPoint;
+            RestoreInteractableLayer();
         }
         else
         {
             attachTransform = rightAttachPoint;
+            RestoreInteractableLayer();
         }
 
         base.OnSelectEntered(args);
+    }
+
+    private void ChangeToWorldCollisionLayer()
+    {
+        foreach (Collider collider in colliders)
+        {
+            collider.gameObject.layer = LayerMask.NameToLayer("WorldCollision");
+        }
+    }
+
+    private void RestoreInteractableLayer()
+    {
+        foreach (Collider collider in colliders)
+        {
+            collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

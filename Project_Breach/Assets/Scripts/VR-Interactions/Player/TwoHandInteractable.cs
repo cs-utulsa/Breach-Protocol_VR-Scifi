@@ -119,13 +119,16 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
             inInventory = true;
+            ChangeToWorldCollisionLayer();
         } else if (firstInteractorSelecting.transform.gameObject.CompareTag("Left Hand"))
         {
             attachTransform = leftAttachPoint;
+            RestoreInteractableLayer();
         }
         else
         {
             attachTransform = rightAttachPoint;
+            RestoreInteractableLayer();
         }
 
         base.OnSelectEntered(args);
@@ -147,6 +150,7 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         
     }
 
+    /*
     public void ChangeLayerOnDrop(float delay)
     {
         foreach (Collider collider in colliders)
@@ -155,10 +159,29 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         }
         StartCoroutine(RestoreLayers(delay));
     }
+    */
 
+    /*
     private IEnumerator RestoreLayers(float delay)
     {
         yield return new WaitForSeconds(delay);
+        foreach (Collider collider in colliders)
+        {
+            collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
+        }
+    }
+    */
+
+    private void ChangeToWorldCollisionLayer()
+    {
+        foreach (Collider collider in colliders)
+        {
+            collider.gameObject.layer = LayerMask.NameToLayer("WorldCollision");
+        }
+    }
+
+    private void RestoreInteractableLayer()
+    {
         foreach (Collider collider in colliders)
         {
             collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
