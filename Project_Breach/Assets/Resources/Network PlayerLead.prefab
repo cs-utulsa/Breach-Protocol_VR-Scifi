@@ -896,8 +896,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
   playerShield: {fileID: 0}
-  healthSlider: {fileID: 5770896513951224465}
-  shieldSlider: {fileID: 2355711701437614535}
+  healthSlider: {fileID: 2355711701437614535}
+  shieldSlider: {fileID: 5770896513951224465}
   photonView: {fileID: 7618741066482701491}
 --- !u!1 &950537241046503588
 GameObject:

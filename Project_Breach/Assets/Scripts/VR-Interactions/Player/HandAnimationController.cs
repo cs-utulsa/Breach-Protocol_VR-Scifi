@@ -5,26 +5,50 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandAnimationController : MonoBehaviour
 {
-    public Animator animator;
+    public Animator[] animators;
+    public Animator activeAnimator;
     public XRDirectInteractor interactor;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        animators = GetComponentsInChildren<Animator>();
         interactor = GetComponent<XRDirectInteractor>();
+
+        foreach (Animator anim in animators)
+        {
+            if (anim.isActiveAndEnabled)
+            {
+                activeAnimator = anim;
+                break;
+            }
+        }
     }
 
 
     private void Update()
     {
-        if (interactor.hasSelection && interactor.firstInteractableSelected.transform.tag == "Primary Weapon" || interactor.hasSelection && interactor.firstInteractableSelected.transform.tag == "Secondary Weapon")
+        if (!activeAnimator.isActiveAndEnabled)
         {
-            animator.SetBool("Primary Grab", true);
+            foreach (Animator anim in animators)
+            {
+                if (anim.isActiveAndEnabled)
+                {
+                    activeAnimator = anim;
+                    break;
+                }
+            }
         }
         else
         {
-            animator.SetBool("Primary Grab", false);
+            if (interactor.hasSelection && interactor.firstInteractableSelected.transform.tag == "Primary Weapon" || interactor.hasSelection && interactor.firstInteractableSelected.transform.tag == "Secondary Weapon")
+            {
+                activeAnimator.SetBool("Primary Grab", true);
+            }
+            else
+            {
+                activeAnimator.SetBool("Primary Grab", false);
+            }
         }
     }
 }
