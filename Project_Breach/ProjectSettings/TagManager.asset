@@ -19,6 +19,7 @@ TagManager:
   - Left Hand
   - Right Hand
   - Spectator Camera
+  - Finger
   layers:
   - Default
   - TransparentFX

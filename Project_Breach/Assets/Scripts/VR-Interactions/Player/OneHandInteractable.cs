@@ -45,21 +45,31 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        grabbedOverNetwork = true;
-        grabbedByMe = true;
         photonView.RequestOwnership();
-
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
+            grabbedOverNetwork = true;
+            grabbedByMe = true;
             ChangeToWorldCollisionLayer();
         }
         else if (firstInteractorSelecting.transform.gameObject.CompareTag("Left Hand"))
         {
+            grabbedOverNetwork = true;
+            grabbedByMe = true;
             attachTransform = leftAttachPoint;
+            RestoreInteractableLayer();
+        }
+        else if (firstInteractorSelecting.transform.gameObject.CompareTag("Right Hand"))
+        {
+            grabbedOverNetwork = true;
+            grabbedByMe = true;
+            attachTransform = rightAttachPoint;
             RestoreInteractableLayer();
         }
         else
         {
+            grabbedOverNetwork = false;
+            grabbedByMe = false;
             attachTransform = rightAttachPoint;
             RestoreInteractableLayer();
         }
@@ -77,6 +87,11 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
     public override bool IsSelectableBy(IXRSelectInteractor interactor)
     {
         if (grabbedOverNetwork && grabbedByMe)
+        {
+            return true;
+        }
+
+        if (interactor.transform.gameObject.layer == LayerMask.NameToLayer("Objective") && !grabbedOverNetwork)
         {
             return true;
         }

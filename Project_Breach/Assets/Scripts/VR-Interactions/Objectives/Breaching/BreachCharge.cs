@@ -12,13 +12,14 @@ public class BreachCharge : MonoBehaviour, IPunObservable
     public AudioClip placedAudio = null;
     public AudioClip beepAudio = null;
     public AudioClip blowUpAudio = null;
-    public float flashRate = 1.0f;
+    public float flashRate = 5.0f;
     public string SurfaceTag = "Breachable Surface";
+    public string ArmedTag = "Armed Breaching Charge";
+    public string DisarmedTag = "Breaching Charge";
     public ParticleSystem[] explosiveParticles;
 
-    [Header("Tags")]
-    public string tagArmed = "Armed Breaching Charge";
-    public string tagDisarmed = "Breaching Charge";
+    [Header("Keypad")]
+    public Keypad keypad;
 
     [Header("Photon")]
     public PhotonView photonView;
@@ -35,6 +36,7 @@ public class BreachCharge : MonoBehaviour, IPunObservable
 
     void Awake()
     {
+        keypad = GetComponent<Keypad>();
         source = GetComponent<AudioSource>();
         interactable = GetComponent<OneHandInteractable>();
         photonView = GetComponent<PhotonView>();
@@ -48,9 +50,23 @@ public class BreachCharge : MonoBehaviour, IPunObservable
         {
             breachableSurface = other.GetComponentInParent<BreachableSurface>();
             chargeInSocketRange = true;
-            chargeArmed = breachableSurface.IsBreacherAttached();
+            gameObject.GetComponentInChildren<Collider>().tag = DisarmedTag;
             timeFromLastFlash = 0.0f;
+            beepLight.color = Color.red;
             StartCoroutine(BeepRoutine());
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag(SurfaceTag))
+        {
+            chargeArmed = keypad.GetIsActivated();
+            if (chargeArmed)
+            {
+                gameObject.GetComponentInChildren<Collider>().tag = ArmedTag;
+                beepLight.color = Color.green;
+            }
         }
     }
 
@@ -61,7 +77,9 @@ public class BreachCharge : MonoBehaviour, IPunObservable
             chargeInSocketRange = false;
             chargeArmed = false;
             timeFromLastFlash = 0.0f;
+            gameObject.GetComponentInChildren<Collider>().tag = DisarmedTag;
             beepLight.enabled = false;
+            beepLight.color = Color.red;
             StopAllCoroutines();
         }
     }
@@ -123,13 +141,11 @@ public class BreachCharge : MonoBehaviour, IPunObservable
     {
         if (interactable.firstInteractorSelecting.transform.CompareTag("Breachable Surface"))
         {
-            gameObject.tag = tagArmed;
-            gameObject.GetComponentInChildren<Collider>().tag = tagArmed;
+            keypad.GenerateNewCode();
         }
         else
         {
-            gameObject.tag = tagDisarmed;
-            gameObject.GetComponentInChildren<Collider>().tag = tagDisarmed;
+            keypad.ResetKeypad();
         }
     }
 
@@ -137,10 +153,19 @@ public class BreachCharge : MonoBehaviour, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(gameObject.tag);
+            stream.SendNext(keypad.GetEnteredCode());
         } else if (stream.IsReading)
         {
-            gameObject.tag = (string) stream.ReceiveNext();
+            keypad.SetEnteredCode((string)stream.ReceiveNext());
+            keypad.CheckForActivation();
+            if (keypad.GetIsActivated())
+            {
+                chargeArmed = true;
+            }
+            else
+            {
+                chargeArmed = false;
+            }
         }
     }
 }

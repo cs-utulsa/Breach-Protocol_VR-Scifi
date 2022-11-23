@@ -99,6 +99,8 @@ public class Detonator : MonoBehaviour
             particle.Emit(5);
         }
 
+        breachCharge.keypad.enterKeyText.enabled = false;
+        breachCharge.keypad.masterKeyText.enabled = false;
 
         Destroy(breachCharge.gameObject, 3.0f);
         Destroy(breachCharge.GetSurfaceToBreach().gameObject, 3.0f);
