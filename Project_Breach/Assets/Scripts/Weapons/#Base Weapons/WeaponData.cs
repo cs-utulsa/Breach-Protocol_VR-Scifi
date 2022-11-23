@@ -17,6 +17,8 @@ public class WeaponData : ScriptableObject
     public AudioClip shootClip;
     public AudioClip emptyClip;
     public AudioClip rechargeClip;
+    public AudioClip grabClip;
+    public AudioClip holsterClip;
 
     [Header("Animator Attributes")]
     public string shootParam = "Shoot";

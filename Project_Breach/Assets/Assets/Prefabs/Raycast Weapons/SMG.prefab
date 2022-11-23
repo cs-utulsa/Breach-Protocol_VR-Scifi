@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816605098823052136}
   m_Layer: 13
-  m_Name: Attach Point
+  m_Name: Attach Point Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 816605099646742617}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &816605099644830814
 GameObject:
@@ -333,16 +333,17 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816605099646742610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7446, y: 1.155, z: 1.743}
-  m_LocalScale: {x: 1.25, y: 1.35, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.35, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9058304558563121413}
   - {fileID: 816605098561594519}
   - {fileID: 816605098521388055}
   - {fileID: 816605099644830809}
-  - {fileID: 816605098823052136}
   - {fileID: 89596022922704393}
+  - {fileID: 6203036947362430855}
+  - {fileID: 816605098823052136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -470,21 +471,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 816605099646742623}
-        m_TargetAssemblyTypeName: TwoHandInteractable, Assembly-CSharp
-        m_MethodName: ChangeLayerOnDrop
-        m_Mode: 4
+      - m_Target: {fileID: 816605099646742616}
+        m_TargetAssemblyTypeName: SemiautomaticWeapon, Assembly-CSharp
+        m_MethodName: PlaySelectSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 5
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 816605099646742616}
         m_TargetAssemblyTypeName: RaycastWeapon, Assembly-CSharp
         m_MethodName: TriggerReleased
@@ -615,7 +616,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AttachTransform: {fileID: 816605098823052136}
-  m_AttachEaseInTime: 0
+  m_AttachEaseInTime: 0.25
   m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -658,6 +659,8 @@ MonoBehaviour:
   breakDistance: 0.2
   rb: {fileID: 0}
   photonView: {fileID: 0}
+  leftAttachPoint: {fileID: 6203036947362430855}
+  rightAttachPoint: {fileID: 816605098823052136}
 --- !u!114 &816605099646742616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,7 +1088,7 @@ RectTransform:
   m_Children:
   - {fileID: 9064763178114115610}
   m_Father: {fileID: 816605099646742617}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1153,6 +1156,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &5685807574235153122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6203036947362430855}
+  m_Layer: 13
+  m_Name: Attach Point Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6203036947362430855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685807574235153122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 0, z: 0.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 816605099646742617}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8574361849427166143
 GameObject:
   m_ObjectHideFlags: 0

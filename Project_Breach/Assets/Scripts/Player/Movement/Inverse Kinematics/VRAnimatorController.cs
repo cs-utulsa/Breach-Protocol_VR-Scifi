@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using Photon.Pun;
+using UnityEngine.XR.Interaction.Toolkit;
+using Unity.XR.CoreUtils;
 
 public class VRAnimatorController : MonoBehaviour
 {
@@ -33,8 +37,7 @@ public class VRAnimatorController : MonoBehaviour
         float previousDirectionX = animator.GetFloat("DirectionX");
         float previousDirectionY = animator.GetFloat("DirectionY");
         animator.SetBool("isMoving", headsetLocalSpeed.magnitude > speedTreshold);
-        animator.SetFloat("DirectionX", Mathf.Lerp(previousDirectionX, Mathf.Clamp(headsetLocalSpeed.x,-1,1),smoothing));
-        animator.SetFloat("DirectionY", Mathf.Lerp(previousDirectionY, Mathf.Clamp(headsetLocalSpeed.z, -1, 2),smoothing));
-
+        animator.SetFloat("DirectionX", Mathf.Lerp(previousDirectionX, Mathf.Clamp(headsetLocalSpeed.x, -1, 1), smoothing));
+        animator.SetFloat("DirectionY", Mathf.Lerp(previousDirectionY, Mathf.Clamp(headsetLocalSpeed.z, -1, 2), smoothing));
     }
 }
