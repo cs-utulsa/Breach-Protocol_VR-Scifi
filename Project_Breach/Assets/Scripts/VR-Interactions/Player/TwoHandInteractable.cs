@@ -15,11 +15,15 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
     public float breakDistance = 0.1f;
     public Rigidbody rb = null;
     public PhotonView photonView;
+    public Transform leftAttachPoint;
+    public Transform rightAttachPoint;
 
     private IXRSelectInteractor firstInteractor, secondInteractor;
     private Quaternion attachInitialRotation;
     private Quaternion initialRotationOffset;
     private bool inInventory = false;
+    private bool grabbedOverNetwork;
+    private bool grabbedByMe;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,9 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         rb = GetComponent<Rigidbody>();
         photonView = GetComponent<PhotonView>();
         rb.maxAngularVelocity = 20.0f;
+        attachTransform = rightAttachPoint;
+        grabbedOverNetwork = false;
+        grabbedByMe = false;
         foreach (var item in secondHandGrabPoints)
         {
             item.selectEntered.AddListener(OnSecondHandGrab);
@@ -111,11 +118,23 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         StopAllCoroutines();
+        grabbedOverNetwork = true;
+        grabbedByMe = true;
         photonView.RequestOwnership();
         attachInitialRotation = args.interactorObject.transform.localRotation;
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
         {
             inInventory = true;
+            ChangeToWorldCollisionLayer();
+        } else if (firstInteractorSelecting.transform.gameObject.CompareTag("Left Hand"))
+        {
+            attachTransform = leftAttachPoint;
+            RestoreInteractableLayer();
+        }
+        else
+        {
+            attachTransform = rightAttachPoint;
+            RestoreInteractableLayer();
         }
 
         base.OnSelectEntered(args);
@@ -124,6 +143,8 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         secondInteractor = null;
+        grabbedOverNetwork = false;
+        grabbedByMe = false;
         args.interactorObject.transform.localRotation = attachInitialRotation;
         base.OnSelectExited(args);
     }
@@ -131,12 +152,25 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
     public override bool IsSelectableBy(IXRSelectInteractor interactor)
     {
         bool isalreadygrabbed = firstInteractorSelecting != null && !firstInteractorSelecting.transform.gameObject.CompareTag("Inventory") &&
-            !interactor.Equals(firstInteractorSelecting) && !inInventory;
+         !interactor.Equals(firstInteractorSelecting) && !inInventory;
+
+        if (grabbedOverNetwork && grabbedByMe)
+        {
+            return true;
+        }
+
+        if (grabbedOverNetwork && !photonView.IsMine)
+        {
+            return false;
+        }
+
+
 
         return (base.IsSelectableBy(interactor) && !isalreadygrabbed);
         
     }
 
+    /*
     public void ChangeLayerOnDrop(float delay)
     {
         foreach (Collider collider in colliders)
@@ -145,10 +179,29 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         }
         StartCoroutine(RestoreLayers(delay));
     }
+    */
 
+    /*
     private IEnumerator RestoreLayers(float delay)
     {
         yield return new WaitForSeconds(delay);
+        foreach (Collider collider in colliders)
+        {
+            collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
+        }
+    }
+    */
+
+    private void ChangeToWorldCollisionLayer()
+    {
+        foreach (Collider collider in colliders)
+        {
+            collider.gameObject.layer = LayerMask.NameToLayer("WorldCollision");
+        }
+    }
+
+    private void RestoreInteractableLayer()
+    {
         foreach (Collider collider in colliders)
         {
             collider.gameObject.layer = LayerMask.NameToLayer("Interactable");
@@ -160,10 +213,21 @@ public class TwoHandInteractable : XRGrabInteractable, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(rb.useGravity);
+            stream.SendNext(grabbedOverNetwork);
+            stream.SendNext(colliders[0].gameObject.layer);
         }
         else if (stream.IsReading)
         {
             rb.useGravity = (bool)stream.ReceiveNext();
+            grabbedOverNetwork = (bool)stream.ReceiveNext();
+            int colliderLayer = (int)stream.ReceiveNext();
+            if (colliders[0].gameObject.layer != colliderLayer)
+            {
+                foreach (Collider collider in colliders)
+                {
+                    collider.gameObject.layer = colliderLayer;
+                }
+            }
         }
     }
 

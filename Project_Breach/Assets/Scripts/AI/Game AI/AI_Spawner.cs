@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class AI_Spawner : MonoBehaviour, IPunObservable
+public class AI_Spawner : MonoBehaviour //, IPunObservable
 {
     [Header("Spawnable AI Data")]
     public Transform spawnPoint;
@@ -46,6 +46,7 @@ public class AI_Spawner : MonoBehaviour, IPunObservable
         this.enabled = true;
     }
 
+    /*
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -56,4 +57,5 @@ public class AI_Spawner : MonoBehaviour, IPunObservable
             aiAlive = (int) stream.ReceiveNext();
         }
     }
+    */
 }

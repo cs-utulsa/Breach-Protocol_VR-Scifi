@@ -16,6 +16,9 @@ TagManager:
   - Breaching Charge
   - Detonator
   - Armed Breaching Charge
+  - Left Hand
+  - Right Hand
+  - Spectator Camera
   layers:
   - Default
   - TransparentFX
