@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : MonoBehaviour, IPunObservable
+public class PlayerUI : MonoBehaviour
 {
     [Header("Tracked Data")]
     public Health playerHealth;
@@ -21,8 +21,6 @@ public class PlayerUI : MonoBehaviour, IPunObservable
     public SocketTagCheck primarySocket;
     public SocketTagCheck secondarySocket;
 
-    [Header("Photon")]
-    public PhotonView photonView;
 
     private bool primaryFull;
     private bool secondaryFull;
@@ -30,7 +28,6 @@ public class PlayerUI : MonoBehaviour, IPunObservable
     {
         playerHealth = GetComponentInParent<Health>();
         playerShield = GetComponentInParent<Shield>();
-        photonView = GetComponentInParent<PhotonView>();
         healthSlider.maxValue = playerHealth.playerData.maxHealth;
         shieldSlider.maxValue = playerShield.playerData.maxShield;
         secondaryText.color = Color.red;
@@ -41,11 +38,16 @@ public class PlayerUI : MonoBehaviour, IPunObservable
 
     private void Update()
     {
-        if (photonView.IsMine)
+        if (healthSlider.value != playerHealth.getCurrentHealth())
         {
-            shieldSlider.value = playerShield.getShieldCharge();
             healthSlider.value = playerHealth.getCurrentHealth();
         }
+
+        if (shieldSlider.value != playerShield.getShieldCharge())
+        {
+            shieldSlider.value = playerShield.getShieldCharge();
+        }
+        
     }
 
     public void TogglePrimaryUI()
@@ -75,23 +77,6 @@ public class PlayerUI : MonoBehaviour, IPunObservable
         {
             secondaryText.text = "Secondary: N/A";
             secondaryText.color = Color.red;
-        }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(primaryFull);
-            stream.SendNext(secondaryFull);
-            stream.SendNext(playerHealth.getCurrentHealth());
-            stream.SendNext(playerShield.getShieldCharge());
-        } else if (stream.IsReading)
-        {
-            primaryFull = (bool) stream.ReceiveNext();
-            secondaryFull = (bool)stream.ReceiveNext();
-            healthSlider.value = (float)stream.ReceiveNext();
-            shieldSlider.value = (float)stream.ReceiveNext();
         }
     }
 }

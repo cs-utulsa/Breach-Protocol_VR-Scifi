@@ -9,6 +9,7 @@ public class Health : MonoBehaviour, IPunObservable
 {
     [Header("Player Data")]
     public PlayerData playerData;
+    public PhotonView photonView;
 
     [Header("Player Locomotion")]
     public ActionBasedContinuousMoveProvider moveProvider;
@@ -32,6 +33,7 @@ public class Health : MonoBehaviour, IPunObservable
         currentHealth = playerData.maxHealth;
         source = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
+        photonView = GetComponent<PhotonView>();
     }
 
     public void TakeDamage(float value)
@@ -107,11 +109,15 @@ public class Health : MonoBehaviour, IPunObservable
             stream.SendNext(currentHealth);
         } else if (stream.IsReading)
         {
-            currentHealth = (float) stream.ReceiveNext();
-            if (currentHealth <= 0)
+            if (photonView.IsMine)
             {
-                PlayerDBNO();
+                currentHealth = (float)stream.ReceiveNext();
+                if (currentHealth <= 0)
+                {
+                    PlayerDBNO();
+                }
             }
+
         }
     }
 }

@@ -79,7 +79,7 @@ public class Detonator : MonoBehaviour
 
     private IEnumerator DetonateRoutine()
     {
-        breachCharge.flashRate = breachCharge.flashRate / 3.0f;
+        breachCharge.flashRate = breachCharge.flashRate / 10.0f;
         yield return new WaitForSeconds(2.0f);
 
         //breachCharge.source.mute = true;
