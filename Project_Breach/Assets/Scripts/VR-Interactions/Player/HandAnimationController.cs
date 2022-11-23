@@ -44,10 +44,16 @@ public class HandAnimationController : MonoBehaviour
             if (interactor.hasSelection && interactor.firstInteractableSelected.transform.tag == "Primary Weapon" || interactor.hasSelection && interactor.firstInteractableSelected.transform.tag == "Secondary Weapon")
             {
                 activeAnimator.SetBool("Primary Grab", true);
+                activeAnimator.SetBool("Detonator Grab", false);
+            } else if (interactor.hasSelection && interactor.firstInteractableSelected.transform.tag == "Detonator")
+            {
+                activeAnimator.SetBool("Detonator Grab", true);
+                activeAnimator.SetBool("Primary Grab", false);
             }
             else
             {
                 activeAnimator.SetBool("Primary Grab", false);
+                activeAnimator.SetBool("Detonator Grab", false);
             }
         }
     }
