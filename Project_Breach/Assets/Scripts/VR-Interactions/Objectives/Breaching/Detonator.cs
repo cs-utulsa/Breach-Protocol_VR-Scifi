@@ -79,7 +79,7 @@ public class Detonator : MonoBehaviour
 
     private IEnumerator DetonateRoutine()
     {
-        breachCharge.flashRate = breachCharge.flashRate / 10.0f;
+        breachCharge.flashRate = breachCharge.flashRate / 3.0f;
         yield return new WaitForSeconds(2.0f);
 
         //breachCharge.source.mute = true;
@@ -99,6 +99,8 @@ public class Detonator : MonoBehaviour
             particle.Emit(5);
         }
 
+        breachCharge.keypad.enterKeyText.enabled = false;
+        breachCharge.keypad.masterKeyText.enabled = false;
 
         Destroy(breachCharge.gameObject, 3.0f);
         Destroy(breachCharge.GetSurfaceToBreach().gameObject, 3.0f);

@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_HapticSelectCancelIntensity: 0
   m_HapticSelectCancelDuration: 0
   m_PlayHapticsOnHoverEntered: 1
-  m_HapticHoverEnterIntensity: 0.25
+  m_HapticHoverEnterIntensity: 0.1
   m_HapticHoverEnterDuration: 0.5
   m_PlayHapticsOnHoverExited: 0
   m_HapticHoverExitIntensity: 0
@@ -9101,7 +9101,7 @@ MonoBehaviour:
   m_HapticSelectCancelIntensity: 0
   m_HapticSelectCancelDuration: 0
   m_PlayHapticsOnHoverEntered: 1
-  m_HapticHoverEnterIntensity: 0.25
+  m_HapticHoverEnterIntensity: 0.1
   m_HapticHoverEnterDuration: 0.5
   m_PlayHapticsOnHoverExited: 0
   m_HapticHoverExitIntensity: 0
@@ -10756,9 +10756,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4122560481683407625}
+  - component: {fileID: 8489738939513676478}
   m_Layer: 7
   m_Name: f_index.03.R_end
-  m_TagString: Untagged
+  m_TagString: Finger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10778,6 +10779,19 @@ Transform:
   m_Father: {fileID: 4122560481236449192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8489738939513676478
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122560481683407624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00025
+  m_Center: {x: 0, y: 0.0002, z: 0}
 --- !u!1 &4122560481683460739
 GameObject:
   m_ObjectHideFlags: 0
@@ -11418,9 +11432,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4122560481782908379}
+  - component: {fileID: 2941054473328531424}
   m_Layer: 7
   m_Name: f_index.03.R_end
-  m_TagString: Untagged
+  m_TagString: Finger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11440,6 +11455,19 @@ Transform:
   m_Father: {fileID: 4122560481321965850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2941054473328531424
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122560481782908378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00025
+  m_Center: {x: 0, y: 0.0002, z: 0}
 --- !u!1 &4122560481784768376
 GameObject:
   m_ObjectHideFlags: 0
