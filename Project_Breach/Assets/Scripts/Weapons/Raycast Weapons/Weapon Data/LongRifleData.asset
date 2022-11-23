@@ -19,6 +19,8 @@ MonoBehaviour:
   shootClip: {fileID: 8300000, guid: 25180b9ffed11124590e6c670963b272, type: 3}
   emptyClip: {fileID: 8300000, guid: 1d6805d1922023d46a8d1fd0d51edf01, type: 3}
   rechargeClip: {fileID: 8300000, guid: 27d8a3226d42fe946996675b6f73243f, type: 3}
+  grabClip: {fileID: 8300000, guid: c366b17d0c944304e83d33bcfedbe95a, type: 3}
+  holsterClip: {fileID: 8300000, guid: 5f580b91b33ce5e43ae475dcdb00150c, type: 3}
   shootParam: Shoot
   tracerEffect: {fileID: -9093093250212295382, guid: 114fc34838f1acc4e93fa36140959417,
     type: 3}

@@ -6,7 +6,10 @@ using Photon.Pun;
 public class AutomaticDoor : MonoBehaviour
 {
     public Animator animator;
+    public AudioSource source;
     public string openParam = "Open";
+    public AudioClip openClip;
+    public AudioClip closeClip;
     public PhotonView photonView;
 
 
@@ -15,6 +18,7 @@ public class AutomaticDoor : MonoBehaviour
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        source = GetComponentInChildren<AudioSource>();
         photonView = GetComponent<PhotonView>();
         isOpen = false;
         animator.SetBool(openParam, isOpen);
@@ -51,11 +55,15 @@ public class AutomaticDoor : MonoBehaviour
     {
         isOpen = true;
         animator.SetBool(openParam, isOpen);
+        source.Stop();
+        source.PlayOneShot(openClip);
     }
     [PunRPC]
     public void CloseDoor()
     {
         isOpen = false;
         animator.SetBool(openParam, isOpen);
+        source.Stop();
+        source.PlayOneShot(closeClip);
     }
 }

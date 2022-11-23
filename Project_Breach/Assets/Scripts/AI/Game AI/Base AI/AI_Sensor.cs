@@ -38,7 +38,7 @@ public class AI_Sensor : MonoBehaviour
         //scanInterval = 1.0f / aiData.scanFrequency;
         targetLayers = LayerMask.GetMask(aiData.targetLayers);
         occlusionLayers = LayerMask.GetMask(aiData.occlusionLayers);
-        photonView = GetComponent<PhotonView>();
+        //photonView = GetComponent<PhotonView>();
     }
 
     /*

@@ -84,4 +84,16 @@ public class SemiautomaticWeapon : RaycastWeapon
     {
         photonView.RPC("Recharge", RpcTarget.All);
     }
+
+    public void PlaySelectSound()
+    {
+        if(interactable.firstInteractorSelecting.transform.CompareTag("Left Hand") || interactable.firstInteractorSelecting.transform.CompareTag("Right Hand"))
+        {
+            source.PlayOneShot(weaponData.grabClip);
+        }
+        else
+        {
+            source.PlayOneShot(weaponData.holsterClip);
+        }
+    }
 }

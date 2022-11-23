@@ -12,10 +12,15 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
     public Transform leftAttachPoint;
     public Transform rightAttachPoint;
 
+    private bool grabbedOverNetwork;
+    private bool grabbedByMe;
+
     public void Start()
     {
         photonView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
+        grabbedOverNetwork = false;
+        grabbedByMe = false;
     }
     /*
     public void ChangeLayerOnDrop(float delay)
@@ -40,6 +45,8 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        grabbedOverNetwork = true;
+        grabbedByMe = true;
         photonView.RequestOwnership();
 
         if (firstInteractorSelecting.transform.gameObject.CompareTag("Inventory"))
@@ -58,6 +65,31 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
         }
 
         base.OnSelectEntered(args);
+    }
+
+    protected override void OnSelectExited(SelectExitEventArgs args)
+    {
+        grabbedOverNetwork = false;
+        grabbedByMe = false;
+        base.OnSelectExited(args);
+    }
+
+    public override bool IsSelectableBy(IXRSelectInteractor interactor)
+    {
+        if (grabbedOverNetwork && grabbedByMe)
+        {
+            return true;
+        }
+
+        if (grabbedOverNetwork && !photonView.IsMine)
+        {
+            return false;
+        } 
+
+
+
+        return (base.IsSelectableBy(interactor));
+
     }
 
     private void ChangeToWorldCollisionLayer()
@@ -81,10 +113,12 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(rb.useGravity);
+            stream.SendNext(grabbedOverNetwork);
         }
         else if (stream.IsReading)
         {
             rb.useGravity = (bool) stream.ReceiveNext();
+            grabbedOverNetwork = (bool)stream.ReceiveNext();
         }
     }
 }

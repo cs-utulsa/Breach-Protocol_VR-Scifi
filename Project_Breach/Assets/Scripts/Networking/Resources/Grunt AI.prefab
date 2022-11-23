@@ -6721,12 +6721,12 @@ MonoBehaviour:
   sensor: {fileID: 1108129848804994589}
   aiHealth: {fileID: 1108129848804994588}
   aiData: {fileID: 11400000, guid: cfd1eda4c40948346a79d993d4b14002, type: 2}
-  weaponIK: {fileID: 0}
-  weapon: {fileID: 0}
+  weaponIK: {fileID: 1108129848804994565}
+  weapon: {fileID: 4988756285671198163}
   animator: {fileID: 6776311673300960694}
   spawner: {fileID: 0}
-  navAgent: {fileID: 0}
-  photonView: {fileID: 0}
+  navAgent: {fileID: 1108129848804994560}
+  photonView: {fileID: 1240244734509403285}
 --- !u!114 &1108129848804994589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6817,7 +6817,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 1108129848804994562}
   - {fileID: 1108129848804994588}
   - {fileID: 1108129848804994565}
   - {fileID: -274260263768357326}

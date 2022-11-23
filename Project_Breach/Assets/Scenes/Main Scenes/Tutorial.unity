@@ -16397,7 +16397,7 @@ PrefabInstance:
     - target: {fileID: 9183341643109712976, guid: e318e998dda88ab42892ed209d52b504,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1619999
       objectReference: {fileID: 0}
     - target: {fileID: 9183341643109712976, guid: e318e998dda88ab42892ed209d52b504,
         type: 3}
@@ -50584,6 +50584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -179.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641995292810233900, guid: c151c007dcbb4e943ae614bc097ec86f,
+        type: 3}
+      propertyPath: m_AttachEaseInTime
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7884288959429191109, guid: c151c007dcbb4e943ae614bc097ec86f,
         type: 3}
@@ -85872,25 +85877,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1915372541}
     m_Modifications:
-    - target: {fileID: 3026117394913792611, guid: 9496830f04029404b9cb2acd37b32668,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.085563
-      objectReference: {fileID: 0}
-    - target: {fileID: 3026117394913792611, guid: 9496830f04029404b9cb2acd37b32668,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.010012007
-      objectReference: {fileID: 0}
-    - target: {fileID: 4587111318176571280, guid: 9496830f04029404b9cb2acd37b32668,
-        type: 3}
-      propertyPath: m_CullingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6176193267604352860, guid: 9496830f04029404b9cb2acd37b32668,
         type: 3}
       propertyPath: sceneViewId
-      value: 52
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6241934044156983230, guid: 9496830f04029404b9cb2acd37b32668,
         type: 3}
@@ -85947,25 +85937,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6643160602533326552, guid: 9496830f04029404b9cb2acd37b32668,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.0044814
-      objectReference: {fileID: 0}
-    - target: {fileID: 6643160602533326552, guid: 9496830f04029404b9cb2acd37b32668,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0100116255
-      objectReference: {fileID: 0}
     - target: {fileID: 6761061229077507332, guid: 9496830f04029404b9cb2acd37b32668,
         type: 3}
       propertyPath: m_Name
       value: Openable Doors
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291288409447741960, guid: 9496830f04029404b9cb2acd37b32668,
-        type: 3}
-      propertyPath: m_SynchronizeLayers.Array.data[0].SynchronizeType
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9496830f04029404b9cb2acd37b32668, type: 3}
