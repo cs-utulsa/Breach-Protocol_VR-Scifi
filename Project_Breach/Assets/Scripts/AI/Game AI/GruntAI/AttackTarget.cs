@@ -1,8 +1,10 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using behaviorNameSpace;
 using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 public class AttackTarget : ActionNode
 {
@@ -10,24 +12,32 @@ public class AttackTarget : ActionNode
     protected override void OnStart()
     {
         // Enable weapon inverse kinematics to allow for the AI to take aim.
-        context.aiAgent.weaponIK.enabled = true;
+        try
+        {
+            context.aiAgent.weaponIK.enabled = true;
 
-        // Set what thee AI should aim at.
-        context.aiAgent.weaponIK.targetTransform = blackboard.target.transform;
+            // Set what thee AI should aim at.
+            context.aiAgent.weaponIK.targetTransform = blackboard.target.transform;
 
-        // Pick a random stopping distance from the player.
-        context.agent.stoppingDistance = Random.Range(context.aiAgent.aiData.minAttackStoppingDistance, context.aiAgent.aiData.maxAttackStoppingDistance);
+            // Pick a random stopping distance from the player.
+            context.agent.stoppingDistance = Random.Range(context.aiAgent.aiData.minAttackStoppingDistance, context.aiAgent.aiData.maxAttackStoppingDistance);
 
-        // Set the speed of the AI.
-        context.agent.speed = context.aiAgent.aiData.walkspeed;
+            // Set the speed of the AI.
+            context.agent.speed = context.aiAgent.aiData.walkspeed;
 
-        // Move the AI towards the player.
-        context.agent.updateRotation = true;
-        context.agent.acceleration = context.aiAgent.aiData.acceleration;
-        context.agent.destination = blackboard.moveToPosition;
+            // Move the AI towards the player.
+            context.agent.updateRotation = true;
+            context.agent.acceleration = context.aiAgent.aiData.acceleration;
+            context.agent.destination = blackboard.moveToPosition;
 
-        // Double checking that the animator is set to attack.
-        context.animator.SetBool(context.aiAgent.aiData.attackParam, true);
+            // Double checking that the animator is set to attack.
+            context.animator.SetBool(context.aiAgent.aiData.attackParam, true);
+        }
+        catch (Exception e)
+        {
+            OnUpdate();
+        }
+
     }
 
     protected override void OnStop()
@@ -50,13 +60,21 @@ public class AttackTarget : ActionNode
         
         if (!context.aiAgent.sensor.Scan())
         {
-            //return State.Failure;
-            context.agent.destination = blackboard.target.transform.position;
+            return State.Failure;
+            //context.agent.destination = blackboard.target.transform.position;
         }
         else
         {
-            blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
-            context.agent.destination = blackboard.moveToPosition;
+            try
+            {
+                blackboard.moveToPosition = new Vector3(blackboard.target.transform.position.x, 0.0f, blackboard.target.transform.position.z);
+                context.agent.destination = blackboard.moveToPosition;
+            } catch (Exception e)
+            {
+                Debug.Log(e);
+                return State.Failure;
+            }
+
         }
 
         // Every update, update the target and where to move.

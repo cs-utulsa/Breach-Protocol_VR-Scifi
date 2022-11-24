@@ -29,6 +29,40 @@ public class NetworkPlayer : MonoBehaviour
         leftHandRig = rig.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = rig.transform.Find("Camera Offset/RightHand Controller");
 
+        GameObject leftHandObject;
+        GameObject rightHandObject;
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        {
+            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/LeadHandL").gameObject;
+            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/LeadHandR").gameObject;
+        } else if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+        {
+            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/DemoHandL").gameObject;
+            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/DemoHandR").gameObject;
+
+        } else if (PhotonNetwork.CurrentRoom.PlayerCount == 3)
+        {
+            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/ScoutHandL").gameObject;
+            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/ScoutHandR").gameObject;
+
+        } else if (PhotonNetwork.CurrentRoom.PlayerCount == 4)
+        {
+            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/TechHandL").gameObject;
+            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/TechHandR").gameObject;
+
+        }
+        else
+        {
+            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/LeadHandL").gameObject;
+            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/LeadHandR").gameObject;
+        }
+        leftHandObject.SetActive(true);
+        rightHandObject.SetActive(true);
+        leftHandObject.GetComponentInChildren<Animator>().enabled = true;
+        rightHandObject.GetComponentInChildren<Animator>().enabled = true;
+        leftHandObject.GetComponentInChildren<HandPresence>().enabled = true;
+        rightHandObject.GetComponentInChildren<HandPresence>().enabled = true;
+
         if (photonView.IsMine)
         {
             foreach (var item in GetComponentsInChildren<Renderer>())
