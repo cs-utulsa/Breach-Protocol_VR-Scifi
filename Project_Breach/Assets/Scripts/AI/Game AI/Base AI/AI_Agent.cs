@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AI_Agent : MonoBehaviour, IPunObservable
+public class AI_Agent : MonoBehaviour
 {
     public AI_Sensor sensor;
     public AI_Health aiHealth;
@@ -17,11 +17,6 @@ public class AI_Agent : MonoBehaviour, IPunObservable
     public NavMeshAgent navAgent;
 
     public PhotonView photonView;
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        throw new System.NotImplementedException();
-    }
 
     // Start is called before the first frame update
     void Start()

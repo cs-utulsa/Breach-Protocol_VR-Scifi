@@ -9,6 +9,7 @@ public class Shield : MonoBehaviour, IPunObservable
     [Header("Player Data")]
     public PlayerData playerData;
     public Health playerHealth;
+    public PhotonView photonView;
 
     [Header("Audio")]
     public AudioSource source;
@@ -110,7 +111,10 @@ public class Shield : MonoBehaviour, IPunObservable
             stream.SendNext(currentShield);
         } else if (stream.IsReading)
         {
-            currentShield = (float) stream.ReceiveNext();
+            if (photonView.IsMine)
+            {
+                currentShield = (float)stream.ReceiveNext();
+            }
         }
     }
 }

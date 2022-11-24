@@ -20,6 +20,8 @@ MonoBehaviour:
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
   detonationAudio: {fileID: 8300000, guid: 0b6c240dae1f1d54aa0b48a997777474, type: 3}
   activationAudio: {fileID: 8300000, guid: 0fdc148d741bfc647be852af5147cf6a, type: 3}
+  grabAudio: {fileID: 8300000, guid: c366b17d0c944304e83d33bcfedbe95a, type: 3}
+  holsterAudio: {fileID: 8300000, guid: 3fd18b61160127844abd165ca032b474, type: 3}
   activateParam: Activate
   particles:
   - {fileID: 2306021639104007139, guid: 9ed4b576f53305043a490066e319364f, type: 3}

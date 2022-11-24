@@ -2,11 +2,14 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR.Interaction.Toolkit;
 public class AOE_Base : MonoBehaviour
 {
     [Header("AOE_Data")]
     public AOE_Data aoeData;
+
+    [Header("Interactable")]
+    public XRBaseInteractable interactable;
 
     [Header("Visuals")]
     public Rigidbody rb = null;
@@ -27,6 +30,7 @@ public class AOE_Base : MonoBehaviour
     public virtual void Awake()
     {
         activated = false;
+        interactable = GetComponent<XRGrabInteractable>();
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
@@ -121,5 +125,17 @@ public class AOE_Base : MonoBehaviour
     public virtual void RPC_CheckForEffected()
     {
         photonView.RPC("CheckForEffected", RpcTarget.All);
+    }
+
+    public void PlaySelectSound()
+    {
+        if (interactable.firstInteractorSelecting.transform.CompareTag("Left Hand") || interactable.firstInteractorSelecting.transform.CompareTag("Right Hand"))
+        {
+            source.PlayOneShot(aoeData.grabAudio);
+        }
+        else
+        {
+            source.PlayOneShot(aoeData.holsterAudio);
+        }
     }
 }

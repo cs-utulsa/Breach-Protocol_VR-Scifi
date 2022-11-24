@@ -17,6 +17,8 @@ public class AOE_Data : ScriptableObject
     public AudioClip beepSound;
     public AudioClip detonationAudio;
     public AudioClip activationAudio;
+    public AudioClip grabAudio;
+    public AudioClip holsterAudio;
 
     [Header("Animator Attributes")]
     public string activateParam = "Activate";
