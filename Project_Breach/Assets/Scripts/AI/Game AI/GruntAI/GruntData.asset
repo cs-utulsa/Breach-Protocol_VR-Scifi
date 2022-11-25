@@ -18,8 +18,8 @@ MonoBehaviour:
   walkspeed: 1.5
   moveTolerance: 1
   standardStoppingDistance: 0.25
-  xInaccuracy: 0.15
-  yInaccuracy: 0.1
+  xInaccuracy: 0.075
+  yInaccuracy: 0.06
   minShootTimer: 0.4
   maxShootTimer: 1.5
   minAttackStoppingDistance: 90

@@ -223,10 +223,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 20
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   placedAudio: {fileID: 8300000, guid: 9eda0bdd644ca1247a39c84812b143a5, type: 3}
   beepAudio: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
   blowUpAudio: {fileID: 8300000, guid: 67738280f8163ad449236391ea1ba08d, type: 3}
-  flashRate: 5
+  flashRate: 2
   SurfaceTag: Breachable Surface
   ArmedTag: Armed Breaching Charge
   DisarmedTag: Breaching Charge
@@ -333,6 +333,7 @@ MonoBehaviour:
   photonView: {fileID: 0}
   chargeInSocketRange: 0
   chargeArmed: 0
+  isBeeping: 0
   breachableSurface: {fileID: 0}
   timeFromLastFlash: 0
   interactable: {fileID: 296879547030368249}

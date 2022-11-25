@@ -12,6 +12,7 @@ public class BreachCharge : MonoBehaviour, IPunObservable
     public AudioClip placedAudio = null;
     public AudioClip beepAudio = null;
     public AudioClip blowUpAudio = null;
+    public AudioClip holsteredAudio = null;
     public float flashRate = 5.0f;
     public string SurfaceTag = "Breachable Surface";
     public string ArmedTag = "Armed Breaching Charge";
@@ -69,14 +70,10 @@ public class BreachCharge : MonoBehaviour, IPunObservable
             isBeeping = true;
             StartCoroutine(BeepRoutine());
         }
-        else
-        {
-            isBeeping = false;
-            StopAllCoroutines();
-        }
 
         if (other.gameObject.CompareTag(SurfaceTag))
         {
+            chargeInSocketRange = true;
             chargeArmed = keypad.GetIsActivated();
             if (chargeArmed)
             {
@@ -151,6 +148,9 @@ public class BreachCharge : MonoBehaviour, IPunObservable
         if (interactable.firstInteractorSelecting.transform.CompareTag("Breachable Surface")) 
         {
             source.PlayOneShot(placedAudio);
+        } else if (interactable.firstInteractorSelecting.transform.CompareTag("Inventory"))
+        {
+            source.PlayOneShot(holsteredAudio);
         }
     }
 

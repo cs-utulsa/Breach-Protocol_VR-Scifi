@@ -35,6 +35,7 @@ public class AttackTarget : ActionNode
         }
         catch (Exception e)
         {
+            Debug.Log(e);
             OnUpdate();
         }
 
