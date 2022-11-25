@@ -14,6 +14,7 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
 
     private bool grabbedOverNetwork;
     private bool grabbedByMe;
+    private bool grabbedByWorld;
 
     public void Start()
     {
@@ -21,6 +22,7 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
         rb = GetComponent<Rigidbody>();
         grabbedOverNetwork = false;
         grabbedByMe = false;
+        grabbedByWorld = false;
     }
     /*
     public void ChangeLayerOnDrop(float delay)
@@ -70,6 +72,7 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
         {
             grabbedOverNetwork = false;
             grabbedByMe = false;
+            grabbedByWorld = true;
             attachTransform = rightAttachPoint;
             RestoreInteractableLayer();
         }
@@ -96,8 +99,9 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
             return true;
         }
 
-        if (grabbedOverNetwork && !photonView.IsMine)
+        if (grabbedOverNetwork && !photonView.IsMine || grabbedByWorld)
         {
+            ChangeToWorldCollisionLayer();
             return false;
         } 
 
@@ -133,7 +137,19 @@ public class OneHandInteractable : XRGrabInteractable, IPunObservable
         else if (stream.IsReading)
         {
             rb.useGravity = (bool) stream.ReceiveNext();
-            grabbedOverNetwork = (bool)stream.ReceiveNext();
+            bool networkGrab = (bool)stream.ReceiveNext();
+            if (grabbedOverNetwork != networkGrab)
+            {
+                grabbedOverNetwork = networkGrab;
+                if (grabbedOverNetwork)
+                {
+                    ChangeToWorldCollisionLayer();
+                }
+                else
+                {
+                    RestoreInteractableLayer();
+                }
+            }
         }
     }
 }

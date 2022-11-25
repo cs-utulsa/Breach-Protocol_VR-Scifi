@@ -5,6 +5,8 @@ using UnityEngine.XR;
 using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
 using Unity.XR.CoreUtils;
+using System.Linq;
+using UnityEngine.ProBuilder;
 
 public class NetworkPlayer : MonoBehaviour
 {
@@ -15,53 +17,80 @@ public class NetworkPlayer : MonoBehaviour
     public Animator rightHandAnimator;
     public Animator leftHandAnimator;
 
+    public Material leadMaterial;
+    public Material demoMaterial;
+    public Material scoutMaterial;
+    public Material techMaterial;
+    public Material defaultMaterial;
+
     private PhotonView photonView;
 
     private Transform headRig;
     private Transform rightHandRig;
     private Transform leftHandRig;
+    private bool hasDefaultMaterial;
+    private int defaultMatIndex;
     // Start is called before the first frame update
     void Start()
     {
+        defaultMatIndex = -1;
+        hasDefaultMaterial = false;
         photonView = GetComponent<PhotonView>();
         XROrigin rig = FindObjectOfType<XROrigin>();
         headRig = rig.transform.Find("Camera Offset/Main Camera");
         leftHandRig = rig.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = rig.transform.Find("Camera Offset/RightHand Controller");
 
-        GameObject leftHandObject;
-        GameObject rightHandObject;
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        GameObject leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/PlayerHandLeft/LeftWrist").gameObject;
+        GameObject rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/PlayerHandRight/RightWrist").gameObject;
+        SkinnedMeshRenderer leftSkinMesh = leftHandObject.GetComponent<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer rightSkinMesh = rightHandObject.GetComponent<SkinnedMeshRenderer>();
+        for (int i = 0; i < leftSkinMesh.materials.Length; i++)
         {
-            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/LeadHandL").gameObject;
-            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/LeadHandR").gameObject;
-        } else if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
-        {
-            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/DemoHandL").gameObject;
-            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/DemoHandR").gameObject;
-
-        } else if (PhotonNetwork.CurrentRoom.PlayerCount == 3)
-        {
-            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/ScoutHandL").gameObject;
-            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/ScoutHandR").gameObject;
-
-        } else if (PhotonNetwork.CurrentRoom.PlayerCount == 4)
-        {
-            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/TechHandL").gameObject;
-            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/TechHandR").gameObject;
-
+            Debug.Log(leftSkinMesh.materials[i].name);
+            if (leftSkinMesh.materials[i].name ==  defaultMaterial.name + " (Instance)")
+            {
+                hasDefaultMaterial = true;
+                defaultMatIndex = i;
+                Debug.Log("Default Material Found");
+                break;
+            }
         }
-        else
+        Material[] materials = leftSkinMesh.materials;
+        if (hasDefaultMaterial)
         {
-            leftHandObject = rig.transform.Find("Camera Offset/LeftHand Controller/LeadHandL").gameObject;
-            rightHandObject = rig.transform.Find("Camera Offset/RightHand Controller/LeadHandR").gameObject;
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                materials[1] = leadMaterial;
+                Debug.Log("Assigned Lead");
+            }
+            else if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+            {
+                materials[1] = demoMaterial;
+                Debug.Log("Assigned Demo");
+            }
+            else if (PhotonNetwork.CurrentRoom.PlayerCount == 3)
+            {
+                materials[1] = scoutMaterial;
+                Debug.Log("Assigned Scout");
+            }
+            else if (PhotonNetwork.CurrentRoom.PlayerCount == 4)
+            {
+                materials[1] = techMaterial;
+                Debug.Log("Assigned Tech");
+            }
+            else
+            {
+                materials[defaultMatIndex] = defaultMaterial;
+                Debug.Log("Assigned Default");
+            }
+
+            leftSkinMesh.materials = materials;
+            rightSkinMesh.materials = materials;
         }
-        leftHandObject.SetActive(true);
-        rightHandObject.SetActive(true);
-        leftHandObject.GetComponentInChildren<Animator>().enabled = true;
-        rightHandObject.GetComponentInChildren<Animator>().enabled = true;
-        leftHandObject.GetComponentInChildren<HandPresence>().enabled = true;
-        rightHandObject.GetComponentInChildren<HandPresence>().enabled = true;
+
+
+
 
         if (photonView.IsMine)
         {

@@ -31,7 +31,7 @@ public class Detonator : MonoBehaviour
 
     private void Update()
     {
-        if (readyToDetonate && breachCharge.GetIsChargeArmed())
+        if (readyToDetonate && breachCharge.GetIsChargeArmed() && !breachCharge.GetIsDetonated())
         {
             breachIndicatorMat.SetColor("_EmissionColor", Color.green);
         }
@@ -46,7 +46,7 @@ public class Detonator : MonoBehaviour
         if (other.CompareTag("Armed Breaching Charge"))
         {
             breachCharge = other.GetComponentInParent<BreachCharge>();
-            if (breachCharge.GetChargeInSocketRange() && breachCharge.GetIsChargeArmed())
+            if (breachCharge.GetChargeInSocketRange() && breachCharge.GetIsChargeArmed() && !breachCharge.GetIsDetonated())
             {
                 breachIndicatorMat.SetColor("_EmissionColor", Color.green);
                 readyToDetonate = true;
@@ -79,6 +79,7 @@ public class Detonator : MonoBehaviour
 
     private IEnumerator DetonateRoutine()
     {
+        breachCharge.SetIsDetonated(true);
         breachCharge.flashRate = breachCharge.flashRate / 10.0f;
         yield return new WaitForSeconds(2.0f);
 

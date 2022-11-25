@@ -5086,6 +5086,11 @@ MonoBehaviour:
   rightHand: {fileID: 4101937412564588143}
   rightHandAnimator: {fileID: 6745961290524888843}
   leftHandAnimator: {fileID: 4464154659682166941}
+  leadMaterial: {fileID: 2100000, guid: c2635338078d0e745bdbd8c9434178df, type: 2}
+  demoMaterial: {fileID: 2100000, guid: d5d1c5888f6233349af7907134aa7745, type: 2}
+  scoutMaterial: {fileID: 2100000, guid: f155bc046ba1d334bb303b35d66c7338, type: 2}
+  techMaterial: {fileID: 2100000, guid: 6b814e84bc61b6041a81918589a9115b, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: eb9f8de2bed673941a9cfd9f830dee3f, type: 2}
 --- !u!114 &5590258150630245758
 MonoBehaviour:
   m_ObjectHideFlags: 0
