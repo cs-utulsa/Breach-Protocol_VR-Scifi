@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 using Photon.Pun;
 
 public class RaycastWeapon : MonoBehaviour
