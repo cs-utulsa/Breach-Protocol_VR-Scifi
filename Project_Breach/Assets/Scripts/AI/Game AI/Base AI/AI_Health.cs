@@ -65,11 +65,14 @@ public class AI_Health : MonoBehaviour, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(currentHealth);
+            if (!isDead)
+            {
+                stream.SendNext(currentHealth);
+            }
         } else if (stream.IsReading)
         {
             currentHealth = (float) stream.ReceiveNext();
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !isDead)
             {
                 RPC_Die();
             }
