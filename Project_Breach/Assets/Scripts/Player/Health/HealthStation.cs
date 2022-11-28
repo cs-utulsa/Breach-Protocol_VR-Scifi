@@ -8,6 +8,9 @@ public class HealthStation : MonoBehaviour
     public XRGrabInteractable[] interactables;
     public float healRate = 10.0f;
     public float timeBetweenHeals = 1.0f;
+    public AudioSource source;
+    public AudioClip grabAudio;
+    public AudioClip healAudio;
 
     [SerializeField] private int pointsGrabbed;
     [SerializeField] private float timer;
@@ -15,6 +18,7 @@ public class HealthStation : MonoBehaviour
     private void Start()
     {
         interactables = GetComponentsInChildren<XRGrabInteractable>();
+        source = GetComponent<AudioSource>();
         pointsGrabbed = 0;
         timer = 1.0f;
         enabled = false;
@@ -35,6 +39,7 @@ public class HealthStation : MonoBehaviour
                     {
                         playerHealth.Heal(healRate);
                         Debug.Log("Heal Player");
+                        source.PlayOneShot(healAudio);
                     }
                     timer = timeBetweenHeals;
                 }
@@ -51,6 +56,7 @@ public class HealthStation : MonoBehaviour
         pointsGrabbed++;
         enabled = true;
         Debug.Log("Point Grabbed");
+        source.PlayOneShot(grabAudio);
     }
 
     public void PointLetGo()
