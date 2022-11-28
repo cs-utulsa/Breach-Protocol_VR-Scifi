@@ -18,16 +18,16 @@ MonoBehaviour:
   walkspeed: 1.5
   moveTolerance: 1
   standardStoppingDistance: 0.25
-  xInaccuracy: 0.2
-  yInaccuracy: 0.1
-  minShootTimer: 0.5
+  xInaccuracy: 0.075
+  yInaccuracy: 0.06
+  minShootTimer: 0.4
   maxShootTimer: 1.5
   minAttackStoppingDistance: 90
   maxAttackStoppingDistance: 100
   attackRange: 100
   scanDistance: 100
-  scanAngle: 135
-  scanHeight: 5
+  scanAngle: 150
+  scanHeight: 8
   beepSound: {fileID: 8300000, guid: b40fe38c4fd91064caeb5e886807d529, type: 3}
   speedParam: Speed
   attackParam: Attack
